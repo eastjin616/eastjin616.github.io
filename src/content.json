@@ -1,0 +1,127 @@
+{
+  "profile": {
+    "name": "서동진",
+    "role": "백엔드 중심 풀스택 개발자",
+    "headline": "현장에서 쌓은 운영 감각 위에 소프트웨어를 쌓았습니다.",
+    "description": "화면, 서버, 데이터와 운영을 연결해 실제 환경에서 오래 쓰이는 서비스를 만듭니다."
+  },
+  "links": {
+    "email": "",
+    "github": "",
+    "resume": "https://app.notion.com/p/346457fc0c60814fbce3e2cf3357de2b",
+    "career": "https://app.notion.com/p/33f457fc0c60809fbee4e9879cc2425c"
+  },
+  "layers": [
+    {
+      "number": "01",
+      "label": "Physical",
+      "title": "현장을 읽는 감각",
+      "description": "설비와 공정을 운영하며 상태 변화, 실시간 데이터, 작은 이상 징후가 실제 결과에 미치는 영향을 배웠습니다.",
+      "keywords": ["설비", "공정", "모니터링"]
+    },
+    {
+      "number": "02",
+      "label": "Backend",
+      "title": "흐름을 만드는 코드",
+      "description": "웹 서비스에서 요청, 비즈니스 로직, 데이터가 이동하는 전체 흐름을 연결해 왔습니다.",
+      "keywords": ["Java", "Spring", "MyBatis"]
+    },
+    {
+      "number": "03",
+      "label": "AI Product",
+      "title": "불확실성을 다루는 제품",
+      "description": "LLM의 토큰 제한과 응답 실패, 개발 도구의 반복 작업을 사용자 경험과 복구 흐름까지 포함해 해결했습니다.",
+      "keywords": ["FastAPI", "LLM", "Go CLI"]
+    },
+    {
+      "number": "04",
+      "label": "Reliability",
+      "title": "멈추지 않게 만드는 운영",
+      "description": "로그와 모니터링으로 장애를 좁히고, DR과 절체 관점에서 서비스가 계속 동작하는 조건을 살핍니다.",
+      "keywords": ["Linux", "DR", "Incident"]
+    }
+  ],
+  "featuredProjects": [
+    {
+      "index": "02.1",
+      "slug": "kt-ds-dev-ai",
+      "title": "KT DS DEV.AI",
+      "period": "2025",
+      "problem": "대량 에이전트 이력을 조회할 때 중복 API 호출과 초기 렌더링 부담이 함께 발생했습니다.",
+      "role": "웹 조회 흐름 개선 · Go CLI 단독 설계/구현",
+      "stack": ["React", "Next.js", "FastAPI", "Go", "Cobra"],
+      "sections": {
+        "constraint": "기존 서비스의 API 흐름을 유지하면서 조회 초반의 낭비를 줄여야 했고, CLI는 Windows를 포함한 실행 환경 차이를 다뤄야 했습니다.",
+        "decision": "URL 단계에서 agent type을 먼저 판별해 필요한 요청만 보내고, 이력은 무한 스크롤과 지연 렌더링으로 나눴습니다. 반복되는 설치·교체 작업은 Go와 Cobra 기반 명령으로 묶었습니다.",
+        "system": "요청 URL → agent type 판별 → 대상 이력 API → 페이지 단위 렌더링 흐름으로 정리했습니다. CLI는 명령 해석 → API 요청 → 파일 처리 단계를 명확히 나눴습니다.",
+        "recovery": "조회 실패가 전체 화면을 막지 않도록 기존 결과와 오류 상태를 구분했습니다. 실행 중인 파일 교체가 제한되는 Windows 환경은 다운로드와 교체 단계를 분리해 다뤘습니다.",
+        "result": "불필요한 호출과 한 번에 그리는 이력의 양을 줄였고, 사람이 반복하던 개발 도구 작업을 하나의 CLI 흐름으로 정리했습니다."
+      },
+      "evidence": "공개 가능한 범위에서 호출 흐름과 구현 판단을 설명했습니다.",
+      "retrospective": "성능 문제는 화면 한 곳보다 요청이 시작되는 시점부터 렌더링이 끝나는 지점까지 이어서 봐야 정확히 줄일 수 있었습니다."
+    },
+    {
+      "index": "02.2",
+      "slug": "plainpaper",
+      "title": "Plainpaper",
+      "period": "2025",
+      "problem": "긴 문서를 한 번에 요약하면 토큰 제한, 긴 응답 시간, 중간 실패가 사용자 경험을 무너뜨렸습니다.",
+      "role": "프론트엔드 · 백엔드 · 프롬프트 · 배포 단독 개발",
+      "stack": ["React", "FastAPI", "LLM", "Python"],
+      "sections": {
+        "constraint": "문서 길이는 일정하지 않고 모델의 입력 한도와 응답 시간은 제한돼 있었습니다. 일부 구간이 실패해도 사용자가 처음부터 다시 시작하지 않게 해야 했습니다.",
+        "decision": "문서를 작은 단위로 나누되 앞선 문맥을 다음 요청에 전달하고, 실패 구간에는 재시도와 대체 흐름을 두었습니다.",
+        "system": "문서 입력 → chunk 분리 → 문맥을 포함한 구간 요약 → 결과 병합 → 최종 요약 순서로 파이프라인을 구성했습니다.",
+        "recovery": "모델 응답 실패는 제한된 재시도 후 fallback으로 넘기고, 사용자에게는 어느 단계에서 멈췄는지 알 수 있는 상태를 보여줬습니다.",
+        "result": "긴 문서도 한 요청의 성공 여부에 의존하지 않고 단계적으로 처리할 수 있는 요약 흐름을 만들었습니다."
+      },
+      "evidence": "공개 가능한 범위에서 처리 파이프라인과 실패 대응을 설명했습니다.",
+      "retrospective": "AI 기능의 품질은 프롬프트만이 아니라 입력 분할, 상태 표시, 실패 후 복구가 함께 결정한다는 점을 배웠습니다."
+    },
+    {
+      "index": "02.3",
+      "slug": "ipcc-infrastructure",
+      "title": "Financial IPCC",
+      "period": "2026",
+      "problem": "고객 접점 서비스는 일부 구성 요소에 문제가 생겨도 통화 흐름과 운영 연속성을 지켜야 합니다.",
+      "role": "IPCC · IVR · ADNS 운영, 장애 분석과 DR 대응",
+      "stack": ["Linux", "IPCC", "IVR", "ADNS", "DR"],
+      "sections": {
+        "constraint": "금융권 보안 정책 안에서 운영해야 하며, 고객명·내부 주소·상세 토폴로지와 실제 장애 이력은 외부에 공개할 수 없습니다.",
+        "decision": "개별 증상보다 로그와 모니터링의 시간 흐름을 맞춰 원인을 좁히고, 평상시에도 절체와 복구 조건을 확인하는 방식으로 대응했습니다.",
+        "system": "인입 → 라우팅 → 안내·상담 연결 → 상태 모니터링 흐름을 기준으로 관찰 지점을 나누고, 주·DR 환경의 서비스 연속성을 함께 살폈습니다.",
+        "recovery": "장애 시 영향 범위를 먼저 분리하고 로그로 실패 지점을 좁힌 뒤, 정해진 절체와 복구 절차에 따라 서비스를 정상 상태로 되돌립니다.",
+        "result": "개발 관점에 운영·장애·복구 조건을 더해 기능이 실제 환경에서 계속 동작하려면 무엇이 필요한지 판단하는 기반을 쌓았습니다."
+      },
+      "evidence": "보안 정책을 지키기 위해 시스템 구조와 판단 기준만 익명화해 설명했습니다.",
+      "retrospective": "좋은 구현은 정상 흐름만 설명하는 코드가 아니라, 실패했을 때 무엇을 관찰하고 어디까지 복구할지도 함께 담고 있어야 합니다."
+    }
+  ],
+  "experience": [
+    {
+      "year": "2021",
+      "name": "LG Display",
+      "summary": "유틸리티 설비와 실시간 상태 데이터"
+    },
+    {
+      "year": "2022",
+      "name": "SK hynix",
+      "summary": "Diffusion 공정과 이상 징후 모니터링"
+    },
+    {
+      "year": "2024",
+      "name": "Badukland",
+      "summary": "Java·Spring 기반 실무 웹 서비스"
+    },
+    {
+      "year": "2025",
+      "name": "KT DS",
+      "summary": "웹·AI 제품과 Go CLI 자동화"
+    },
+    {
+      "year": "2026",
+      "name": "Financial IPCC",
+      "summary": "금융 인프라 운영과 DR 대응"
+    }
+  ]
+}
