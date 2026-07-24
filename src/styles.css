@@ -905,8 +905,13 @@ button:focus-visible {
 }
 
 .case-header {
+  width: 100%;
+  margin: 0;
+  padding-right: max(24px, calc((100vw - 1180px) / 2));
+  padding-left: max(24px, calc((100vw - 1180px) / 2));
   color: #e8ebe5;
   border-color: var(--line-light);
+  background: var(--night);
 }
 
 .case-header .identity__mark,
@@ -1388,8 +1393,8 @@ button:focus-visible {
     gap: 15px;
   }
 
-  .site-header nav a:nth-child(1),
-  .site-header nav a:nth-child(3) {
+  .home-header nav a:nth-child(1),
+  .home-header nav a:nth-child(3) {
     display: none;
   }
 

@@ -23,7 +23,7 @@ export default function App() {
         본문 바로가기
       </a>
 
-      <header className="site-header">
+      <header className="site-header home-header">
         <a className="identity" href="/" aria-label="서동진 포트폴리오 홈">
           <span>SEO DONGJIN</span>
           <span className="identity__mark">S/DJ · 2026</span>
