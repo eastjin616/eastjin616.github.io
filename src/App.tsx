@@ -1,8 +1,10 @@
+import { lazy, Suspense, useEffect, useState } from 'react'
 import content from './content.json'
 import { getProjectSlug } from './project-route'
 
 const { profile, links, layers, featuredProjects, experience } = content
 type Project = (typeof featuredProjects)[number]
+const LiquidLayer = lazy(() => import('./LiquidLayer'))
 
 export default function App() {
   const projectSlug = getProjectSlug(
@@ -69,6 +71,7 @@ export default function App() {
               <span className="wafer__index">00—04</span>
               <span className="wafer__caption">OPERATION / CODE / RECOVERY</span>
               <span className="wafer__lens" />
+              <HeroLiquid />
             </div>
             <p className="hero__coordinates">37.5665° N / 126.9780° E</p>
           </div>
@@ -201,6 +204,21 @@ export default function App() {
       </footer>
     </div>
   )
+}
+
+function HeroLiquid() {
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setReady(true))
+    return () => cancelAnimationFrame(frame)
+  }, [])
+
+  return ready ? (
+    <Suspense fallback={null}>
+      <LiquidLayer />
+    </Suspense>
+  ) : null
 }
 
 function ProjectDetail({ project }: { project: Project }) {
