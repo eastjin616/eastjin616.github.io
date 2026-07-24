@@ -17,9 +17,9 @@ const project = {
   },
 }
 
-test('requires exactly three featured projects', () => {
+test('requires at least five featured projects', () => {
   const errors = validateContent({ featuredProjects: [project] })
-  assert.ok(errors.some((error) => /exactly three/i.test(error)))
+  assert.ok(errors.some((error) => /at least five/i.test(error)))
 })
 
 test('requires unique project slugs', () => {

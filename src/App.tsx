@@ -1,10 +1,8 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
 import content from './content.json'
 import { getProjectSlug } from './project-route'
 
-const { profile, links, layers, featuredProjects, experience } = content
+const { profile, links, featuredProjects, experience } = content
 type Project = (typeof featuredProjects)[number]
-const LiquidLayer = lazy(() => import('./LiquidLayer'))
 
 export default function App() {
   const projectSlug = getProjectSlug(
@@ -18,324 +16,137 @@ export default function App() {
   }
 
   return (
-    <div className="site">
-      <a className="skip-link" href="#content">
-        본문 바로가기
-      </a>
-
-      <header className="site-header home-header">
-        <a className="identity" href="/" aria-label="서동진 포트폴리오 홈">
-          <span>SEO DONGJIN</span>
-          <span className="identity__mark">S/DJ · 2026</span>
+    <div className="page">
+      <header className="masthead">
+        <a href="/" className="name">
+          {profile.name}
         </a>
-        <nav aria-label="주요 메뉴">
-          <a href="#layers">Layers</a>
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
+        <nav aria-label="Main navigation">
+          <a href="#projects">Projects</a>
+          <a href="#notes">Notes</a>
+          <a href="#about">About</a>
+          <a href="#links">Links</a>
         </nav>
       </header>
 
-      <main id="content">
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="hero__copy">
-            <p className="section-code">Layer 00 / Introduction</p>
-            <h1 id="hero-title">
-              <span>Layer by layer,</span>
-              <span>I build systems</span>
-              <span>that keep running.</span>
-            </h1>
-            <p className="hero__statement">{profile.headline}</p>
-            <p className="hero__description">{profile.description}</p>
-            <div className="hero__actions">
-              <a className="text-link text-link--strong" href="#layers">
-                Explore my layers <span aria-hidden="true">↓</span>
-              </a>
-              {links.resume && (
-                <a className="text-link" href={links.resume}>
-                  Resume <span aria-hidden="true">↗</span>
-                </a>
-              )}
-            </div>
-          </div>
+      <main>
+        <section className="intro" aria-labelledby="intro-title">
+          <p className="kicker">{profile.role}</p>
+          <h1 id="intro-title">{profile.headline}</h1>
+          <p>{profile.description}</p>
+        </section>
 
-          <div className="hero__visual" aria-hidden="true">
-            <div className="wafer">
-              <span className="wafer__ring wafer__ring--1" />
-              <span className="wafer__ring wafer__ring--2" />
-              <span className="wafer__ring wafer__ring--3" />
-              <span className="wafer__ring wafer__ring--4" />
-              <span className="wafer__axis wafer__axis--x" />
-              <span className="wafer__axis wafer__axis--y" />
-              <span className="wafer__notch" />
-              <span className="wafer__index">00—04</span>
-              <span className="wafer__caption">OPERATION / CODE / RECOVERY</span>
-              <span className="wafer__lens" />
-              <HeroLiquid />
-            </div>
-            <p className="hero__coordinates">37.5665° N / 126.9780° E</p>
-          </div>
+        <section id="projects" aria-labelledby="projects-title">
+          <h2 id="projects-title">Projects</h2>
+          <ol className="project-list">
+            {featuredProjects.map((project) => (
+              <li key={project.slug}>
+                <article className="project">
+                  <div className="project__meta">
+                    <span>{project.index}</span>
+                    <span>{project.period}</span>
+                    <span>{project.status}</span>
+                  </div>
+                  <h3>
+                    <a href={`?project=${project.slug}`}>{project.title}</a>
+                  </h3>
+                  <p>{project.problem}</p>
+                  <p className="muted">{project.role}</p>
+                  <p className="stack">{project.stack.join(' / ')}</p>
+                  <p className="project__links">
+                    <a href={`?project=${project.slug}`}>Case note</a>
+                    {'url' in project && project.url && <a href={project.url}>Live</a>}
+                  </p>
+                </article>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-          <p className="hero__rail" aria-hidden="true">
-            BACKEND / FULL STACK / OPERATIONS
+        <section id="notes" aria-labelledby="notes-title">
+          <h2 id="notes-title">Notes</h2>
+          <ul className="plain-list">
+            <li>공개 가능한 작업은 링크로 보여주고, 비공개 작업은 제약과 판단을 짧게 남깁니다.</li>
+            <li>반도체와 운영 경험은 메인이 아니라 문제를 좁히는 습관의 배경으로만 둡니다.</li>
+            <li>완성된 서비스와 개발 중인 도구를 같은 목록에 두되 상태를 명확히 구분합니다.</li>
+          </ul>
+        </section>
+
+        <section id="about" aria-labelledby="about-title">
+          <h2 id="about-title">About</h2>
+          <ol className="timeline">
+            {experience.map((item) => (
+              <li key={`${item.year}-${item.name}`}>
+                <time>{item.year}</time>
+                <strong>{item.name}</strong>
+                <span>{item.summary}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="links" aria-labelledby="links-title">
+          <h2 id="links-title">Links</h2>
+          <p className="link-row">
+            {links.github && <a href={links.github}>GitHub</a>}
+            {links.resume && <a href={links.resume}>Resume</a>}
+            {links.career && <a href={links.career}>Career</a>}
+            {links.email && <a href={links.email}>Email</a>}
           </p>
         </section>
-
-        <section className="origin page-section" id="layers" aria-labelledby="layers-title">
-          <header className="section-heading">
-            <p className="section-code">Layer 01 / Origin</p>
-            <h2 id="layers-title">
-              시스템을 사용하는 사람에서,
-              <br />
-              시스템을 만드는 사람으로.
-            </h2>
-            <p>
-              현장 경험은 이전 경력이 아니라 지금의 개발 방식을 만든 첫 번째 레이어입니다.
-              상태를 보고, 원인을 좁히고, 복구까지 생각하는 습관은 코드 안에서도 이어집니다.
-            </p>
-          </header>
-
-          <ol className="layer-list">
-            {layers.map((layer) => (
-              <li key={layer.number} className={`layer layer--${layer.number}`}>
-                <div className="layer__disc" aria-hidden="true">
-                  <span>{layer.number}</span>
-                </div>
-                <p className="layer__label">{layer.label}</p>
-                <div className="layer__body">
-                  <h3>{layer.title}</h3>
-                  <p>{layer.description}</p>
-                </div>
-                <ul className="layer__keywords" aria-label={`${layer.label} 기술과 관점`}>
-                  {layer.keywords.map((keyword) => (
-                    <li key={keyword}>{keyword}</li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="work" id="work" aria-labelledby="work-title">
-          <div className="work__inner">
-            <header className="work__heading">
-              <p className="section-code section-code--light">Layer 02 / Selected Work</p>
-              <h2 id="work-title">Systems, traced from problem to recovery.</h2>
-              <p>
-                화면 결과보다 그 뒤에 있는 제약, 판단, 실패와 복구 경로를 보여주는 세 가지
-                작업입니다.
-              </p>
-            </header>
-
-            <div className="project-list">
-              {featuredProjects.map((project) => (
-                <article className="project-row" key={project.slug}>
-                  <a href={`?project=${project.slug}`} aria-label={`${project.title} 사례 자세히 보기`}>
-                    <div className="project-row__index">
-                      <span>{project.index}</span>
-                      <span>{project.period}</span>
-                    </div>
-                    <div className="project-row__main">
-                      <h3>{project.title}</h3>
-                      <p>{project.problem}</p>
-                      <p className="project-row__role">{project.role}</p>
-                    </div>
-                    <div className="project-row__open">
-                      <span>Open case</span>
-                      <span aria-hidden="true">↗</span>
-                    </div>
-                  </a>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="experience page-section" id="experience" aria-labelledby="experience-title">
-          <header className="experience__heading">
-            <p className="section-code">Layer 03 / Experience</p>
-            <h2 id="experience-title">One career, accumulating viewpoints.</h2>
-          </header>
-
-          <ol className="timeline">
-            {experience.map((item, index) => (
-              <li key={`${item.year}-${item.name}`}>
-                <span className="timeline__index">{String(index + 1).padStart(2, '0')}</span>
-                <time>{item.year}</time>
-                <h3>{item.name}</h3>
-                <p>{item.summary}</p>
-              </li>
-            ))}
-          </ol>
-
-          {links.career && (
-            <a className="text-link text-link--strong experience__link" href={links.career}>
-              Full career description <span aria-hidden="true">↗</span>
-            </a>
-          )}
-        </section>
-
-        <section className="contact" id="contact" aria-labelledby="contact-title">
-          <div>
-            <p className="section-code">Final Layer / Contact</p>
-            <h2 id="contact-title">
-              다음 시스템을
-              <br />
-              함께 쌓아볼까요?
-            </h2>
-          </div>
-          <div className="contact__body">
-            <p>
-              {profile.name} · {profile.role}
-            </p>
-            <div className="contact__links">
-              {links.email && <a href={links.email}>Email ↗</a>}
-              {links.github && <a href={links.github}>GitHub ↗</a>}
-              {links.resume && <a href={links.resume}>Resume ↗</a>}
-              {links.career && <a href={links.career}>Career description ↗</a>}
-            </div>
-          </div>
-        </section>
       </main>
-
-      <footer className="site-footer">
-        <p>SEO DONGJIN / PORTFOLIO 2026</p>
-        <a href="#content">Back to top ↑</a>
-      </footer>
     </div>
   )
 }
 
-function HeroLiquid() {
-  const [ready, setReady] = useState(false)
-
-  useEffect(() => {
-    const frame = requestAnimationFrame(() => setReady(true))
-    return () => cancelAnimationFrame(frame)
-  }, [])
-
-  return ready ? (
-    <Suspense fallback={null}>
-      <LiquidLayer />
-    </Suspense>
-  ) : null
-}
-
 function ProjectDetail({ project }: { project: Project }) {
   const routes = [
-    { id: 'problem', label: 'Problem', copy: project.problem },
-    { id: 'constraint', label: 'Constraint', copy: project.sections.constraint },
-    { id: 'decision', label: 'Decision', copy: project.sections.decision },
-    { id: 'system', label: 'System', copy: project.sections.system },
-    { id: 'recovery', label: 'Recovery', copy: project.sections.recovery },
-    { id: 'result', label: 'Result', copy: project.sections.result },
+    ['Problem', project.problem],
+    ['Constraint', project.sections.constraint],
+    ['Decision', project.sections.decision],
+    ['System', project.sections.system],
+    ['Recovery', project.sections.recovery],
+    ['Result', project.sections.result],
+    ['Evidence', project.evidence],
+    ['Retrospective', project.retrospective],
   ]
-  const currentIndex = featuredProjects.findIndex((item) => item.slug === project.slug)
-  const nextProject = featuredProjects[(currentIndex + 1) % featuredProjects.length]
 
   return (
-    <div className="site case-site">
-      <a className="skip-link" href="#case-content">
-        본문 바로가기
-      </a>
-
-      <header className="site-header case-header">
-        <a className="identity" href="/" aria-label="서동진 포트폴리오 홈">
-          <span>SEO DONGJIN</span>
-          <span className="identity__mark">CASE / {project.index}</span>
+    <div className="page">
+      <header className="masthead">
+        <a href="/" className="name">
+          {profile.name}
         </a>
-        <nav aria-label="프로젝트 메뉴">
-          <a href="/#work">All work</a>
+        <nav aria-label="Project navigation">
+          <a href="/#projects">Projects</a>
           {links.resume && <a href={links.resume}>Resume</a>}
         </nav>
       </header>
 
-      <main id="case-content">
-        <section className="case-hero" aria-labelledby="case-title">
-          <div className="case-hero__index">
-            <p className="section-code section-code--light">Selected work / {project.index}</p>
-            <p>{project.period}</p>
+      <main>
+        <article className="case">
+          <p className="kicker">
+            {project.index} / {project.period} / {project.status}
+          </p>
+          <h1>{project.title}</h1>
+          <p>{project.role}</p>
+          <p className="stack">{project.stack.join(' / ')}</p>
+          {'url' in project && project.url && (
+            <p className="link-row">
+              <a href={project.url}>Live service</a>
+            </p>
+          )}
+
+          <div className="case-sections">
+            {routes.map(([label, copy]) => (
+              <section key={label}>
+                <h2>{label}</h2>
+                <p>{copy}</p>
+              </section>
+            ))}
           </div>
-          <div className="case-hero__title">
-            <h1 id="case-title">{project.title}</h1>
-            <p>{project.problem}</p>
-          </div>
-          <dl className="case-meta">
-            <div>
-              <dt>Role</dt>
-              <dd>{project.role}</dd>
-            </div>
-            <div>
-              <dt>Stack</dt>
-              <dd>{project.stack.join(' · ')}</dd>
-            </div>
-            <div>
-              <dt>Disclosure</dt>
-              <dd>Public-safe case study</dd>
-            </div>
-          </dl>
-        </section>
-
-        <section className="route-panel" aria-labelledby="route-title">
-          <div className="route-panel__heading">
-            <p className="section-code">Routing map / 00—05</p>
-            <h2 id="route-title">Follow the decision path.</h2>
-            <p>문제에서 결과까지, 구현 과정에서 실제로 이어진 판단과 복구의 순서입니다.</p>
-          </div>
-          <nav aria-label="프로젝트 상세 목차" className="routing-map">
-            <ol>
-              {routes.map((route, index) => (
-                <li
-                  key={route.id}
-                  className={route.id === 'decision' || route.id === 'recovery' ? 'is-liquid' : ''}
-                >
-                  <a href={`#${route.id}`}>
-                    <span>{String(index).padStart(2, '0')}</span>
-                    {route.label}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        </section>
-
-        <div className="case-body">
-          {routes.map((route, index) => (
-            <section className="case-section" id={route.id} key={route.id}>
-              <div className="case-section__label">
-                <span>{String(index).padStart(2, '0')}</span>
-                <p>{route.label}</p>
-              </div>
-              <h2>{route.label}</h2>
-              <p>{route.copy}</p>
-            </section>
-          ))}
-
-          <section className="case-proof" aria-labelledby="evidence-title">
-            <div>
-              <p className="section-code">Evidence</p>
-              <h2 id="evidence-title">What can be shown.</h2>
-            </div>
-            <p>{project.evidence}</p>
-          </section>
-
-          <section className="case-retro" aria-labelledby="retro-title">
-            <p className="section-code section-code--light">Retrospective</p>
-            <h2 id="retro-title">{project.retrospective}</h2>
-          </section>
-        </div>
-
-        <a className="next-case" href={`?project=${nextProject.slug}`}>
-          <span>Next case / {nextProject.index}</span>
-          <strong>{nextProject.title}</strong>
-          <span aria-hidden="true">↗</span>
-        </a>
+        </article>
       </main>
-
-      <footer className="site-footer">
-        <p>SEO DONGJIN / PORTFOLIO 2026</p>
-        <a href="/#work">Back to selected work ←</a>
-      </footer>
     </div>
   )
 }

@@ -9,8 +9,8 @@ export function validateContent(content) {
   const errors = []
   const projects = content?.featuredProjects ?? []
 
-  if (projects.length !== 3) {
-    errors.push('Featured projects must contain exactly three entries.')
+  if (projects.length < 5) {
+    errors.push('Featured projects must contain at least five entries.')
   }
 
   const slugs = projects.map((project) => project.slug)
