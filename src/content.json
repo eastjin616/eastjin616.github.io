@@ -2,9 +2,9 @@
   "profile": {
     "name": "서동진",
     "role": "Backend / Full-stack Developer",
-    "headline": "I build services and small developer tools.",
     "description": "Java/Spring 기반 웹 서비스, Go CLI, AI 개발 도구를 다룹니다. 공개 가능한 작업은 링크로, 비공개 작업은 문제와 판단만 짧게 남깁니다.",
     "location": "South Korea",
+    "avatar": "https://github.com/eastjin616.png",
     "skills": ["Java", "Spring", "Go", "React", "TypeScript", "CLI", "Operations"]
   },
   "links": {

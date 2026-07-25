@@ -19,11 +19,15 @@ export default function App() {
   return (
     <div className="page">
       <aside className="profile" aria-label="Profile">
-        <a href="/" className="name">
-          {profile.name}
-        </a>
-        <p className="kicker">{profile.role}</p>
-        <h1>{profile.headline}</h1>
+        <img className="avatar" src={profile.avatar} alt={`${profile.name} GitHub avatar`} />
+        <h1 className="profile-title">
+          <a href="/">{profile.name}</a>
+        </h1>
+        <p className="kicker">
+          {profile.role}
+          <br />
+          {profile.location}
+        </p>
         <p>{profile.description}</p>
         <p className="stack">{profile.skills.join(' / ')}</p>
         <p className="link-row">

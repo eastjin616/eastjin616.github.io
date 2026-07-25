@@ -54,15 +54,34 @@ a:focus-visible {
   position: sticky;
   top: 52px;
   align-self: start;
+  text-align: center;
+}
+
+.name,
+.profile-title {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-family:
+    ui-serif, 'Iowan Old Style', 'Apple SD Gothic Neo', 'Noto Serif KR', Georgia, serif;
+  font-size: 1.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
 }
 
 .name {
-  display: inline-block;
-  margin-bottom: 42px;
-  font-family: var(--mono);
-  font-size: 0.86rem;
-  font-weight: 700;
   text-decoration: none;
+}
+
+.profile-title a {
+  text-decoration: none;
+}
+
+.avatar {
+  display: block;
+  width: 112px;
+  height: 112px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
 }
 
 .kicker,
@@ -119,6 +138,10 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.profile .link-row {
+  justify-content: center;
 }
 
 .work {
@@ -239,6 +262,11 @@ nav a,
 
   .name {
     margin-bottom: 28px;
+  }
+
+  .avatar {
+    width: 96px;
+    height: 96px;
   }
 
   .work-item,
