@@ -22,7 +22,7 @@
       "period": "2024",
       "status": "Live service",
       "url": "https://badukland.co.kr/",
-      "problem": "바둑 교육 웹 서비스를 실제 운영 흐름 안에서 개발했습니다.",
+      "problem": "실제 사용자가 드나드는 바둑 교육 웹 서비스에서 기능 수정과 화면 개선을 맡았습니다.",
       "role": "Java/Spring 기반 웹 서비스 개발",
       "stack": ["Java", "Spring", "MyBatis", "JavaScript"],
       "links": [{ "label": "site", "href": "https://badukland.co.kr/" }],
@@ -31,7 +31,7 @@
         "decision": "복잡한 구조를 새로 만들기보다 기존 Java/Spring 흐름을 따라 기능 단위로 작게 고쳤습니다.",
         "system": "화면 요청, 서버 처리, 데이터 조회와 갱신이 연결되는 일반적인 웹 서비스 흐름 안에서 작업했습니다.",
         "recovery": "문제가 생겼을 때 원인을 좁히기 쉽도록 변경 범위를 작게 유지하고 기존 동작을 우선 확인했습니다.",
-        "result": "공개 서비스 안에서 개발, 수정, 배포 흐름을 경험하며 실제 사용자를 기준으로 판단하는 감각을 쌓았습니다."
+        "result": "운영 중인 서비스에서 작은 변경도 사용자 흐름과 함께 봐야 한다는 감각을 쌓았습니다."
       },
       "evidence": "공개 서비스 URL을 통해 실제 서비스 접근이 가능합니다.",
       "retrospective": "작은 기능도 운영 중인 서비스에서는 변경 범위와 복구 가능성을 같이 봐야 했습니다."
@@ -42,7 +42,7 @@
       "title": "DEV.AI Platform / CLI",
       "period": "2025",
       "status": "Private product",
-      "problem": "DEV.AI 플랫폼 조회 흐름과 Go CLI 자동화 작업을 진행했습니다.",
+      "problem": "DEV.AI 플랫폼의 조회 흐름과 Go 기반 CLI 자동화 도구를 함께 다뤘습니다.",
       "role": "DEV.AI 플랫폼 / CLI 개발",
       "stack": ["React", "Next.js", "FastAPI", "Go", "Cobra", "Windows"],
       "links": [{ "label": "KT note", "href": "https://app.notion.com/p/KT-2dc457fc0c6080e8910dd6e79f48c801" }],
@@ -51,7 +51,7 @@
         "decision": "플랫폼은 불필요한 요청을 줄이고, CLI는 설치·점검·업데이트 흐름을 명령 단위로 분리했습니다.",
         "system": "플랫폼 조회 흐름과 CLI 실행 흐름을 각각 작은 단계로 나눠 확인 가능하게 정리했습니다.",
         "recovery": "조회 실패 상태와 Windows 실행 파일 교체 실패처럼 사용자가 다음 행동을 알아야 하는 지점을 분리했습니다.",
-        "result": "AI 개발 도구의 웹 조회 경험과 CLI 자동화 경험을 함께 쌓았습니다."
+        "result": "AI 개발 도구를 웹 화면과 로컬 CLI 양쪽에서 다루며, 실패 상태를 사용자가 이해할 수 있게 만드는 쪽에 집중했습니다."
       },
       "evidence": "보안 범위 안에서 문제, 제약, 판단 흐름만 공개합니다.",
       "retrospective": "개발 도구는 기능 구현보다 실패했을 때 사용자가 멈추지 않게 만드는 쪽이 중요했습니다."
@@ -62,7 +62,7 @@
       "title": "삼성화재 IPCC",
       "period": "2026",
       "status": "Operations / Development",
-      "problem": "삼성화재 IPCC 콜 인프라 운영 환경에서 로그 추적과 문제 대응 흐름을 다뤘습니다.",
+      "problem": "삼성화재 IPCC 콜 인프라 운영 환경에서 로그를 따라 문제 원인과 영향 범위를 좁히는 일을 했습니다.",
       "role": "콜 인프라 운영 / 개발",
       "stack": ["Java", "Spring", "Operations", "Log tracing", "DR"],
       "links": [],
@@ -71,7 +71,7 @@
         "decision": "증상을 바로 고치기보다 로그와 흐름을 따라 원인을 좁히는 방식으로 접근했습니다.",
         "system": "서비스 요청, 인프라 상태, 로그, 운영 절차가 연결되는 흐름 안에서 문제를 확인했습니다.",
         "recovery": "장애나 이상 상황에서는 변경보다 영향 범위 파악과 복구 경로 확인을 우선했습니다.",
-        "result": "운영 환경에서 개발 변경을 다룰 때 필요한 추적, 확인, 복구 관점을 익혔습니다."
+        "result": "운영 환경에서는 빠른 수정만큼이나 영향 범위 확인과 복구 경로 확보가 중요하다는 기준을 익혔습니다."
       },
       "evidence": "운영 프로젝트라 상세 화면과 내부 정보는 공개하지 않습니다.",
       "retrospective": "운영 개발은 빠른 수정만큼이나 영향 범위를 작게 잡는 판단이 중요했습니다."
@@ -100,23 +100,23 @@
     },
     {
       "year": "2025.08~2026.05",
-      "name": "etrees system",
+      "name": "Etrees System",
       "summary": "웹 서비스 개발 경험"
     },
     {
       "year": "2026.05~",
-      "name": "hyosung itx",
+      "name": "Hyosung ITX",
       "summary": "운영/개발 프로젝트 경험"
     }
   ],
   "nowBuilding": [
     {
-      "name": "act_ad",
-      "status": "building"
+      "name": "Act AD",
+      "status": "in progress"
     },
     {
       "name": "Zoomagochi CLI",
-      "status": "building"
+      "status": "in progress"
     }
   ]
 }
