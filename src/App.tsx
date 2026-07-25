@@ -77,8 +77,8 @@ export default function App() {
         <WorkSection title="Experience">
           <ol className="timeline">
             {experience.map((item) => (
-              <li key={`${item.year}-${item.name}`}>
-                <time>{item.year}</time>
+              <li className={item.year ? undefined : 'no-year'} key={`${item.year}-${item.name}`}>
+                {item.year && <time>{item.year}</time>}
                 <strong>{item.name}</strong>
                 <span>{item.summary}</span>
               </li>

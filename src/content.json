@@ -2,7 +2,7 @@
   "profile": {
     "name": "서동진",
     "role": "Backend / Full-stack Developer",
-    "description": "Java/Spring 기반 웹 서비스, Go CLI, AI 개발 도구를 다룹니다. 공개 가능한 작업은 링크로, 비공개 작업은 문제와 판단만 짧게 남깁니다.",
+    "description": "Java/Spring 기반 웹 서비스와 운영 환경의 문제 추적을 다룹니다. 공개 가능한 작업은 링크로, 비공개 작업은 문제와 판단만 짧게 남깁니다.",
     "location": "South Korea",
     "avatar": "https://github.com/eastjin616.png",
     "skills": ["Java", "Spring", "Go", "React", "TypeScript", "CLI", "Operations"]
@@ -37,113 +37,75 @@
     },
     {
       "index": "02",
-      "slug": "dev-ai-platform",
-      "title": "DEV.AI Platform",
+      "slug": "ktds",
+      "title": "KT DS",
       "period": "2025",
       "status": "Private product",
-      "problem": "에이전트 이력 조회의 중복 요청과 초기 렌더링 부담을 줄였습니다.",
-      "role": "웹 조회 흐름 개선",
-      "stack": ["React", "Next.js", "FastAPI", "LLM"],
+      "problem": "DEV.AI 플랫폼 조회 흐름과 Go CLI 자동화 작업을 진행했습니다.",
+      "role": "DEV.AI 플랫폼 / CLI 개발",
+      "stack": ["React", "Next.js", "FastAPI", "Go", "Cobra", "Windows"],
       "links": [{ "label": "KT note", "href": "https://app.notion.com/p/KT-2dc457fc0c6080e8910dd6e79f48c801" }],
       "sections": {
-        "constraint": "내부 제품이라 화면과 상세 데이터는 공개할 수 없고, 기존 API 흐름도 크게 바꿀 수 없었습니다.",
-        "decision": "URL 단계에서 agent type을 먼저 판별해 필요한 요청만 보내고, 긴 이력은 나눠 렌더링했습니다.",
-        "system": "요청 URL, agent type 판별, 대상 이력 API, 페이지 단위 렌더링 순서로 흐름을 정리했습니다.",
-        "recovery": "조회 실패가 전체 화면을 막지 않도록 기존 결과와 오류 상태를 분리했습니다.",
-        "result": "초기 조회 부담과 불필요한 호출을 줄이고, 긴 이력을 더 안정적으로 탐색할 수 있게 했습니다."
+        "constraint": "내부 제품이라 화면과 상세 데이터는 공개할 수 없고, 기존 API와 실행 환경 제약을 함께 봐야 했습니다.",
+        "decision": "플랫폼은 불필요한 요청을 줄이고, CLI는 설치·점검·업데이트 흐름을 명령 단위로 분리했습니다.",
+        "system": "플랫폼 조회 흐름과 CLI 실행 흐름을 각각 작은 단계로 나눠 확인 가능하게 정리했습니다.",
+        "recovery": "조회 실패 상태와 Windows 실행 파일 교체 실패처럼 사용자가 다음 행동을 알아야 하는 지점을 분리했습니다.",
+        "result": "AI 개발 도구의 웹 조회 경험과 CLI 자동화 경험을 함께 쌓았습니다."
       },
       "evidence": "보안 범위 안에서 문제, 제약, 판단 흐름만 공개합니다.",
-      "retrospective": "성능 문제는 화면 하나보다 요청이 시작되는 지점부터 봐야 정확히 줄일 수 있었습니다."
+      "retrospective": "개발 도구는 기능 구현보다 실패했을 때 사용자가 멈추지 않게 만드는 쪽이 중요했습니다."
     },
     {
       "index": "03",
-      "slug": "dev-ai-cli",
-      "title": "DEV.AI CLI",
-      "period": "2025",
-      "status": "Private tool",
-      "problem": "설치, 점검, 업데이트를 Go CLI 명령 흐름으로 정리했습니다.",
-      "role": "Go CLI 단독 설계/구현",
-      "stack": ["Go", "Cobra", "Windows", "API"],
-      "links": [{ "label": "KT note", "href": "https://app.notion.com/p/KT-2dc457fc0c6080e8910dd6e79f48c801" }],
-      "sections": {
-        "constraint": "Windows 실행 환경 차이와 실행 중 파일 교체 제한을 다뤄야 했습니다.",
-        "decision": "TS CLI 전체를 억지로 바꾸지 않고, 독립 실행 가능한 CLI 영역을 Go/Cobra로 분리했습니다.",
-        "system": "업데이트 체크, devai-code 체크, plugin 체크, 프로젝트 초기화, opencode 실행 순서로 흐름을 정리했습니다.",
-        "recovery": "Windows 멀티 세션에서 실행 파일 교체가 막히는 경우를 사용자 안내 메시지로 분리했습니다.",
-        "result": "사람이 반복하던 개발 도구 작업을 하나의 명령 흐름으로 정리했습니다."
-      },
-      "evidence": "내부 도구라 저장소와 실행 화면은 공개하지 않습니다.",
-      "retrospective": "CLI는 기능보다 실패했을 때 사용자가 다음 행동을 알 수 있는지가 중요했습니다."
-    },
-    {
-      "index": "04",
-      "slug": "ad-act",
-      "title": "ad_act",
+      "slug": "samsung-fire-ipcc",
+      "title": "삼성화재 IPCC",
       "period": "2026",
-      "status": "In development",
-      "problem": "광고와 행동 데이터를 실험 가능한 제품 형태로 정리하는 중입니다.",
-      "role": "개인 프로젝트 개발 중",
-      "stack": ["TypeScript", "React", "API"],
+      "status": "Operations / Development",
+      "problem": "삼성화재 IPCC 콜 인프라 운영 환경에서 로그 추적과 문제 대응 흐름을 다뤘습니다.",
+      "role": "콜 인프라 운영 / 개발",
+      "stack": ["Java", "Spring", "Operations", "Log tracing", "DR"],
       "links": [],
       "sections": {
-        "constraint": "아직 개발 중이므로 확정된 성과보다 문제 정의와 구조를 먼저 검증해야 합니다.",
-        "decision": "초기 범위는 작게 유지하고, 입력과 결과가 확인되는 흐름부터 만들고 있습니다.",
-        "system": "사용자 입력, 처리 로직, 결과 확인 화면을 중심으로 제품 흐름을 잡고 있습니다.",
-        "recovery": "실험 단계에서는 실패한 가정을 빠르게 버릴 수 있도록 구현 범위를 작게 둡니다.",
-        "result": "완성된 포트폴리오 항목이 아니라 현재 만들고 있는 제품 실험으로 공개합니다."
+        "constraint": "콜 인프라 운영 환경에서는 장애 영향 범위와 복구 가능성을 먼저 확인해야 했습니다.",
+        "decision": "증상을 바로 고치기보다 로그와 흐름을 따라 원인을 좁히는 방식으로 접근했습니다.",
+        "system": "서비스 요청, 인프라 상태, 로그, 운영 절차가 연결되는 흐름 안에서 문제를 확인했습니다.",
+        "recovery": "장애나 이상 상황에서는 변경보다 영향 범위 파악과 복구 경로 확인을 우선했습니다.",
+        "result": "운영 환경에서 개발 변경을 다룰 때 필요한 추적, 확인, 복구 관점을 익혔습니다."
       },
-      "evidence": "개발 중 프로젝트로, 공개 가능한 시점에 링크를 연결할 예정입니다.",
-      "retrospective": "초기 제품은 큰 설명보다 실제로 반복 가능한 작은 흐름이 먼저입니다."
-    },
-    {
-      "index": "05",
-      "slug": "zoomagochi-cli",
-      "title": "zoomagochi-cli",
-      "period": "2026",
-      "status": "In development",
-      "problem": "대표 종목 상태를 작은 반려 캐릭터/CLI 흐름으로 표현하는 MVP입니다.",
-      "role": "CLI 개인 프로젝트 개발 중",
-      "stack": ["Go", "CLI", "Toss Invest API"],
-      "links": [
-        { "label": "MVP note", "href": "https://app.notion.com/p/MVP-CLI-387457fc0c6081b3a0ddcbb110ef8769" },
-        { "label": "GitHub", "href": "https://github.com/zoomagochi/zoomagochi-cli" }
-      ],
-      "sections": {
-        "constraint": "아직 개발 중이라 기능을 늘리기보다 명령 구조와 사용감을 먼저 확인해야 합니다.",
-        "decision": "대표 종목 1개를 작은 상태 캐릭터로 표현하는 MVP부터 잡았습니다.",
-        "system": "티커 입력, 상태 계산, 캐릭터/보드 출력이라는 작은 흐름을 중심으로 만듭니다.",
-        "recovery": "잘못된 입력과 실패 상태를 명확한 메시지로 돌려주는 쪽을 우선합니다.",
-        "result": "완성 전이라도 CLI 설계와 사용성 실험 과정을 보여주는 항목으로 둡니다."
-      },
-      "evidence": "MVP 기획 문서와 개발 중 저장소를 연결합니다.",
-      "retrospective": "작은 CLI도 제품처럼 보려면 성공 경로보다 실패 메시지를 먼저 봐야 합니다."
+      "evidence": "운영 프로젝트라 상세 화면과 내부 정보는 공개하지 않습니다.",
+      "retrospective": "운영 개발은 빠른 수정만큼이나 영향 범위를 작게 잡는 판단이 중요했습니다."
     }
   ],
   "notes": [
+    "프로젝트는 실제로 지원서에서 설명할 수 있는 세 작업만 둡니다.",
     "비공개 프로젝트는 화면보다 문제, 제약, 결정, 복구 방식을 중심으로 설명합니다.",
-    "운영 경험은 별도 자랑이 아니라 변경 범위를 작게 잡는 습관의 근거로 둡니다.",
-    "개발 중인 프로젝트는 성과처럼 포장하지 않고 현재 검증 중인 흐름으로 표시합니다."
+    "회사 경험은 프로젝트와 섞지 않고 별도 이력으로만 둡니다."
   ],
   "experience": [
     {
-      "year": "2024",
-      "name": "Badukland",
-      "summary": "Java/Spring 기반 웹 서비스 개발"
+      "year": "",
+      "name": "LG Display",
+      "summary": "설비와 상태 데이터를 다루던 제조/운영 경험"
     },
     {
-      "year": "2025",
-      "name": "KT DS",
-      "summary": "DEV.AI 플랫폼과 Go CLI 자동화"
+      "year": "",
+      "name": "SK hynix",
+      "summary": "반도체 제조 환경 경험"
     },
     {
-      "year": "2026",
-      "name": "Financial IPCC",
-      "summary": "운영 환경, 로그 추적, DR 관점 경험"
+      "year": "",
+      "name": "우나무",
+      "summary": "서비스 개발 경험"
     },
     {
-      "year": "Before",
-      "name": "Manufacturing operations",
-      "summary": "설비와 상태 데이터를 보던 경험. 지금은 보조 맥락으로만 둡니다."
+      "year": "",
+      "name": "etrees system",
+      "summary": "웹 서비스 개발 경험"
+    },
+    {
+      "year": "",
+      "name": "hyosung itx",
+      "summary": "운영/개발 프로젝트 경험"
     }
   ]
 }
