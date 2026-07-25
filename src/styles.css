@@ -216,7 +216,9 @@ h2 {
 }
 
 .timeline li {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
 }
 
 .timeline li.no-year {

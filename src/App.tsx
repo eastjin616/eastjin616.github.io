@@ -72,8 +72,8 @@ export default function App() {
           <ol className="timeline">
             {experience.map((item) => (
               <li className={item.year ? undefined : 'no-year'} key={`${item.year}-${item.name}`}>
-                {item.year && <time>{item.year}</time>}
                 <strong>{item.name}</strong>
+                {item.year && <time>{item.year}</time>}
               </li>
             ))}
           </ol>
