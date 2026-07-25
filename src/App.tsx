@@ -69,23 +69,23 @@ export default function App() {
           </ol>
         </WorkSection>
 
-        <WorkSection title="Experience">
-          <ol className="timeline">
-            {experience.map((item) => (
-              <li className={item.year ? undefined : 'no-year'} key={`${item.year}-${item.name}`}>
-                <strong>{item.name}</strong>
-                {item.year && <time>{item.year}</time>}
-              </li>
-            ))}
-          </ol>
-        </WorkSection>
-
         <WorkSection title="Now Building">
           <ol className="quiet-list">
             {nowBuilding.map((item) => (
               <li key={item.name}>
                 <strong>{item.name}</strong>
                 <span>{item.status}</span>
+              </li>
+            ))}
+          </ol>
+        </WorkSection>
+
+        <WorkSection title="Experience">
+          <ol className="timeline">
+            {experience.map((item) => (
+              <li className={item.year ? undefined : 'no-year'} key={`${item.year}-${item.name}`}>
+                <strong>{item.name}</strong>
+                {item.year && <time>{item.year}</time>}
               </li>
             ))}
           </ol>
