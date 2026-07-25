@@ -4,6 +4,12 @@ import type { ReactNode } from 'react'
 
 const { profile, links, featuredProjects, experience } = content
 type Project = (typeof featuredProjects)[number]
+const contactLinks = [
+  ['email', links.email],
+  ['blog', links.blog],
+  ['instagram', links.instagram],
+  ['twitter', links.twitter],
+]
 
 export default function App() {
   const projectSlug = getProjectSlug(
@@ -34,7 +40,6 @@ export default function App() {
           {links.github && <a href={links.github}>GitHub</a>}
           {links.resume && <a href={links.resume}>Resume</a>}
           {links.career && <a href={links.career}>Career</a>}
-          {links.email && <a href={links.email}>Email</a>}
         </p>
       </aside>
 
@@ -72,6 +77,14 @@ export default function App() {
               </li>
             ))}
           </ol>
+        </WorkSection>
+
+        <WorkSection title="Contact">
+          <ul className="contact-list">
+            {contactLinks.map(([label, href]) => (
+              <li key={label}>{href ? <a href={href}>{label}</a> : <span>{label}</span>}</li>
+            ))}
+          </ul>
         </WorkSection>
       </main>
     </div>

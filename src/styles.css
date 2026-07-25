@@ -176,7 +176,8 @@ h2 {
 
 .work-list,
 .plain-list,
-.timeline {
+.timeline,
+.contact-list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -226,6 +227,25 @@ h2 {
   color: #191815;
   font-size: 1.05rem;
   font-weight: 650;
+}
+
+.contact-list {
+  display: grid;
+  justify-content: center;
+  gap: 18px;
+  font-family:
+    'Noto Serif KR', 'AppleMyungjo', ui-serif, 'Iowan Old Style', Georgia, serif;
+  font-size: clamp(1.45rem, 3.2vw, 2rem);
+  line-height: 1.1;
+}
+
+.contact-list li::before {
+  content: '_';
+}
+
+.contact-list a,
+.contact-list span {
+  text-decoration: none;
 }
 
 .case {
