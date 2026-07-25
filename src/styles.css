@@ -145,9 +145,9 @@ h2 {
 .profile > p:not(.kicker, .stack, .link-row) {
   color: #191815;
   font-family:
-    ui-serif, 'Iowan Old Style', 'Apple SD Gothic Neo', 'Noto Serif KR', Georgia, serif;
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  line-height: 1.95;
+    'Noto Serif KR', 'AppleMyungjo', ui-serif, 'Iowan Old Style', Georgia, serif;
+  font-size: clamp(1.05rem, 1.65vw, 1.28rem);
+  line-height: 1.9;
   text-align: left;
 }
 
