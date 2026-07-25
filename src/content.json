@@ -2,8 +2,10 @@
   "profile": {
     "name": "서동진",
     "role": "Backend / Full-stack Developer",
-    "headline": "서비스를 만들고, 운영 가능한 흐름으로 정리하는 개발자입니다.",
-    "description": "Java와 Spring 기반 웹 서비스, AI 개발 도구, CLI 자동화, 운영 환경에서의 문제 추적을 다룹니다."
+    "headline": "I build services and small developer tools.",
+    "description": "Java/Spring 기반 웹 서비스, Go CLI, AI 개발 도구를 다룹니다. 공개 가능한 작업은 링크로, 비공개 작업은 문제와 판단만 짧게 남깁니다.",
+    "location": "South Korea",
+    "skills": ["Java", "Spring", "Go", "React", "TypeScript", "CLI", "Operations"]
   },
   "links": {
     "email": "",
@@ -19,9 +21,10 @@
       "period": "2024",
       "status": "Live service",
       "url": "https://badukland.co.kr/",
-      "problem": "바둑 교육 서비스를 실제 사용자가 접근하는 웹 서비스로 만들고 운영해야 했습니다.",
+      "problem": "바둑 교육 웹 서비스를 실제 운영 흐름 안에서 개발했습니다.",
       "role": "Java/Spring 기반 웹 서비스 개발",
       "stack": ["Java", "Spring", "MyBatis", "JavaScript"],
+      "links": [{ "label": "site", "href": "https://badukland.co.kr/" }],
       "sections": {
         "constraint": "운영 중인 서비스의 흐름을 해치지 않으면서 기능과 화면을 개선해야 했습니다.",
         "decision": "복잡한 구조를 새로 만들기보다 기존 Java/Spring 흐름을 따라 기능 단위로 작게 고쳤습니다.",
@@ -38,9 +41,10 @@
       "title": "DEV.AI Platform",
       "period": "2025",
       "status": "Private product",
-      "problem": "에이전트 이력 조회에서 중복 요청과 초기 렌더링 부담이 함께 발생했습니다.",
+      "problem": "에이전트 이력 조회의 중복 요청과 초기 렌더링 부담을 줄였습니다.",
       "role": "웹 조회 흐름 개선",
       "stack": ["React", "Next.js", "FastAPI", "LLM"],
+      "links": [{ "label": "KT note", "href": "https://app.notion.com/p/KT-2dc457fc0c6080e8910dd6e79f48c801" }],
       "sections": {
         "constraint": "내부 제품이라 화면과 상세 데이터는 공개할 수 없고, 기존 API 흐름도 크게 바꿀 수 없었습니다.",
         "decision": "URL 단계에서 agent type을 먼저 판별해 필요한 요청만 보내고, 긴 이력은 나눠 렌더링했습니다.",
@@ -57,14 +61,15 @@
       "title": "DEV.AI CLI",
       "period": "2025",
       "status": "Private tool",
-      "problem": "개발 도구 설치와 교체 작업이 반복 수작업으로 남아 있었습니다.",
+      "problem": "설치, 점검, 업데이트를 Go CLI 명령 흐름으로 정리했습니다.",
       "role": "Go CLI 단독 설계/구현",
       "stack": ["Go", "Cobra", "Windows", "API"],
+      "links": [{ "label": "KT note", "href": "https://app.notion.com/p/KT-2dc457fc0c6080e8910dd6e79f48c801" }],
       "sections": {
         "constraint": "Windows 실행 환경 차이와 실행 중 파일 교체 제한을 다뤄야 했습니다.",
-        "decision": "반복 작업을 명령 단위로 묶고 다운로드, 검증, 교체 단계를 분리했습니다.",
-        "system": "명령 해석, API 요청, 파일 처리, 결과 출력 순서로 CLI 흐름을 단순하게 구성했습니다.",
-        "recovery": "실행 중인 파일을 바로 덮어쓰지 않고 교체 가능한 시점과 실패 상태를 분리했습니다.",
+        "decision": "TS CLI 전체를 억지로 바꾸지 않고, 독립 실행 가능한 CLI 영역을 Go/Cobra로 분리했습니다.",
+        "system": "업데이트 체크, devai-code 체크, plugin 체크, 프로젝트 초기화, opencode 실행 순서로 흐름을 정리했습니다.",
+        "recovery": "Windows 멀티 세션에서 실행 파일 교체가 막히는 경우를 사용자 안내 메시지로 분리했습니다.",
         "result": "사람이 반복하던 개발 도구 작업을 하나의 명령 흐름으로 정리했습니다."
       },
       "evidence": "내부 도구라 저장소와 실행 화면은 공개하지 않습니다.",
@@ -79,6 +84,7 @@
       "problem": "광고와 행동 데이터를 실험 가능한 제품 형태로 정리하는 중입니다.",
       "role": "개인 프로젝트 개발 중",
       "stack": ["TypeScript", "React", "API"],
+      "links": [],
       "sections": {
         "constraint": "아직 개발 중이므로 확정된 성과보다 문제 정의와 구조를 먼저 검증해야 합니다.",
         "decision": "초기 범위는 작게 유지하고, 입력과 결과가 확인되는 흐름부터 만들고 있습니다.",
@@ -95,19 +101,28 @@
       "title": "zoomagochi-cli",
       "period": "2026",
       "status": "In development",
-      "problem": "터미널에서 다루는 작은 도구를 제품처럼 사용할 수 있게 만드는 실험입니다.",
+      "problem": "대표 종목 상태를 작은 반려 캐릭터/CLI 흐름으로 표현하는 MVP입니다.",
       "role": "CLI 개인 프로젝트 개발 중",
-      "stack": ["Go", "CLI", "Terminal"],
+      "stack": ["Go", "CLI", "Toss Invest API"],
+      "links": [
+        { "label": "MVP note", "href": "https://app.notion.com/p/MVP-CLI-387457fc0c6081b3a0ddcbb110ef8769" },
+        { "label": "GitHub", "href": "https://github.com/zoomagochi/zoomagochi-cli" }
+      ],
       "sections": {
         "constraint": "아직 개발 중이라 기능을 늘리기보다 명령 구조와 사용감을 먼저 확인해야 합니다.",
-        "decision": "명령 이름, 출력 형식, 실패 메시지를 작게 반복하며 정리하고 있습니다.",
-        "system": "터미널 입력, 명령 처리, 상태 출력이라는 CLI 기본 흐름을 중심으로 만듭니다.",
+        "decision": "대표 종목 1개를 작은 상태 캐릭터로 표현하는 MVP부터 잡았습니다.",
+        "system": "티커 입력, 상태 계산, 캐릭터/보드 출력이라는 작은 흐름을 중심으로 만듭니다.",
         "recovery": "잘못된 입력과 실패 상태를 명확한 메시지로 돌려주는 쪽을 우선합니다.",
         "result": "완성 전이라도 CLI 설계와 사용성 실험 과정을 보여주는 항목으로 둡니다."
       },
-      "evidence": "개발 중 프로젝트로, 공개 가능한 저장소가 준비되면 연결할 예정입니다.",
+      "evidence": "MVP 기획 문서와 개발 중 저장소를 연결합니다.",
       "retrospective": "작은 CLI도 제품처럼 보려면 성공 경로보다 실패 메시지를 먼저 봐야 합니다."
     }
+  ],
+  "notes": [
+    "비공개 프로젝트는 화면보다 문제, 제약, 결정, 복구 방식을 중심으로 설명합니다.",
+    "운영 경험은 별도 자랑이 아니라 변경 범위를 작게 잡는 습관의 근거로 둡니다.",
+    "개발 중인 프로젝트는 성과처럼 포장하지 않고 현재 검증 중인 흐름으로 표시합니다."
   ],
   "experience": [
     {
