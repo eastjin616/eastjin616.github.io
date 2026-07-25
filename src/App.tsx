@@ -2,7 +2,7 @@ import content from './content.json'
 import { getProjectSlug } from './project-route'
 import type { ReactNode } from 'react'
 
-const { profile, links, featuredProjects, notes, experience } = content
+const { profile, links, featuredProjects, experience } = content
 type Project = (typeof featuredProjects)[number]
 
 export default function App() {
@@ -39,39 +39,28 @@ export default function App() {
       </aside>
 
       <main className="work">
-        <WorkSection title="Projects">
+        <WorkSection title="Project">
           <ol className="work-list">
             {featuredProjects.map((project) => (
               <li key={project.slug}>
                 <article className="work-item">
+                  <h2>
+                    <a href={`?project=${project.slug}`}>{project.title}</a>
+                  </h2>
                   <time>{project.period}</time>
-                  <div>
-                    <h2>
-                      <a href={`?project=${project.slug}`}>{project.title}</a>
-                    </h2>
-                    <p>{project.problem}</p>
-                    <p className="muted">{project.status}</p>
-                    <p className="project__links">
-                      <a href={`?project=${project.slug}`}>case</a>
-                      {project.links.map((link) => (
-                        <a key={link.href} href={link.href}>
-                          {link.label}
-                        </a>
-                      ))}
-                    </p>
-                  </div>
+                  <p className="muted">{project.status}</p>
+                  <p className="project__links">
+                    <a href={`?project=${project.slug}`}>case</a>
+                    {project.links.map((link) => (
+                      <a key={link.href} href={link.href}>
+                        {link.label}
+                      </a>
+                    ))}
+                  </p>
                 </article>
               </li>
             ))}
           </ol>
-        </WorkSection>
-
-        <WorkSection title="Notes">
-          <ul className="plain-list">
-            {notes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
         </WorkSection>
 
         <WorkSection title="Experience">
@@ -80,7 +69,6 @@ export default function App() {
               <li className={item.year ? undefined : 'no-year'} key={`${item.year}-${item.name}`}>
                 {item.year && <time>{item.year}</time>}
                 <strong>{item.name}</strong>
-                <span>{item.summary}</span>
               </li>
             ))}
           </ol>

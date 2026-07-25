@@ -42,12 +42,9 @@ a:focus-visible {
 }
 
 .page {
-  display: grid;
-  grid-template-columns: 280px minmax(0, 680px);
-  gap: clamp(44px, 8vw, 112px);
-  width: min(1080px, calc(100vw - 48px));
+  width: min(760px, calc(100vw - 48px));
   margin: 0 auto;
-  padding: 52px 0 96px;
+  padding: 64px 0 96px;
 }
 
 .case-page {
@@ -57,9 +54,8 @@ a:focus-visible {
 }
 
 .profile {
-  position: sticky;
-  top: 52px;
-  align-self: start;
+  max-width: 680px;
+  margin: 0 auto 76px;
   text-align: center;
 }
 
@@ -116,6 +112,13 @@ h1 {
   letter-spacing: -0.055em;
 }
 
+.profile-title {
+  margin-bottom: 20px;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+}
+
 h2 {
   margin-bottom: 8px;
   font-size: 1.05rem;
@@ -139,6 +142,15 @@ h2 {
   color: var(--muted);
 }
 
+.profile > p:not(.kicker, .stack, .link-row) {
+  color: #191815;
+  font-family:
+    ui-serif, 'Iowan Old Style', 'Apple SD Gothic Neo', 'Noto Serif KR', Georgia, serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.95;
+  text-align: left;
+}
+
 .link-row,
 .project__links {
   display: flex;
@@ -152,7 +164,7 @@ h2 {
 
 .work {
   display: grid;
-  gap: 64px;
+  gap: 58px;
 }
 
 .section-label {
@@ -176,18 +188,24 @@ h2 {
 
 .work-item {
   display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 24px;
-  padding: 22px 0 24px;
+  grid-template-columns: 1fr auto;
+  gap: 6px 24px;
+  padding: 18px 0 20px;
   border-bottom: 1px solid var(--line);
 }
 
+.work-item h2,
 .work-item p {
-  margin-bottom: 8px;
+  margin-bottom: 0;
+}
+
+.work-item .muted,
+.work-item .project__links {
+  grid-column: 1 / -1;
 }
 
 .project__links {
-  margin-bottom: 0;
+  margin-top: 2px;
 }
 
 .plain-list li,
@@ -197,13 +215,17 @@ h2 {
 }
 
 .timeline li {
-  display: grid;
-  grid-template-columns: 72px 148px 1fr;
-  gap: 16px;
+  display: block;
 }
 
 .timeline li.no-year {
-  grid-template-columns: 148px 1fr;
+  display: block;
+}
+
+.timeline strong {
+  color: #191815;
+  font-size: 1.05rem;
+  font-weight: 650;
 }
 
 .case {
@@ -266,7 +288,6 @@ nav a,
   }
 
   .profile {
-    position: static;
     margin-bottom: 56px;
   }
 
@@ -279,7 +300,6 @@ nav a,
     height: 96px;
   }
 
-  .work-item,
   .timeline li,
   .case-sections section,
   .masthead {
