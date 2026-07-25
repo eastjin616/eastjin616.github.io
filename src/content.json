@@ -111,5 +111,15 @@
       "name": "hyosung itx",
       "summary": "운영/개발 프로젝트 경험"
     }
+  ],
+  "nowBuilding": [
+    {
+      "name": "act_ad",
+      "status": "building"
+    },
+    {
+      "name": "Zoomagochi CLI",
+      "status": "building"
+    }
   ]
 }

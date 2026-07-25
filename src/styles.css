@@ -177,6 +177,7 @@ h2 {
 .work-list,
 .plain-list,
 .timeline,
+.quiet-list,
 .contact-list {
   margin: 0;
   padding: 0;
@@ -210,12 +211,14 @@ h2 {
 }
 
 .plain-list li,
-.timeline li {
+.timeline li,
+.quiet-list li {
   padding: 10px 0;
   border-bottom: 1px solid var(--line);
 }
 
-.timeline li {
+.timeline li,
+.quiet-list li {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 24px;
@@ -229,6 +232,21 @@ h2 {
   color: #191815;
   font-size: 1.05rem;
   font-weight: 650;
+}
+
+.quiet-list {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.quiet-list strong {
+  color: #191815;
+  font-size: 1.05rem;
+}
+
+.quiet-list span {
+  font-family: var(--mono);
+  font-size: 0.76rem;
 }
 
 .contact-list {

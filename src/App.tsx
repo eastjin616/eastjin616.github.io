@@ -2,7 +2,7 @@ import content from './content.json'
 import { getProjectSlug } from './project-route'
 import type { ReactNode } from 'react'
 
-const { profile, links, featuredProjects, experience } = content
+const { profile, links, featuredProjects, experience, nowBuilding } = content
 type Project = (typeof featuredProjects)[number]
 const contactLinks = [
   ['email', links.email],
@@ -75,6 +75,17 @@ export default function App() {
               <li className={item.year ? undefined : 'no-year'} key={`${item.year}-${item.name}`}>
                 <strong>{item.name}</strong>
                 {item.year && <time>{item.year}</time>}
+              </li>
+            ))}
+          </ol>
+        </WorkSection>
+
+        <WorkSection title="Now Building">
+          <ol className="quiet-list">
+            {nowBuilding.map((item) => (
+              <li key={item.name}>
+                <strong>{item.name}</strong>
+                <span>{item.status}</span>
               </li>
             ))}
           </ol>
