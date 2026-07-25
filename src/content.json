@@ -2,7 +2,7 @@
   "profile": {
     "name": "서동진",
     "role": "Backend / Full-stack Developer",
-    "description": "I build web services, developer tools, and operational systems. Lately, I’m interested in CLI and AI tools that reduce repetitive development work.",
+    "description": "I build web services, developer tools, and operational systems. Lately, I'm interested in CLI and AI tools that reduce repetitive development work.",
     "location": "South Korea",
     "avatar": "https://github.com/eastjin616.png",
     "skills": ["Java", "Spring", "Go", "React", "TypeScript", "Python", "CLI", "Operations"],
