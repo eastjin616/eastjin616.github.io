@@ -114,7 +114,7 @@ function ProjectDetail({ project }: { project: Project }) {
   ]
 
   return (
-    <div className="page">
+    <div className="case-page">
       <header className="masthead">
         <a href="/" className="name">
           {profile.name}

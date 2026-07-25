@@ -50,6 +50,12 @@ a:focus-visible {
   padding: 52px 0 96px;
 }
 
+.case-page {
+  width: min(760px, calc(100vw - 48px));
+  margin: 0 auto;
+  padding: 52px 0 96px;
+}
+
 .profile {
   position: sticky;
   top: 52px;
@@ -201,13 +207,11 @@ h2 {
 }
 
 .case {
-  grid-column: 2;
   display: grid;
-  gap: 34px;
+  gap: 28px;
 }
 
 .masthead {
-  grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
   gap: 24px;
@@ -229,6 +233,7 @@ nav a,
 
 .case h1 {
   margin-bottom: 0;
+  font-size: clamp(2.2rem, 8vw, 4.2rem);
 }
 
 .case-sections {
@@ -253,7 +258,8 @@ nav a,
 }
 
 @media (max-width: 780px) {
-  .page {
+  .page,
+  .case-page {
     display: block;
     width: min(100% - 32px, 680px);
     padding-top: 28px;
