@@ -28,7 +28,6 @@ export default function App() {
           <br />
           {profile.location}
         </p>
-        <p className="signature">{profile.signature}</p>
         <p>{profile.description}</p>
         <p className="stack">{profile.skills.join(' / ')}</p>
         <p className="stack">{profile.aiTools.join(' / ')}</p>

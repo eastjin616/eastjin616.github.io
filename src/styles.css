@@ -88,7 +88,6 @@ a:focus-visible {
 
 .kicker,
 .stack,
-.signature,
 .muted,
 time,
 .section-label,
@@ -151,13 +150,6 @@ h2 {
   line-height: 1.85;
   text-align: left;
   word-break: normal;
-}
-
-.signature {
-  margin-bottom: 22px;
-  color: var(--accent);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .link-row,
