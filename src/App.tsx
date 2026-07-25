@@ -36,6 +36,7 @@ export default function App() {
         </p>
         <p>{profile.description}</p>
         <p className="stack">{profile.skills.join(' / ')}</p>
+        <p className="stack">{profile.aiTools.join(' / ')}</p>
         <p className="link-row">
           {links.github && <a href={links.github}>GitHub</a>}
           {links.resume && <a href={links.resume}>Resume</a>}
