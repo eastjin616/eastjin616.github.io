@@ -146,9 +146,10 @@ h2 {
   color: #191815;
   font-family:
     'Noto Serif KR', 'AppleMyungjo', ui-serif, 'Iowan Old Style', Georgia, serif;
-  font-size: clamp(1.05rem, 1.65vw, 1.28rem);
-  line-height: 1.9;
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.85;
   text-align: left;
+  word-break: normal;
 }
 
 .link-row,
