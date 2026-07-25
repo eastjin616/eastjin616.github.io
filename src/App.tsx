@@ -4,12 +4,6 @@ import type { ReactNode } from 'react'
 
 const { profile, links, featuredProjects, experience, nowBuilding } = content
 type Project = (typeof featuredProjects)[number]
-const contactLinks = [
-  ['email', links.email],
-  ['blog', links.blog],
-  ['instagram', links.instagram],
-  ['twitter', links.twitter],
-]
 
 export default function App() {
   const projectSlug = getProjectSlug(
@@ -93,9 +87,9 @@ export default function App() {
 
         <WorkSection title="Contact">
           <ul className="contact-list">
-            {contactLinks.map(([label, href]) => (
-              <li key={label}>{href ? <a href={href}>{label}</a> : <span>{label}</span>}</li>
-            ))}
+            <li>
+              <a href={links.email}>email</a>
+            </li>
           </ul>
         </WorkSection>
       </main>
