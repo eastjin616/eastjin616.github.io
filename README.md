@@ -1,6 +1,6 @@
 # 서동진 개발자 포트폴리오
 
-제조 현장 운영, 웹 개발, AI 제품, 금융권 인프라 경험을 `Diffusion Layers`와 `Routing Map`으로 보여주는 정적 포트폴리오입니다.
+제조 현장 운영, 웹 개발, AI 제품, 금융권 인프라 경험을 텍스트 중심으로 정리한 정적 포트폴리오입니다. 대표 프로젝트 세 개의 문제·제약·결정·복구 흐름을 보여줍니다.
 
 ## 실행
 
@@ -20,19 +20,19 @@ npm run preview
 
 ## 콘텐츠 수정
 
-공개 문구와 프로젝트 데이터는 [`src/content.json`](src/content.json)에 있습니다. 수정 후 `npm run validate:content`를 실행합니다. 대표 프로젝트는 정확히 세 개여야 하며 `[확인 필요]`, `TODO`, `TBD` 표식이 남으면 검증이 실패합니다.
+공개 문구와 프로젝트 데이터는 [`src/content.json`](src/content.json)에 있습니다. 수정 후 `npm run validate:content`를 실행합니다. 대표 프로젝트는 세 개 이상이어야 하며 `[확인 필요]`, `TODO`, `TBD` 표식이 남으면 검증이 실패합니다.
 
 프로젝트 상세 URL은 다음 형식입니다.
 
 ```text
-/?project=kt-ds-dev-ai
-/?project=plainpaper
-/?project=ipcc-infrastructure
+/?project=badukland
+/?project=ktds
+/?project=samsung-fire-ipcc
 ```
 
 ## 렌더링 원칙
 
-핵심 콘텐츠와 링크는 일반 HTML입니다. `liquid-dom`은 히어로의 장식 렌즈만 담당합니다. WebGPU가 없거나 렌더링에 실패하면 CSS 웨이퍼와 렌즈가 그대로 남습니다.
+페이지 전체가 일반 HTML과 CSS로 동작합니다. 핵심 콘텐츠와 링크는 JS 전용 비주얼에 의존하지 않습니다.
 
 ## 공개 전 확인
 

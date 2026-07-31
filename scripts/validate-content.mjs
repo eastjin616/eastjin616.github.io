@@ -1,8 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import { pathToFileURL } from 'node:url'
 
-const requiredFields = ['slug', 'title', 'problem', 'role']
-const requiredSections = ['constraint', 'decision', 'system', 'recovery', 'result']
+const requiredFields = ['slug', 'title', 'role', 'lede']
 const unresolvedMarker = /\[확인 필요\]|\bTODO\b|\bTBD\b/i
 
 export function validateContent(content) {
@@ -27,11 +26,15 @@ export function validateContent(content) {
     if (!Array.isArray(project.stack) || project.stack.length === 0) {
       errors.push(`Project ${index + 1} is missing stack.`)
     }
-    requiredSections.forEach((section) => {
-      if (!project.sections?.[section]) {
-        errors.push(`Project ${index + 1} is missing ${section}.`)
-      }
-    })
+    if (!Array.isArray(project.blocks) || project.blocks.length === 0) {
+      errors.push(`Project ${index + 1} is missing blocks.`)
+    } else {
+      project.blocks.forEach((block, blockIndex) => {
+        if (!block?.body) {
+          errors.push(`Project ${index + 1} block ${blockIndex + 1} is missing body.`)
+        }
+      })
+    }
   })
 
   const serialized = JSON.stringify(content)

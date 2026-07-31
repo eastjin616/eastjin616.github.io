@@ -30,6 +30,7 @@ a {
   color: inherit;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
+  transition: color 0.15s ease;
 }
 
 a:hover {
@@ -178,8 +179,7 @@ h2 {
 .work-list,
 .plain-list,
 .timeline,
-.quiet-list,
-.contact-list {
+.quiet-list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -229,6 +229,29 @@ h2 {
   display: block;
 }
 
+.timeline-button {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  gap: 24px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.timeline-button:hover strong {
+  color: var(--accent);
+}
+
+.timeline-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+
 .timeline strong {
   color: #191815;
   font-size: 1.05rem;
@@ -241,29 +264,60 @@ h2 {
 }
 
 .quiet-list strong {
-  color: #191815;
+  color: var(--muted);
   font-size: 1.05rem;
 }
 
-.quiet-list span {
+.nb-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.nb-tagline {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.quiet-list .nb-status {
   font-family: var(--mono);
   font-size: 0.76rem;
 }
 
 .contact-list {
-  border-top: 1px solid var(--line);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .contact-list li {
   padding: 10px 0;
   border-bottom: 1px solid var(--line);
-  font-size: 1.05rem;
-  font-weight: 650;
 }
 
 .case {
   display: grid;
-  gap: 28px;
+  gap: 22px;
+  max-width: 680px;
+  animation: case-in 0.5s ease both;
+}
+
+@keyframes case-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case {
+    animation: none;
+  }
 }
 
 .masthead {
@@ -286,30 +340,197 @@ nav a,
   color: var(--muted);
 }
 
+.case .case-index {
+  margin: 0;
+  font-family:
+    ui-serif, 'Iowan Old Style', 'Apple SD Gothic Neo', 'Noto Serif KR', Georgia, serif;
+  font-size: clamp(3rem, 13vw, 7rem);
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--line);
+}
+
 .case h1 {
   margin-bottom: 0;
-  font-size: clamp(2.2rem, 8vw, 4.2rem);
+  font-family:
+    ui-serif, 'Iowan Old Style', 'Apple SD Gothic Neo', 'Noto Serif KR', Georgia, serif;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
 }
 
-.case-sections {
-  display: grid;
-  gap: 30px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-}
-
-.case-sections section {
-  display: grid;
-  grid-template-columns: 124px 1fr;
-  gap: 24px;
-  border-bottom: 1px solid var(--line);
-}
-
-.case-sections h2 {
-  margin-top: 4px;
+.case-meta {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
   font-family: var(--mono);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.case .case-lede {
+  margin: 0;
+  max-width: 58ch;
+  font-family:
+    'Noto Serif KR', 'AppleMyungjo', ui-serif, 'Iowan Old Style', Georgia, serif;
+  font-size: clamp(1.02rem, 1.9vw, 1.22rem);
+  line-height: 1.75;
   color: #191815;
+}
+
+.case-blocks {
+  display: grid;
+  gap: 24px;
+  padding-top: 6px;
+}
+
+.case-block {
+  display: grid;
+  gap: 7px;
+  max-width: 62ch;
+}
+
+.case-block__label {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.case-block p:last-child {
+  margin: 0;
+  max-width: 64ch;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: #191815;
+  word-break: keep-all;
+}
+
+.case-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0 2px;
+}
+
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.flow-tag {
+  min-width: 30px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.flow-node {
+  padding: 6px 11px;
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: #191815;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.flow-node:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.flow-arrow {
+  font-family: var(--mono);
+  color: var(--muted);
+}
+
+.flow-note {
+  margin: 2px 0 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.experience-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgb(25 24 21 / 35%);
+  animation: modal-in 0.2s ease both;
+}
+
+.experience-dialog {
+  position: relative;
+  width: min(100%, 560px);
+  padding: 34px 36px 38px;
+  background: #f5f1e8;
+  box-shadow: 0 18px 60px rgb(25 24 21 / 18%);
+}
+
+.experience-dialog h2 {
+  margin: 16px 0 8px;
+  font-family:
+    ui-serif, 'Iowan Old Style', 'Apple SD Gothic Neo', 'Noto Serif KR', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 500;
+}
+
+.experience-dialog time {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.experience-dialog > p:last-child {
+  max-width: 46ch;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dialog-close:hover {
+  color: var(--accent);
+}
+
+.dialog-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 780px) {
@@ -334,9 +555,13 @@ nav a,
   }
 
   .timeline li,
-  .case-sections section,
   .masthead {
     display: block;
+  }
+
+  .timeline-button {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .work-item time,
@@ -346,5 +571,9 @@ nav a,
 
   .work {
     gap: 52px;
+  }
+
+  .experience-dialog {
+    padding: 30px 24px 28px;
   }
 }

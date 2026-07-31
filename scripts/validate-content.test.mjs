@@ -5,16 +5,13 @@ import { validateContent } from './validate-content.mjs'
 const project = {
   slug: 'sample',
   title: 'Sample',
-  problem: 'A concrete problem',
   role: 'Backend',
+  lede: 'A concrete opening line',
   stack: ['Java'],
-  sections: {
-    constraint: 'A real constraint',
-    decision: 'A reasoned decision',
-    system: 'A system explanation',
-    recovery: 'A failure and recovery path',
-    result: 'A verifiable result',
-  },
+  blocks: [
+    { kind: 'constraint', title: 'Constraint', body: 'A real constraint' },
+    { kind: 'result', title: 'Result', body: 'A verifiable result' },
+  ],
 }
 
 test('requires at least three featured projects', () => {
@@ -33,17 +30,17 @@ test('rejects unresolved publication markers', () => {
   const featuredProjects = ['one', 'two', 'three'].map((slug) => ({
     ...project,
     slug,
-    problem: slug === 'two' ? '[확인 필요] 개선 수치' : project.problem,
+    lede: slug === 'two' ? '[확인 필요] 개선 수치' : project.lede,
   }))
   const errors = validateContent({ featuredProjects })
   assert.ok(errors.some((error) => /확인 필요/.test(error)))
 })
 
-test('requires every routing section', () => {
+test('requires non-empty block bodies', () => {
   const incomplete = {
     ...project,
     slug: 'incomplete',
-    sections: { ...project.sections, recovery: '' },
+    blocks: [{ kind: 'result', title: 'Result', body: '' }],
   }
   const errors = validateContent({
     featuredProjects: [
@@ -52,7 +49,7 @@ test('requires every routing section', () => {
       incomplete,
     ],
   })
-  assert.ok(errors.some((error) => /recovery/i.test(error)))
+  assert.ok(errors.some((error) => /block/i.test(error) && /body/i.test(error)))
 })
 
 test('rejects non-public link protocols', () => {
