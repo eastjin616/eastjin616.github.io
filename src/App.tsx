@@ -83,8 +83,16 @@ export default function App() {
         <WorkSection title="Experience">
           <ol className="timeline">
             {experience.map((item) => (
-              <li className={item.year ? undefined : 'no-year'} key={`${item.year}-${item.name}`}>
-                <button className="timeline-button" type="button" onClick={() => setSelectedExperience(item)}>
+              <li
+                className={`${item.year ? '' : 'no-year'} ${selectedExperience?.name === item.name ? 'is-selected' : ''}`}
+                key={`${item.year}-${item.name}`}
+              >
+                <button
+                  className="timeline-button"
+                  type="button"
+                  aria-pressed={selectedExperience?.name === item.name}
+                  onClick={() => setSelectedExperience(item)}
+                >
                   <strong>{item.name}</strong>
                   {item.year && <time>{item.year}</time>}
                 </button>
@@ -137,10 +145,25 @@ function ExperienceDialog({
         <button className="dialog-close" type="button" onClick={onClose} aria-label="닫기">
           ×
         </button>
-        <p className="case-block__label">Experience</p>
-        <h2 id="experience-dialog-title">{item.name}</h2>
-        {item.year && <time>{item.year}</time>}
-        <p>{item.summary}</p>
+        <div className="dialog-heading">
+          <p className="case-block__label">현재 보고 있는 경력</p>
+          <h2 id="experience-dialog-title">{item.name}</h2>
+          {item.year && <time>{item.year}</time>}
+        </div>
+        <p className="dialog-summary">{item.summary}</p>
+        <ul className="dialog-details">
+          {item.details.map((detail) => (
+            <li key={detail}>{detail}</li>
+          ))}
+        </ul>
+        <div className="experience-stack" aria-label={`${item.name} 기술 스택`}>
+          {item.stack.map((technology) => (
+            <span key={technology} className="tech-token">
+              <span className="tech-mark" aria-hidden="true">·</span>
+              {technology}
+            </span>
+          ))}
+        </div>
       </section>
     </div>
   )

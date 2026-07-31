@@ -247,6 +247,26 @@ h2 {
   color: var(--accent);
 }
 
+.timeline li.is-selected {
+  border-bottom-color: var(--accent);
+}
+
+.timeline li.is-selected .timeline-button {
+  color: var(--accent);
+}
+
+.timeline li.is-selected .timeline-button::before {
+  content: '●';
+  position: absolute;
+  left: -18px;
+  color: var(--accent);
+  font-size: 0.55rem;
+}
+
+.timeline li {
+  position: relative;
+}
+
 .timeline-button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 6px;
@@ -468,20 +488,28 @@ nav a,
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgb(25 24 21 / 35%);
+  background: rgb(25 24 21 / 22%);
   animation: modal-in 0.2s ease both;
 }
 
 .experience-dialog {
   position: relative;
-  width: min(100%, 560px);
-  padding: 34px 36px 38px;
+  display: grid;
+  grid-template-columns: minmax(130px, 0.38fr) 1fr;
+  column-gap: 34px;
+  width: min(100%, 700px);
+  padding: 42px 48px 44px;
   background: #f5f1e8;
-  box-shadow: 0 18px 60px rgb(25 24 21 / 18%);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 60px rgb(25 24 21 / 12%);
+}
+
+.dialog-heading {
+  grid-row: span 3;
 }
 
 .experience-dialog h2 {
-  margin: 16px 0 8px;
+  margin: 18px 0 10px;
   font-family:
     ui-serif, 'Iowan Old Style', 'Apple SD Gothic Neo', 'Noto Serif KR', Georgia, serif;
   font-size: clamp(1.8rem, 4vw, 2.6rem);
@@ -490,15 +518,60 @@ nav a,
 
 .experience-dialog time {
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
-.experience-dialog > p:last-child {
+.dialog-summary,
+.dialog-details,
+.experience-stack {
+  grid-column: 2;
+}
+
+.dialog-summary {
   max-width: 46ch;
   margin: 0;
   font-size: 1rem;
   line-height: 1.8;
   word-break: keep-all;
+}
+
+.dialog-details {
+  display: grid;
+  gap: 9px;
+  margin: 22px 0 0;
+  padding: 18px 0 0 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.dialog-details li::marker {
+  color: var(--accent);
+}
+
+.experience-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 24px;
+}
+
+.tech-token {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+}
+
+.tech-mark {
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 0;
 }
 
 .dialog-close {
@@ -574,6 +647,16 @@ nav a,
   }
 
   .experience-dialog {
-    padding: 30px 24px 28px;
+    display: block;
+    padding: 34px 24px 28px;
+  }
+
+  .dialog-summary {
+    margin-top: 26px;
+  }
+
+  .dialog-details,
+  .experience-stack {
+    margin-top: 20px;
   }
 }
