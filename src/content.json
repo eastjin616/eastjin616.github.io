@@ -125,7 +125,10 @@
       "role": "AI 문서 요약 서비스 단독 개발",
       "stack": ["Python", "FastAPI", "OpenAI API", "React", "Next.js", "TypeScript", "Docker", "PostgreSQL"],
       "highlights": ["Chunk·Context 유지 전략", "Retry·Fallback 파이프라인", "전체 개발 사이클 단독 수행"],
-      "links": [{ "label": "GitHub", "href": "https://github.com/eastjin616/Plainpaper" }],
+      "links": [
+        { "label": "Demo", "href": "https://plainpaper1.vercel.app/" },
+        { "label": "GitHub", "href": "https://github.com/eastjin616/Plainpaper" }
+      ],
       "lede": "보험 약관·계약서·금융 문서를 업로드하면 AI가 요약·핵심 문장·주의 문장을 나누어 보여주는 문서 분석 서비스입니다.",
       "blocks": [
         {
