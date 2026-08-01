@@ -2,7 +2,7 @@
   "profile": {
     "name": "서동진",
     "role": "Backend / Full-stack Developer",
-    "description": "I build web services, developer tools, and operational systems. Lately, I am interested in CLI and AI tools that reduce repetitive development work.",
+    "description": "Java/Spring 웹 서비스부터 Go CLI, AI 개발 도구, 운영 시스템까지 직접 만들고 운영합니다.",
     "location": "South Korea",
     "avatar": "https://github.com/eastjin616.png",
     "skills": ["Java", "Spring", "Go", "React", "TypeScript", "Python", "CLI", "Operations"],
@@ -23,6 +23,7 @@
       "status": "Live service",
       "role": "Java/Spring 웹 서비스 개발",
       "stack": ["Java", "Spring", "MyBatis", "JavaScript"],
+      "highlights": ["교육 콘텐츠 화면", "공지 관리자 CRUD", "MyBatis 연동"],
       "links": [{ "label": "site", "href": "https://badukland.co.kr/" }],
       "lede": "한국기원에서 운영하는 바둑 교육 플랫폼입니다. 입문자 가이드와 교육 콘텐츠를 찾는 흐름이 자연스럽게 이어지도록 화면과 운영 기능을 다듬었습니다.",
       "blocks": [
@@ -56,6 +57,7 @@
       "status": "Private product",
       "role": "DEV.AI 플랫폼 / CLI 개발",
       "stack": ["React", "Next.js", "FastAPI", "Go", "Cobra", "Windows"],
+      "highlights": ["Go CLI 단독 설계", "중복 API 호출 개선", "크로스 플랫폼 업데이트"],
       "links": [{ "label": "KT note", "href": "https://app.notion.com/p/KT-2dc457fc0c6080e8910dd6e79f48c801" }],
       "lede": "KT DS DEV.AI 코드 어시스턴트 프로젝트입니다. AI 개발환경 설치·관리 CLI와 웹 기반 AI 코드 어시스턴트 플랫폼을 개발했습니다.",
       "blocks": [
@@ -89,6 +91,7 @@
       "status": "Operations / Development",
       "role": "콜 인프라 운영 / 개발",
       "stack": ["Java", "Spring", "Operations", "Log tracing", "DR"],
+      "highlights": ["IVR·ADNS 운영", "상암–춘천 DR 이중화", "로그 기반 장애 분석"],
       "links": [],
       "lede": "삼성화재 IPCC 콜센터 인프라 운영 및 개발을 수행했습니다.",
       "blocks": [

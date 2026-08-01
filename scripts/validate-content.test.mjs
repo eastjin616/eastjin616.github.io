@@ -7,6 +7,7 @@ const project = {
   title: 'Sample',
   role: 'Backend',
   lede: 'A concrete opening line',
+  highlights: ['A concrete contribution'],
   stack: ['Java'],
   blocks: [
     { kind: 'constraint', title: 'Constraint', body: 'A real constraint' },
@@ -50,6 +51,27 @@ test('requires non-empty block bodies', () => {
     ],
   })
   assert.ok(errors.some((error) => /block/i.test(error) && /body/i.test(error)))
+})
+
+test('requires one to three project highlights', () => {
+  const withoutHighlights = ['one', 'two', 'three'].map((slug) => {
+    const { highlights: _highlights, ...projectWithoutHighlights } = project
+    return { ...projectWithoutHighlights, slug }
+  })
+  assert.ok(
+    validateContent({ featuredProjects: withoutHighlights }).some((error) =>
+      /highlights/i.test(error),
+    ),
+  )
+
+  const withTooMany = ['one', 'two', 'three'].map((slug) => ({
+    ...project,
+    slug,
+    highlights: ['one', 'two', 'three', 'four'],
+  }))
+  assert.ok(
+    validateContent({ featuredProjects: withTooMany }).some((error) => /highlights/i.test(error)),
+  )
 })
 
 test('rejects non-public link protocols', () => {

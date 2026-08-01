@@ -1,6 +1,6 @@
 import content from './content.json'
 import { getProjectSlug } from './project-route'
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 
 const { profile, links, featuredProjects, experience, nowBuilding } = content
 type Project = (typeof featuredProjects)[number]
@@ -8,6 +8,7 @@ type NowItem = { name: string; status: string; tagline?: string }
 
 export default function App() {
   const [selectedExperience, setSelectedExperience] = useState<(typeof experience)[number] | null>(null)
+  const lastExperienceTrigger = useRef<HTMLButtonElement | null>(null)
   const projectSlug = getProjectSlug(
     window.location.search,
     featuredProjects.map((project) => project.slug),
@@ -16,6 +17,11 @@ export default function App() {
 
   if (project) {
     return <ProjectDetail project={project} />
+  }
+
+  const closeExperience = () => {
+    setSelectedExperience(null)
+    requestAnimationFrame(() => lastExperienceTrigger.current?.focus())
   }
 
   return (
@@ -34,10 +40,10 @@ export default function App() {
         <p className="stack">{profile.skills.join(' / ')}</p>
         <p className="stack">{profile.aiTools.join(' / ')}</p>
         <p className="link-row">
-          {links.github && <a href={links.github}>GitHub</a>}
-          {links.resume && <a href={links.resume}>Resume</a>}
-          {links.career && <a href={links.career}>Career</a>}
-          {links.email && <a href={links.email}>Email</a>}
+          {links.github && <PortfolioLink href={links.github}>GitHub</PortfolioLink>}
+          {links.resume && <PortfolioLink href={links.resume}>Resume</PortfolioLink>}
+          {links.career && <PortfolioLink href={links.career}>Career</PortfolioLink>}
+          {links.email && <PortfolioLink href={links.email}>Email</PortfolioLink>}
         </p>
       </aside>
 
@@ -52,12 +58,13 @@ export default function App() {
                   </h2>
                   <time>{project.period}</time>
                   <p className="muted">{project.status}</p>
+                  <p className="project-evidence">{project.highlights.join(' · ')}</p>
                   <p className="project__links">
                     <a href={`?project=${project.slug}`}>case</a>
                     {project.links.map((link) => (
-                      <a key={link.href} href={link.href}>
+                      <PortfolioLink key={link.href} href={link.href}>
                         {link.label}
-                      </a>
+                      </PortfolioLink>
                     ))}
                   </p>
                 </article>
@@ -90,10 +97,17 @@ export default function App() {
                 <button
                   className="timeline-button"
                   type="button"
+                  aria-haspopup="dialog"
                   aria-pressed={selectedExperience?.name === item.name}
-                  onClick={() => setSelectedExperience(item)}
+                  onClick={(event) => {
+                    lastExperienceTrigger.current = event.currentTarget
+                    setSelectedExperience(item)
+                  }}
                 >
-                  <strong>{item.name}</strong>
+                  <strong>
+                    {item.name}
+                    <span className="timeline-arrow" aria-hidden="true">↗</span>
+                  </strong>
                   {item.year && <time>{item.year}</time>}
                 </button>
               </li>
@@ -111,7 +125,7 @@ export default function App() {
       </main>
 
       {selectedExperience && (
-        <ExperienceDialog item={selectedExperience} onClose={() => setSelectedExperience(null)} />
+        <ExperienceDialog item={selectedExperience} onClose={closeExperience} />
       )}
     </div>
   )
@@ -124,25 +138,63 @@ function ExperienceDialog({
   item: (typeof experience)[number]
   onClose: () => void
 }) {
+  const dialogRef = useRef<HTMLElement>(null)
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose()
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        onClose()
+        return
+      }
+
+      if (event.key !== 'Tab') return
+
+      const focusableElements = Array.from(
+        dialogRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      )
+      if (focusableElements.length === 0) return
+
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault()
+        lastElement.focus()
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault()
+        firstElement.focus()
+      }
     }
 
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
     document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
   }, [onClose])
 
   return (
     <div className="experience-modal" role="presentation" onClick={onClose}>
       <section
+        ref={dialogRef}
         className="experience-dialog"
         role="dialog"
         aria-modal="true"
         aria-labelledby="experience-dialog-title"
+        aria-describedby="experience-dialog-summary"
         onClick={(event) => event.stopPropagation()}
       >
-        <button className="dialog-close" type="button" onClick={onClose} aria-label="닫기">
+        <button
+          className="dialog-close"
+          type="button"
+          onClick={onClose}
+          aria-label="닫기"
+          autoFocus
+        >
           ×
         </button>
         <div className="dialog-heading">
@@ -150,7 +202,7 @@ function ExperienceDialog({
           <h2 id="experience-dialog-title">{item.name}</h2>
           {item.year && <time>{item.year}</time>}
         </div>
-        <p className="dialog-summary">{item.summary}</p>
+        <p className="dialog-summary" id="experience-dialog-summary">{item.summary}</p>
         <ul className="dialog-details">
           {item.details.map((detail) => (
             <li key={detail}>{detail}</li>
@@ -177,6 +229,20 @@ function WorkSection({ title, children }: { title: string; children: ReactNode }
       </p>
       {children}
     </section>
+  )
+}
+
+function PortfolioLink({ href, children }: { href: string; children: ReactNode }) {
+  const opensNewTab = href.startsWith('https://')
+
+  return (
+    <a
+      href={href}
+      target={opensNewTab ? '_blank' : undefined}
+      rel={opensNewTab ? 'noopener noreferrer' : undefined}
+    >
+      {children}
+    </a>
   )
 }
 
@@ -269,9 +335,9 @@ function ProjectDetail({ project }: { project: Project }) {
           {project.links.length > 0 && (
             <p className="link-row">
               {project.links.map((link) => (
-                <a key={link.href} href={link.href}>
+                <PortfolioLink key={link.href} href={link.href}>
                   {link.label}
-                </a>
+                </PortfolioLink>
               ))}
             </p>
           )}

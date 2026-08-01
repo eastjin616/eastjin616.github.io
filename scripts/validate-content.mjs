@@ -26,6 +26,16 @@ export function validateContent(content) {
     if (!Array.isArray(project.stack) || project.stack.length === 0) {
       errors.push(`Project ${index + 1} is missing stack.`)
     }
+    if (
+      !Array.isArray(project.highlights) ||
+      project.highlights.length < 1 ||
+      project.highlights.length > 3 ||
+      project.highlights.some(
+        (highlight) => typeof highlight !== 'string' || !highlight.trim(),
+      )
+    ) {
+      errors.push(`Project ${index + 1} must contain one to three highlights.`)
+    }
     if (!Array.isArray(project.blocks) || project.blocks.length === 0) {
       errors.push(`Project ${index + 1} is missing blocks.`)
     } else {
