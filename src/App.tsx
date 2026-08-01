@@ -2,13 +2,14 @@ import content from './content.json'
 import { getProjectSlug } from './project-route'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 
-const { profile, links, featuredProjects, sideProjects, experience, training, nowBuilding } = content
+const { profile, links, featuredProjects, experience, training, nowBuilding } = content
 type Project = (typeof featuredProjects)[number]
 type NowItem = { name: string; status: string; tagline?: string }
 
 export default function App() {
   const [selectedExperience, setSelectedExperience] = useState<(typeof experience)[number] | null>(null)
-  const lastExperienceTrigger = useRef<HTMLButtonElement | null>(null)
+  const [selectedTraining, setSelectedTraining] = useState<(typeof training)[number] | null>(null)
+  const lastDialogTrigger = useRef<HTMLButtonElement | null>(null)
   const projectSlug = getProjectSlug(
     window.location.search,
     featuredProjects.map((project) => project.slug),
@@ -20,9 +21,10 @@ export default function App() {
     return <ProjectDetail project={project} />
   }
 
-  const closeExperience = () => {
+  const closeDialog = () => {
     setSelectedExperience(null)
-    requestAnimationFrame(() => lastExperienceTrigger.current?.focus())
+    setSelectedTraining(null)
+    requestAnimationFrame(() => lastDialogTrigger.current?.focus())
   }
 
   return (
@@ -74,29 +76,6 @@ export default function App() {
           </ol>
         </WorkSection>
 
-        <WorkSection title="Side Project">
-          <ol className="work-list">
-            {sideProjects.map((project) => (
-              <li key={project.title}>
-                <article className="work-item compact-work-item">
-                  <h2>{project.title}</h2>
-                  <time>{project.period}</time>
-                  <p className="muted">{project.stack.join(' / ')}</p>
-                  <p>{project.summary}</p>
-                  <p className="project-evidence">{project.highlights.join(' · ')}</p>
-                  <p className="project__links">
-                    {project.links.map((link) => (
-                      <PortfolioLink key={link.href} href={link.href}>
-                        {link.label}
-                      </PortfolioLink>
-                    ))}
-                  </p>
-                </article>
-              </li>
-            ))}
-          </ol>
-        </WorkSection>
-
         <WorkSection title="Now Building">
           <ol className="quiet-list">
             {nowBuilding.map((item: NowItem) => (
@@ -124,7 +103,7 @@ export default function App() {
                   aria-haspopup="dialog"
                   aria-pressed={selectedExperience?.name === item.name}
                   onClick={(event) => {
-                    lastExperienceTrigger.current = event.currentTarget
+                    lastDialogTrigger.current = event.currentTarget
                     setSelectedExperience(item)
                   }}
                 >
@@ -140,14 +119,28 @@ export default function App() {
         </WorkSection>
 
         <WorkSection title="Training">
-          <ol className="quiet-list">
+          <ol className="timeline training-list">
             {training.map((item) => (
-              <li key={item.name}>
-                <span className="nb-main">
-                  <strong>{item.name}</strong>
-                  <span className="nb-tagline">{item.summary}</span>
-                </span>
-                <span className="nb-status">{item.period}</span>
+              <li className={selectedTraining?.name === item.name ? 'is-selected' : ''} key={item.name}>
+                <button
+                  className="timeline-button"
+                  type="button"
+                  aria-haspopup="dialog"
+                  aria-pressed={selectedTraining?.name === item.name}
+                  onClick={(event) => {
+                    lastDialogTrigger.current = event.currentTarget
+                    setSelectedTraining(item)
+                  }}
+                >
+                  <span className="nb-main">
+                    <strong>
+                      {item.name}
+                      <span className="timeline-arrow" aria-hidden="true">↗</span>
+                    </strong>
+                    <span className="nb-tagline">{item.summary}</span>
+                  </span>
+                  <time>{item.period}</time>
+                </button>
               </li>
             ))}
           </ol>
@@ -155,7 +148,10 @@ export default function App() {
       </main>
 
       {selectedExperience && (
-        <ExperienceDialog item={selectedExperience} onClose={closeExperience} />
+        <ExperienceDialog item={selectedExperience} onClose={closeDialog} />
+      )}
+      {selectedTraining && (
+        <TrainingDialog item={selectedTraining} onClose={closeDialog} />
       )}
     </div>
   )
@@ -168,44 +164,7 @@ function ExperienceDialog({
   item: (typeof experience)[number]
   onClose: () => void
 }) {
-  const dialogRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.preventDefault()
-        onClose()
-        return
-      }
-
-      if (event.key !== 'Tab') return
-
-      const focusableElements = Array.from(
-        dialogRef.current?.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-        ) ?? [],
-      )
-      if (focusableElements.length === 0) return
-
-      const firstElement = focusableElements[0]
-      const lastElement = focusableElements[focusableElements.length - 1]
-      if (event.shiftKey && document.activeElement === firstElement) {
-        event.preventDefault()
-        lastElement.focus()
-      } else if (!event.shiftKey && document.activeElement === lastElement) {
-        event.preventDefault()
-        firstElement.focus()
-      }
-    }
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    document.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.body.style.overflow = previousOverflow
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [onClose])
+  const dialogRef = useDialogBehavior(onClose)
 
   return (
     <div className="experience-modal" role="presentation" onClick={onClose}>
@@ -249,6 +208,130 @@ function ExperienceDialog({
       </section>
     </div>
   )
+}
+
+function TrainingDialog({
+  item,
+  onClose,
+}: {
+  item: (typeof training)[number]
+  onClose: () => void
+}) {
+  const dialogRef = useDialogBehavior(onClose)
+
+  return (
+    <div className="experience-modal" role="presentation" onClick={onClose}>
+      <section
+        ref={dialogRef}
+        className="experience-dialog training-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="training-dialog-title"
+        aria-describedby="training-dialog-summary"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button
+          className="dialog-close"
+          type="button"
+          onClick={onClose}
+          aria-label="닫기"
+          autoFocus
+        >
+          ×
+        </button>
+        <div className="dialog-heading">
+          <p className="case-block__label">Training</p>
+          <h2 id="training-dialog-title">{item.name}</h2>
+          <time>{item.period}</time>
+        </div>
+        <p className="dialog-summary" id="training-dialog-summary">{item.summary}</p>
+        <ul className="dialog-details">
+          {item.details.map((detail) => (
+            <li key={detail}>{detail}</li>
+          ))}
+        </ul>
+        <div className="experience-stack" aria-label={`${item.name} 학습 기술`}>
+          {item.stack.map((technology) => (
+            <span key={technology} className="tech-token">
+              <span className="tech-mark" aria-hidden="true">·</span>
+              {technology}
+            </span>
+          ))}
+        </div>
+
+        {item.projects.length > 0 && (
+          <section className="training-projects" aria-labelledby="training-projects-title">
+            <p className="case-block__label" id="training-projects-title">Projects</p>
+            {item.projects.map((project) => (
+              <article className="training-project" key={project.title}>
+                <header className="training-project__heading">
+                  <h3>{project.title}</h3>
+                  <time>{project.period}</time>
+                </header>
+                <p className="stack">{project.stack.join(' / ')}</p>
+                <p className="training-project__summary">{project.summary}</p>
+                <ul className="training-project__highlights">
+                  {project.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+                <p className="project__links">
+                  {project.links.map((link) => (
+                    <PortfolioLink key={link.href} href={link.href}>
+                      {link.label}
+                    </PortfolioLink>
+                  ))}
+                </p>
+              </article>
+            ))}
+          </section>
+        )}
+      </section>
+    </div>
+  )
+}
+
+function useDialogBehavior(onClose: () => void) {
+  const dialogRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        onClose()
+        return
+      }
+
+      if (event.key !== 'Tab') return
+
+      const focusableElements = Array.from(
+        dialogRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      )
+      if (focusableElements.length === 0) return
+
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault()
+        lastElement.focus()
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault()
+        firstElement.focus()
+      }
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [onClose])
+
+  return dialogRef
 }
 
 function WorkSection({ title, children }: { title: string; children: ReactNode }) {

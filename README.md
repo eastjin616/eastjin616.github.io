@@ -20,7 +20,7 @@ npm run preview
 
 ## 콘텐츠 수정
 
-공개 문구와 프로젝트 데이터는 [`src/content.json`](src/content.json)에 있습니다. 수정 후 `npm run validate:content`를 실행합니다. 대표 프로젝트는 세 개 이상이어야 하며 프로젝트 요약, 사이드 프로젝트, 교육 과정에 필요한 필드가 없거나 `[확인 필요]`, `TODO`, `TBD` 표식이 남으면 검증이 실패합니다.
+공개 문구와 프로젝트 데이터는 [`src/content.json`](src/content.json)에 있습니다. 수정 후 `npm run validate:content`를 실행합니다. 대표 프로젝트는 세 개 이상이어야 하며 프로젝트 요약, 교육 과정과 과정별 프로젝트에 필요한 필드가 없거나 `[확인 필요]`, `TODO`, `TBD` 표식이 남으면 검증이 실패합니다.
 
 프로젝트 상세 URL은 다음 형식입니다.
 

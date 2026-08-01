@@ -7,7 +7,6 @@ const unresolvedMarker = /\[확인 필요\]|\bTODO\b|\bTBD\b/i
 export function validateContent(content) {
   const errors = []
   const projects = content?.featuredProjects ?? []
-  const sideProjects = content?.sideProjects ?? []
   const training = content?.training ?? []
 
   if (projects.length < 3) {
@@ -61,26 +60,36 @@ export function validateContent(content) {
     }
   })
 
-  sideProjects.forEach((project, index) => {
-    const missingField = ['title', 'period', 'summary', 'stack', 'highlights', 'links'].find(
-      (field) => !project[field] || (Array.isArray(project[field]) && project[field].length === 0),
-    )
-    if (missingField) {
-      errors.push(`Side project ${index + 1} is missing ${missingField}.`)
-    }
-    const projectLinks = project.links ?? []
-    projectLinks.forEach((link) => {
-      if (!/^https:/.test(link.href ?? '')) {
-        errors.push(`Side project ${index + 1} links must use https.`)
-      }
-    })
-  })
-
   training.forEach((item, index) => {
-    const missingField = ['name', 'period', 'summary'].find((field) => !item[field])
+    const missingField = ['name', 'period', 'summary', 'details', 'stack'].find(
+      (field) => !item[field] || (Array.isArray(item[field]) && item[field].length === 0),
+    )
     if (missingField) {
       errors.push(`Training ${index + 1} is missing ${missingField}.`)
     }
+    ;(item.projects ?? []).forEach((project, projectIndex) => {
+      const missingProjectField = [
+        'title',
+        'period',
+        'summary',
+        'stack',
+        'highlights',
+        'links',
+      ].find(
+        (field) =>
+          !project[field] || (Array.isArray(project[field]) && project[field].length === 0),
+      )
+      if (missingProjectField) {
+        errors.push(
+          `Training project ${projectIndex + 1} in training ${index + 1} is missing ${missingProjectField}.`,
+        )
+      }
+      ;(project.links ?? []).forEach((link) => {
+        if (!/^https:/.test(link.href ?? '')) {
+          errors.push(`Training project ${projectIndex + 1} links must use https.`)
+        }
+      })
+    })
   })
 
   const experienceYears = (content?.experience ?? []).map((item) =>

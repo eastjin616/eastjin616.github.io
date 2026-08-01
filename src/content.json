@@ -156,24 +156,6 @@
       ]
     }
   ],
-  "sideProjects": [
-    {
-      "title": "ThreeStars",
-      "period": "2025.04~2025.05",
-      "summary": "KH Academy 구성원 간 실시간 소통을 위한 WebSocket 기반 사내 웹 채팅 서비스입니다.",
-      "stack": ["Java", "Spring Boot", "WebSocket", "JWT", "Oracle"],
-      "highlights": ["WebSocket JWT 인증 구조", "이미지·파일 전송", "프론트·백엔드 흐름 조율"],
-      "links": [{ "label": "GitHub", "href": "https://github.com/kyh0576/threeStar" }]
-    },
-    {
-      "title": "this.서고",
-      "period": "2025.02~2025.04",
-      "summary": "사용자 취향 기반 도서 추천과 상세 정보를 제공하는 웹 서비스로, 팀 조장을 맡았습니다.",
-      "stack": ["Java", "JSP/Servlet", "Oracle", "Ehcache", "JavaScript"],
-      "highlights": ["Ehcache API 응답 캐싱", "ISBN 데이터 전달 규칙", "팀 일정·개발 흐름 총괄"],
-      "links": [{ "label": "GitHub", "href": "https://github.com/eastjin616/this.library" }]
-    }
-  ],
   "notes": [
     "상세 프로젝트는 현재 공개하거나 설명할 수 있는 네 작업만 둡니다.",
     "비공개 프로젝트는 화면보다 문제, 제약, 결정, 복구 방식을 중심으로 설명합니다.",
@@ -221,12 +203,35 @@
     {
       "name": "KH 정보교육원",
       "period": "2024.11~2025.05",
-      "summary": "Java·Spring과 Oracle 기반 웹/백엔드 개발자 양성과정"
+      "summary": "Java·Spring과 Oracle 기반 웹/백엔드 개발자 양성과정",
+      "stack": ["Java", "Spring", "Oracle", "Servlet/JSP", "MyBatis", "React"],
+      "details": ["Java와 Spring Framework 기반 서버 애플리케이션 개발", "Oracle SQL 데이터베이스 설계와 MyBatis 연동", "Servlet/JSP·JavaScript·React 기반 웹 UI 구현", "공공데이터 API를 활용한 팀 프로젝트 설계·개발·배포"],
+      "projects": [
+        {
+          "title": "ThreeStars",
+          "period": "2025.04~2025.05",
+          "summary": "KH Academy 구성원 간 실시간 소통을 위한 WebSocket 기반 사내 웹 채팅 서비스입니다.",
+          "stack": ["Java", "Spring Boot", "WebSocket", "JWT", "Oracle"],
+          "highlights": ["WebSocket JWT 인증 구조", "이미지·파일 전송", "프론트·백엔드 흐름 조율"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/kyh0576/threeStar" }]
+        },
+        {
+          "title": "this.서고",
+          "period": "2025.02~2025.04",
+          "summary": "사용자 취향 기반 도서 추천과 상세 정보를 제공하는 웹 서비스로, 팀 조장을 맡았습니다.",
+          "stack": ["Java", "JSP/Servlet", "Oracle", "Ehcache", "JavaScript"],
+          "highlights": ["Ehcache API 응답 캐싱", "ISBN 데이터 전달 규칙", "팀 일정·개발 흐름 총괄"],
+          "links": [{ "label": "GitHub", "href": "https://github.com/eastjin616/this.library" }]
+        }
+      ]
     },
     {
       "name": "팀 스파르타",
       "period": "2024.12~2025.03",
-      "summary": "Python·OCR·LLM·RAG 기반 AI 서비스 엔지니어링 트랙"
+      "summary": "Python·OCR·LLM·RAG 기반 AI 서비스 엔지니어링 트랙",
+      "stack": ["Python", "OCR", "OpenAI API", "LangChain", "RAG", "Prompt Engineering"],
+      "details": ["Python 기반 데이터 처리와 AI 서비스 개발", "OCR·LLM·OpenAI API를 활용한 자동화 실습", "프롬프트 설계와 LangChain 기반 RAG 파이프라인 구현", "AI 서비스 기획부터 설계·구현·배포까지 전체 흐름 경험"],
+      "projects": []
     }
   ],
   "nowBuilding": [

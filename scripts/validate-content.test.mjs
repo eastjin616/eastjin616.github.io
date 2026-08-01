@@ -87,16 +87,20 @@ test('requires experience entries in newest-first order', () => {
   assert.ok(errors.some((error) => /experience/i.test(error) && /newest/i.test(error)))
 })
 
-test('requires complete side projects and training entries', () => {
+test('requires complete training entries and nested projects', () => {
   const featuredProjects = ['one', 'two', 'three'].map((slug) => ({ ...project, slug }))
   const errors = validateContent({
     featuredProjects,
-    sideProjects: [{ title: 'Incomplete project', links: [{ href: 'javascript:alert(1)' }] }],
-    training: [{ name: 'Incomplete training' }],
+    training: [
+      {
+        name: 'Incomplete training',
+        projects: [{ title: 'Incomplete project', links: [{ href: 'javascript:alert(1)' }] }],
+      },
+    ],
   })
 
-  assert.ok(errors.some((error) => /side project/i.test(error)))
   assert.ok(errors.some((error) => /training/i.test(error)))
+  assert.ok(errors.some((error) => /training project/i.test(error)))
   assert.ok(errors.some((error) => /https/i.test(error)))
 })
 
