@@ -1,6 +1,6 @@
 # 서동진 개발자 포트폴리오
 
-제조 현장 운영, 웹 개발, AI 제품, 금융권 인프라 경험을 텍스트 중심으로 정리한 정적 포트폴리오입니다. 대표 프로젝트 세 개의 문제·제약·결정·복구 흐름을 보여줍니다.
+제조 현장 운영, 웹 개발, AI 제품, 금융권 인프라 경험을 텍스트 중심으로 정리한 정적 포트폴리오입니다. 대표 프로젝트 네 개의 문제·제약·결정·복구 흐름과 교육 과정에서 수행한 작업을 구분해 보여줍니다.
 
 ## 실행
 
@@ -20,7 +20,7 @@ npm run preview
 
 ## 콘텐츠 수정
 
-공개 문구와 프로젝트 데이터는 [`src/content.json`](src/content.json)에 있습니다. 수정 후 `npm run validate:content`를 실행합니다. 대표 프로젝트는 세 개 이상이어야 하며 `[확인 필요]`, `TODO`, `TBD` 표식이 남으면 검증이 실패합니다.
+공개 문구와 프로젝트 데이터는 [`src/content.json`](src/content.json)에 있습니다. 수정 후 `npm run validate:content`를 실행합니다. 대표 프로젝트는 세 개 이상이어야 하며 프로젝트 요약, 사이드 프로젝트, 교육 과정에 필요한 필드가 없거나 `[확인 필요]`, `TODO`, `TBD` 표식이 남으면 검증이 실패합니다.
 
 프로젝트 상세 URL은 다음 형식입니다.
 
@@ -28,6 +28,7 @@ npm run preview
 /?project=badukland
 /?project=ktds
 /?project=samsung-fire-ipcc
+/?project=plainpaper
 ```
 
 ## 렌더링 원칙

@@ -74,6 +74,32 @@ test('requires one to three project highlights', () => {
   )
 })
 
+test('requires experience entries in newest-first order', () => {
+  const featuredProjects = ['one', 'two', 'three'].map((slug) => ({ ...project, slug }))
+  const errors = validateContent({
+    featuredProjects,
+    experience: [
+      { year: '2021.07~2022.10', name: 'Older role' },
+      { year: '2026.05~', name: 'Current role' },
+    ],
+  })
+
+  assert.ok(errors.some((error) => /experience/i.test(error) && /newest/i.test(error)))
+})
+
+test('requires complete side projects and training entries', () => {
+  const featuredProjects = ['one', 'two', 'three'].map((slug) => ({ ...project, slug }))
+  const errors = validateContent({
+    featuredProjects,
+    sideProjects: [{ title: 'Incomplete project', links: [{ href: 'javascript:alert(1)' }] }],
+    training: [{ name: 'Incomplete training' }],
+  })
+
+  assert.ok(errors.some((error) => /side project/i.test(error)))
+  assert.ok(errors.some((error) => /training/i.test(error)))
+  assert.ok(errors.some((error) => /https/i.test(error)))
+})
+
 test('rejects non-public link protocols', () => {
   const errors = validateContent({
     links: { resume: 'javascript:alert(1)' },

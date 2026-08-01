@@ -16,7 +16,8 @@
   },
   "featuredProjects": [
     {
-      "index": "01",
+      "index": "04",
+      "order": 4,
       "slug": "badukland",
       "title": "Badukland",
       "period": "2024",
@@ -50,7 +51,8 @@
       ]
     },
     {
-      "index": "02",
+      "index": "01",
+      "order": 1,
       "slug": "ktds",
       "title": "DEV.AI Platform / CLI",
       "period": "2025",
@@ -84,7 +86,8 @@
       ]
     },
     {
-      "index": "03",
+      "index": "02",
+      "order": 2,
       "slug": "samsung-fire-ipcc",
       "title": "삼성화재 IPCC",
       "period": "2026",
@@ -111,34 +114,82 @@
           "body": "시스템 이상 발생 시 로그와 모니터링 데이터를 기반으로 원인을 파악하고, 유관 부서와 협업하여 장애 대응 및 조치를 수행했습니다."
         }
       ]
+    },
+    {
+      "index": "03",
+      "order": 3,
+      "slug": "plainpaper",
+      "title": "Plainpaper",
+      "period": "2025.11~2025.12",
+      "status": "Public demo",
+      "role": "AI 문서 요약 서비스 단독 개발",
+      "stack": ["Python", "FastAPI", "OpenAI API", "React", "Next.js", "TypeScript", "Docker", "PostgreSQL"],
+      "highlights": ["Chunk·Context 유지 전략", "Retry·Fallback 파이프라인", "전체 개발 사이클 단독 수행"],
+      "links": [
+        { "label": "Demo", "href": "https://plainpaper1.vercel.app/" },
+        { "label": "GitHub", "href": "https://github.com/eastjin616/Plainpaper" }
+      ],
+      "lede": "보험 약관·계약서·금융 문서를 업로드하면 AI가 요약·핵심 문장·주의 문장을 나누어 보여주는 문서 분석 서비스입니다.",
+      "blocks": [
+        {
+          "kind": "constraint",
+          "title": "문제 인식",
+          "body": "긴 문서를 그대로 LLM에 전달할 때 발생하는 토큰 제한과 응답 지연을 줄이면서 문맥을 유지해야 했습니다."
+        },
+        {
+          "kind": "decision",
+          "title": "해결 과정",
+          "body": "문서를 Chunk 단위로 분리하고 앞뒤 문맥을 유지하는 전략을 적용했습니다. 분석 실패에 대비해 재시도와 fallback 처리를 포함한 파이프라인을 구성했습니다."
+        },
+        {
+          "kind": "approach",
+          "title": "담당 범위",
+          "body": "요구사항 정의, FastAPI 기반 /analyze API, 프롬프트 템플릿, React·Next.js 결과 화면, 배포와 운영 테스트까지 전체 개발 사이클을 단독으로 수행했습니다."
+        },
+        {
+          "kind": "failure",
+          "title": "트러블슈팅",
+          "body": "배포 환경에서 발생한 CORS, API 경로 충돌, JWT 인증 문제를 프론트엔드와 백엔드 정책 정비 및 에러 UI 표준화로 해결했습니다."
+        },
+        {
+          "kind": "result",
+          "title": "결과",
+          "body": "분석 결과를 요약, 핵심 문장, 주의 문장으로 분리해 긴 문서의 내용을 빠르게 확인할 수 있는 흐름을 완성했습니다."
+        }
+      ]
+    }
+  ],
+  "sideProjects": [
+    {
+      "title": "ThreeStars",
+      "period": "2025.04~2025.05",
+      "summary": "KH Academy 구성원 간 실시간 소통을 위한 WebSocket 기반 사내 웹 채팅 서비스입니다.",
+      "stack": ["Java", "Spring Boot", "WebSocket", "JWT", "Oracle"],
+      "highlights": ["WebSocket JWT 인증 구조", "이미지·파일 전송", "프론트·백엔드 흐름 조율"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/kyh0576/threeStar" }]
+    },
+    {
+      "title": "this.서고",
+      "period": "2025.02~2025.04",
+      "summary": "사용자 취향 기반 도서 추천과 상세 정보를 제공하는 웹 서비스로, 팀 조장을 맡았습니다.",
+      "stack": ["Java", "JSP/Servlet", "Oracle", "Ehcache", "JavaScript"],
+      "highlights": ["Ehcache API 응답 캐싱", "ISBN 데이터 전달 규칙", "팀 일정·개발 흐름 총괄"],
+      "links": [{ "label": "GitHub", "href": "https://github.com/eastjin616/this.library" }]
     }
   ],
   "notes": [
-    "프로젝트는 실제로 지원서에서 설명할 수 있는 세 작업만 둡니다.",
+    "상세 프로젝트는 현재 공개하거나 설명할 수 있는 네 작업만 둡니다.",
     "비공개 프로젝트는 화면보다 문제, 제약, 결정, 복구 방식을 중심으로 설명합니다.",
-    "회사 경험은 프로젝트와 섞지 않고 별도 이력으로만 둡니다."
+    "회사 경험은 프로젝트와 섞지 않고 별도 이력으로만 둡니다.",
+    "교육 과정 프로젝트는 실무·개인 대표 작업과 분리해 짧게 보여줍니다."
   ],
   "experience": [
     {
-      "year": "2021.07~2022.10",
-      "name": "LG Display",
-      "summary": "반도체·디스플레이 제조라인용 CDA 유틸리티 설비를 운전하고 유지보수했습니다.",
-      "details": ["압축기·냉각기·흡착식 건조기 운전 및 유지보수", "압력·온도 등 실시간 운전 데이터를 MES 및 설비 모니터링 시스템으로 관리", "이상 징후 발생 시 원인 파악 및 대응"],
-      "stack": ["CDA", "MES", "설비 모니터링"]
-    },
-    {
-      "year": "2022.11~2024.03",
-      "name": "SK hynix",
-      "summary": "반도체 공정 중 디퓨전(Diffusion) 영역에서 웨이퍼 표면에 얇은 막을 증착하는 업무를 수행했습니다.",
-      "details": ["반도체 공정 Data/FDC/MES 시스템 운영 지원", "장비 연계 데이터 모니터링", "시스템 이상 발생 시 원인 파악 및 유관부서 협업을 통한 조치"],
-      "stack": ["Diffusion", "Data/FDC", "MES"]
-    },
-    {
-      "year": "2024.05~2024.11",
-      "name": "Woonamu",
-      "summary": "바둑랜드 웹 사이트 개발을 수행했습니다. 바둑 입문용 콘텐츠와 교육 메뉴를 제공하는 한국기원 교육 플랫폼의 화면과 관리 기능을 개발했습니다.",
-      "details": ["바둑 입문자 가이드·교육 콘텐츠 하위 메뉴 페이지", "공지사항 관리자 페이지 CRUD 기본 기능"],
-      "stack": ["Java", "Spring", "MyBatis", "JavaScript"]
+      "year": "2026.05~",
+      "name": "Hyosung ITX",
+      "summary": "삼성화재 IPCC 콜센터 인프라 운영 및 개발을 수행했습니다.",
+      "details": ["IVR 콜 시스템 및 ADNS 서버 개발·운영·유지보수", "콜 라우팅·음성 응답 흐름·DNS 기반 서비스 연계 관리", "상암–춘천 DR 이중화와 장애 시 자동 절체 체계 운영", "로그·모니터링 데이터 기반 원인 분석과 유관 부서 협업"],
+      "stack": ["Linux", "Node.js", "Java", "Spring", "DR"]
     },
     {
       "year": "2025.08~2026.05",
@@ -148,11 +199,37 @@
       "stack": ["Go", "Cobra", "React", "Next.js", "FastAPI", "Windows"]
     },
     {
-      "year": "2026.05~",
-      "name": "Hyosung ITX",
-      "summary": "삼성화재 IPCC 콜센터 인프라 운영 및 개발을 수행했습니다.",
-      "details": ["IVR 콜 시스템 및 ADNS 서버 개발·운영·유지보수", "콜 라우팅·음성 응답 흐름·DNS 기반 서비스 연계 관리", "상암–춘천 DR 이중화와 장애 시 자동 절체 체계 운영", "로그·모니터링 데이터 기반 원인 분석과 유관 부서 협업"],
-      "stack": ["Linux", "Node.js", "Java", "Spring", "DR"]
+      "year": "2024.05~2024.11",
+      "name": "Woonamu",
+      "summary": "바둑랜드 웹 사이트 개발을 수행했습니다. 바둑 입문용 콘텐츠와 교육 메뉴를 제공하는 한국기원 교육 플랫폼의 화면과 관리 기능을 개발했습니다.",
+      "details": ["바둑 입문자 가이드·교육 콘텐츠 하위 메뉴 페이지", "공지사항 관리자 페이지 CRUD 기본 기능"],
+      "stack": ["Java", "Spring", "MyBatis", "JavaScript"]
+    },
+    {
+      "year": "2022.11~2024.03",
+      "name": "SK hynix",
+      "summary": "반도체 공정 중 디퓨전(Diffusion) 영역에서 웨이퍼 표면에 얇은 막을 증착하는 업무를 수행했습니다.",
+      "details": ["반도체 공정 Data/FDC/MES 시스템 운영 지원", "장비 연계 데이터 모니터링", "시스템 이상 발생 시 원인 파악 및 유관부서 협업을 통한 조치"],
+      "stack": ["Diffusion", "Data/FDC", "MES"]
+    },
+    {
+      "year": "2021.07~2022.10",
+      "name": "LG Display",
+      "summary": "반도체·디스플레이 제조라인용 CDA 유틸리티 설비를 운전하고 유지보수했습니다.",
+      "details": ["압축기·냉각기·흡착식 건조기 운전 및 유지보수", "압력·온도 등 실시간 운전 데이터를 MES 및 설비 모니터링 시스템으로 관리", "이상 징후 발생 시 원인 파악 및 대응"],
+      "stack": ["CDA", "MES", "설비 모니터링"]
+    }
+  ],
+  "training": [
+    {
+      "name": "KH 정보교육원",
+      "period": "2024.11~2025.05",
+      "summary": "Java·Spring과 Oracle 기반 웹/백엔드 개발자 양성과정"
+    },
+    {
+      "name": "팀 스파르타",
+      "period": "2024.12~2025.03",
+      "summary": "Python·OCR·LLM·RAG 기반 AI 서비스 엔지니어링 트랙"
     }
   ],
   "nowBuilding": [

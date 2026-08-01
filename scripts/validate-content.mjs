@@ -7,6 +7,8 @@ const unresolvedMarker = /\[확인 필요\]|\bTODO\b|\bTBD\b/i
 export function validateContent(content) {
   const errors = []
   const projects = content?.featuredProjects ?? []
+  const sideProjects = content?.sideProjects ?? []
+  const training = content?.training ?? []
 
   if (projects.length < 3) {
     errors.push('Featured projects must contain at least three entries.')
@@ -58,6 +60,35 @@ export function validateContent(content) {
       errors.push(`Link "${name}" must use https or mailto.`)
     }
   })
+
+  sideProjects.forEach((project, index) => {
+    const missingField = ['title', 'period', 'summary', 'stack', 'highlights', 'links'].find(
+      (field) => !project[field] || (Array.isArray(project[field]) && project[field].length === 0),
+    )
+    if (missingField) {
+      errors.push(`Side project ${index + 1} is missing ${missingField}.`)
+    }
+    const projectLinks = project.links ?? []
+    projectLinks.forEach((link) => {
+      if (!/^https:/.test(link.href ?? '')) {
+        errors.push(`Side project ${index + 1} links must use https.`)
+      }
+    })
+  })
+
+  training.forEach((item, index) => {
+    const missingField = ['name', 'period', 'summary'].find((field) => !item[field])
+    if (missingField) {
+      errors.push(`Training ${index + 1} is missing ${missingField}.`)
+    }
+  })
+
+  const experienceYears = (content?.experience ?? []).map((item) =>
+    Number.parseInt(item.year?.slice(0, 4), 10),
+  )
+  if (experienceYears.some((year, index) => index > 0 && year > experienceYears[index - 1])) {
+    errors.push('Experience entries must be ordered newest first.')
+  }
 
   return errors
 }

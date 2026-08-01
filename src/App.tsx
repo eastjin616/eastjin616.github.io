@@ -2,7 +2,7 @@ import content from './content.json'
 import { getProjectSlug } from './project-route'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 
-const { profile, links, featuredProjects, experience, nowBuilding } = content
+const { profile, links, featuredProjects, sideProjects, experience, training, nowBuilding } = content
 type Project = (typeof featuredProjects)[number]
 type NowItem = { name: string; status: string; tagline?: string }
 
@@ -14,6 +14,7 @@ export default function App() {
     featuredProjects.map((project) => project.slug),
   )
   const project = featuredProjects.find((item) => item.slug === projectSlug)
+  const orderedProjects = featuredProjects.slice().sort((a, b) => a.order - b.order)
 
   if (project) {
     return <ProjectDetail project={project} />
@@ -50,7 +51,7 @@ export default function App() {
       <main className="work">
         <WorkSection title="Project">
           <ol className="work-list">
-            {featuredProjects.map((project) => (
+            {orderedProjects.map((project) => (
               <li key={project.slug}>
                 <article className="work-item">
                   <h2>
@@ -61,6 +62,29 @@ export default function App() {
                   <p className="project-evidence">{project.highlights.join(' · ')}</p>
                   <p className="project__links">
                     <a href={`?project=${project.slug}`}>case</a>
+                    {project.links.map((link) => (
+                      <PortfolioLink key={link.href} href={link.href}>
+                        {link.label}
+                      </PortfolioLink>
+                    ))}
+                  </p>
+                </article>
+              </li>
+            ))}
+          </ol>
+        </WorkSection>
+
+        <WorkSection title="Side Project">
+          <ol className="work-list">
+            {sideProjects.map((project) => (
+              <li key={project.title}>
+                <article className="work-item compact-work-item">
+                  <h2>{project.title}</h2>
+                  <time>{project.period}</time>
+                  <p className="muted">{project.stack.join(' / ')}</p>
+                  <p>{project.summary}</p>
+                  <p className="project-evidence">{project.highlights.join(' · ')}</p>
+                  <p className="project__links">
                     {project.links.map((link) => (
                       <PortfolioLink key={link.href} href={link.href}>
                         {link.label}
@@ -115,12 +139,18 @@ export default function App() {
           </ol>
         </WorkSection>
 
-        <WorkSection title="Contact">
-          <ul className="contact-list">
-            <li>
-              <a href={links.email}>email</a>
-            </li>
-          </ul>
+        <WorkSection title="Training">
+          <ol className="quiet-list">
+            {training.map((item) => (
+              <li key={item.name}>
+                <span className="nb-main">
+                  <strong>{item.name}</strong>
+                  <span className="nb-tagline">{item.summary}</span>
+                </span>
+                <span className="nb-status">{item.period}</span>
+              </li>
+            ))}
+          </ol>
         </WorkSection>
       </main>
 
@@ -222,9 +252,11 @@ function ExperienceDialog({
 }
 
 function WorkSection({ title, children }: { title: string; children: ReactNode }) {
+  const sectionId = `${title.toLowerCase().replace(/\s+/g, '-')}-title`
+
   return (
-    <section aria-labelledby={`${title.toLowerCase()}-title`}>
-      <p className="section-label" id={`${title.toLowerCase()}-title`}>
+    <section aria-labelledby={sectionId}>
+      <p className="section-label" id={sectionId}>
         {title}
       </p>
       {children}
@@ -247,6 +279,23 @@ function PortfolioLink({ href, children }: { href: string; children: ReactNode }
 }
 
 function ProjectDiagram({ slug }: { slug: string }) {
+  if (slug === 'plainpaper') {
+    return (
+      <div className="case-diagram" aria-label="Plainpaper 문서 분석 흐름 개략">
+        <div className="flow-row">
+          <span className="flow-node">문서 업로드</span>
+          <span className="flow-arrow" aria-hidden="true">→</span>
+          <span className="flow-node">Chunk·Context 유지</span>
+          <span className="flow-arrow" aria-hidden="true">→</span>
+          <span className="flow-node">FastAPI·OpenAI</span>
+          <span className="flow-arrow" aria-hidden="true">→</span>
+          <span className="flow-node">요약·핵심·주의</span>
+        </div>
+        <p className="flow-note">실패 시 재시도·fallback 처리</p>
+      </div>
+    )
+  }
+
   if (slug === 'badukland') {
     return (
       <div className="case-diagram" aria-label="Badukland 요청 흐름 개략">
