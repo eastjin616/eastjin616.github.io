@@ -49,7 +49,7 @@ a:focus-visible {
 }
 
 .case-page {
-  width: min(760px, calc(100vw - 48px));
+  width: min(1180px, calc(100vw - 48px));
   margin: 0 auto;
   padding: 52px 0 96px;
 }
@@ -190,11 +190,82 @@ h2 {
 }
 
 .work-item {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 6px 24px;
+  min-height: 148px;
   padding: 18px 0 20px;
   border-bottom: 1px solid var(--line);
+}
+
+.project-visual {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.project-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #f5f1e8 0%,
+    rgb(245 241 232 / 88%) 26%,
+    rgb(245 241 232 / 42%) 66%,
+    rgb(245 241 232 / 64%) 100%
+  );
+}
+
+.project-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.5;
+  filter: saturate(0.76) sepia(0.08);
+}
+
+.project-visual--logo img {
+  width: 100%;
+  margin-left: auto;
+  object-fit: contain;
+  object-position: right center;
+  opacity: 0.34;
+  filter: saturate(1.1) contrast(0.95);
+}
+
+.project-visual--logo::after {
+  background: linear-gradient(
+    90deg,
+    #f5f1e8 0%,
+    rgb(245 241 232 / 84%) 30%,
+    rgb(245 241 232 / 42%) 72%,
+    rgb(245 241 232 / 58%) 100%
+  );
+}
+
+.project-visual--plainpaper img {
+  opacity: 0.9;
+  filter: saturate(0.86) sepia(0.04) contrast(1.18);
+  mix-blend-mode: multiply;
+  transform: scale(1.3);
+}
+
+.project-visual--plainpaper::after {
+  background: linear-gradient(
+    90deg,
+    #f5f1e8 0%,
+    rgb(245 241 232 / 70%) 22%,
+    rgb(245 241 232 / 12%) 52%,
+    transparent 100%
+  );
 }
 
 .work-item h2,
@@ -342,6 +413,9 @@ h2 {
 }
 
 .case {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
   display: grid;
   gap: 22px;
   max-width: 680px;
@@ -383,17 +457,6 @@ nav a,
 .project__links a,
 .link-row a {
   color: var(--muted);
-}
-
-.case .case-index {
-  margin: 0;
-  font-family:
-    ui-serif, 'Iowan Old Style', 'Apple SD Gothic Neo', 'Noto Serif KR', Georgia, serif;
-  font-size: clamp(3rem, 13vw, 7rem);
-  font-weight: 500;
-  line-height: 0.8;
-  letter-spacing: -0.04em;
-  color: var(--line);
 }
 
 .case h1 {
@@ -735,6 +798,18 @@ nav a,
   .work-item time,
   .timeline li > * {
     display: block;
+  }
+
+  .work-item {
+    min-height: 158px;
+  }
+
+  .project-visual--logo img {
+    width: 62%;
+  }
+
+  .project-visual {
+    left: 40%;
   }
 
   .work {

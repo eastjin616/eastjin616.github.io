@@ -16,6 +16,41 @@ export default function App() {
   )
   const project = featuredProjects.find((item) => item.slug === projectSlug)
   const orderedProjects = featuredProjects.slice().sort((a, b) => a.order - b.order)
+  const workProjects = orderedProjects.filter((item) => item.category === 'work')
+  const personalProjects = orderedProjects.filter((item) => item.category === 'project')
+
+  const renderProjectList = (projects: Project[]) => (
+    <ol className="work-list">
+      {projects.map((project) => (
+        <li key={project.slug}>
+          <article className="work-item">
+            {project.category === 'work' && (
+              <div
+                className={`project-visual project-visual--${project.visual.kind} project-visual--${project.slug}`}
+                aria-hidden="true"
+              >
+                <img src={project.visual.src} alt="" loading="lazy" decoding="async" />
+              </div>
+            )}
+            <h2>
+              <a href={`?project=${project.slug}`}>{project.title}</a>
+            </h2>
+            <time>{project.period}</time>
+            <p className="muted">{project.status}</p>
+            <p className="project-evidence">{project.highlights.join(' · ')}</p>
+            <p className="project__links">
+              <a href={`?project=${project.slug}`}>case</a>
+              {project.links.map((link) => (
+                <PortfolioLink key={link.href} href={link.href}>
+                  {link.label}
+                </PortfolioLink>
+              ))}
+            </p>
+          </article>
+        </li>
+      ))}
+    </ol>
+  )
 
   if (project) {
     return <ProjectDetail project={project} />
@@ -51,30 +86,9 @@ export default function App() {
       </aside>
 
       <main className="work">
-        <WorkSection title="Project">
-          <ol className="work-list">
-            {orderedProjects.map((project) => (
-              <li key={project.slug}>
-                <article className="work-item">
-                  <h2>
-                    <a href={`?project=${project.slug}`}>{project.title}</a>
-                  </h2>
-                  <time>{project.period}</time>
-                  <p className="muted">{project.status}</p>
-                  <p className="project-evidence">{project.highlights.join(' · ')}</p>
-                  <p className="project__links">
-                    <a href={`?project=${project.slug}`}>case</a>
-                    {project.links.map((link) => (
-                      <PortfolioLink key={link.href} href={link.href}>
-                        {link.label}
-                      </PortfolioLink>
-                    ))}
-                  </p>
-                </article>
-              </li>
-            ))}
-          </ol>
-        </WorkSection>
+        <WorkSection title="Work">{renderProjectList(workProjects)}</WorkSection>
+
+        <WorkSection title="Project">{renderProjectList(personalProjects)}</WorkSection>
 
         <WorkSection title="Now Building">
           <ol className="quiet-list">
@@ -453,9 +467,6 @@ function ProjectDetail({ project }: { project: Project }) {
 
       <main>
         <article className="case">
-          <p className="case-index" aria-hidden="true">
-            {project.index}
-          </p>
           <h1>{project.title}</h1>
           <p className="case-meta">
             <span>{project.role}</span>

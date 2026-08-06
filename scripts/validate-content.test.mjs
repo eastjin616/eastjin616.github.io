@@ -5,9 +5,11 @@ import { validateContent } from './validate-content.mjs'
 const project = {
   slug: 'sample',
   title: 'Sample',
+  category: 'work',
   role: 'Backend',
   lede: 'A concrete opening line',
   highlights: ['A concrete contribution'],
+  visual: { kind: 'image', src: '/project-art/sample.png' },
   stack: ['Java'],
   blocks: [
     { kind: 'constraint', title: 'Constraint', body: 'A real constraint' },
@@ -72,6 +74,28 @@ test('requires one to three project highlights', () => {
   assert.ok(
     validateContent({ featuredProjects: withTooMany }).some((error) => /highlights/i.test(error)),
   )
+})
+
+test('requires a local project visual', () => {
+  const featuredProjects = ['one', 'two', 'three'].map((slug) => ({ ...project, slug }))
+  const errors = validateContent({
+    featuredProjects: [
+      { ...featuredProjects[0], visual: undefined },
+      featuredProjects[1],
+      featuredProjects[2],
+    ],
+  })
+
+  assert.ok(errors.some((error) => /local project visual/i.test(error)))
+})
+
+test('requires a work or project category', () => {
+  const featuredProjects = ['one', 'two', 'three'].map((slug) => ({ ...project, slug }))
+  const errors = validateContent({
+    featuredProjects: [{ ...featuredProjects[0], category: undefined }, featuredProjects[1], featuredProjects[2]],
+  })
+
+  assert.ok(errors.some((error) => /work or project category/i.test(error)))
 })
 
 test('requires experience entries in newest-first order', () => {

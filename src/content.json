@@ -16,8 +16,8 @@
   },
   "featuredProjects": [
     {
-      "index": "04",
       "order": 4,
+      "category": "work",
       "slug": "badukland",
       "title": "Badukland",
       "period": "2024",
@@ -25,6 +25,7 @@
       "role": "Java/Spring 웹 서비스 개발",
       "stack": ["Java", "Spring", "MyBatis", "JavaScript"],
       "highlights": ["교육 콘텐츠 화면", "공지 관리자 CRUD", "MyBatis 연동"],
+      "visual": { "kind": "image", "src": "/project-art/badukland.png" },
       "links": [{ "label": "site", "href": "https://badukland.co.kr/" }],
       "lede": "한국기원에서 운영하는 바둑 교육 플랫폼입니다. 입문자 가이드와 교육 콘텐츠를 찾는 흐름이 자연스럽게 이어지도록 화면과 운영 기능을 다듬었습니다.",
       "blocks": [
@@ -51,8 +52,8 @@
       ]
     },
     {
-      "index": "01",
       "order": 1,
+      "category": "work",
       "slug": "ktds",
       "title": "DEV.AI Platform / CLI",
       "period": "2025",
@@ -60,6 +61,7 @@
       "role": "DEV.AI 플랫폼 / CLI 개발",
       "stack": ["React", "Next.js", "FastAPI", "Go", "Cobra", "Windows"],
       "highlights": ["Go CLI 단독 설계", "중복 API 호출 개선", "크로스 플랫폼 업데이트"],
+      "visual": { "kind": "logo", "src": "/project-art/ktds.svg" },
       "links": [{ "label": "KT note", "href": "https://app.notion.com/p/KT-2dc457fc0c6080e8910dd6e79f48c801" }],
       "lede": "KT DS DEV.AI 코드 어시스턴트 프로젝트입니다. AI 개발환경 설치·관리 CLI와 웹 기반 AI 코드 어시스턴트 플랫폼을 개발했습니다.",
       "blocks": [
@@ -86,8 +88,8 @@
       ]
     },
     {
-      "index": "02",
       "order": 2,
+      "category": "work",
       "slug": "samsung-fire-ipcc",
       "title": "삼성화재 IPCC",
       "period": "2026",
@@ -95,6 +97,7 @@
       "role": "콜 인프라 운영 / 개발",
       "stack": ["Java", "Spring", "Operations", "Log tracing", "DR"],
       "highlights": ["IVR·ADNS 운영", "상암–춘천 DR 이중화", "로그 기반 장애 분석"],
+      "visual": { "kind": "logo", "src": "/project-art/samsung-fire.svg" },
       "links": [],
       "lede": "삼성화재 IPCC 콜센터 인프라 운영 및 개발을 수행했습니다.",
       "blocks": [
@@ -116,8 +119,8 @@
       ]
     },
     {
-      "index": "03",
       "order": 3,
+      "category": "project",
       "slug": "plainpaper",
       "title": "Plainpaper",
       "period": "2025.11~2025.12",
@@ -125,6 +128,7 @@
       "role": "AI 문서 요약 서비스 단독 개발",
       "stack": ["Python", "FastAPI", "OpenAI API", "React", "Next.js", "TypeScript", "Docker", "PostgreSQL"],
       "highlights": ["Chunk·Context 유지 전략", "Retry·Fallback 파이프라인", "전체 개발 사이클 단독 수행"],
+      "visual": { "kind": "image", "src": "/project-art/plainpaper.png" },
       "links": [
         { "label": "Demo", "href": "https://plainpaper1.vercel.app/" },
         { "label": "GitHub", "href": "https://github.com/eastjin616/Plainpaper" }
