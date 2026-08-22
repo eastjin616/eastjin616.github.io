@@ -1,8 +1,9 @@
 import content from './content.json'
-import { getProjectSlug } from './project-route'
+import Resume from './Resume'
+import { getProjectSlug, isResumeView } from './project-route'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 
-const { profile, links, featuredProjects, experience, training, nowBuilding } = content
+const { profile, links, featuredProjects, experience, training, education, nowBuilding } = content
 type Project = (typeof featuredProjects)[number]
 type NowItem = { name: string; status: string; tagline?: string }
 
@@ -14,6 +15,7 @@ export default function App() {
     window.location.search,
     featuredProjects.map((project) => project.slug),
   )
+  const resumeView = isResumeView(window.location.search)
   const project = featuredProjects.find((item) => item.slug === projectSlug)
   const orderedProjects = featuredProjects.slice().sort((a, b) => a.order - b.order)
   const workProjects = orderedProjects.filter((item) => item.category === 'work')
@@ -52,6 +54,10 @@ export default function App() {
     </ol>
   )
 
+  if (resumeView) {
+    return <Resume />
+  }
+
   if (project) {
     return <ProjectDetail project={project} />
   }
@@ -79,7 +85,7 @@ export default function App() {
         <p className="stack">{profile.aiTools.join(' / ')}</p>
         <p className="link-row">
           {links.github && <PortfolioLink href={links.github}>GitHub</PortfolioLink>}
-          {links.resume && <PortfolioLink href={links.resume}>Resume</PortfolioLink>}
+          <a href="?resume=1">Resume</a>
           {links.career && <PortfolioLink href={links.career}>Career</PortfolioLink>}
           {links.email && <PortfolioLink href={links.email}>Email</PortfolioLink>}
         </p>
@@ -155,6 +161,20 @@ export default function App() {
                   </span>
                   <time>{item.period}</time>
                 </button>
+              </li>
+            ))}
+          </ol>
+        </WorkSection>
+
+        <WorkSection title="Education">
+          <ol className="timeline education-list">
+            {education.map((item) => (
+              <li key={`${item.name}-${item.period}`}>
+                <span className="nb-main">
+                  <strong>{item.name}</strong>
+                  <span className="nb-tagline">{item.summary}</span>
+                </span>
+                <time>{item.period}</time>
               </li>
             ))}
           </ol>
@@ -461,7 +481,7 @@ function ProjectDetail({ project }: { project: Project }) {
         </a>
         <nav aria-label="Project navigation">
           <a href="/">Projects</a>
-          {links.resume && <a href={links.resume}>Resume</a>}
+          <a href="?resume=1">Resume</a>
         </nav>
       </header>
 

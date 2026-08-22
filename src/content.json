@@ -241,6 +241,33 @@
       "projects": []
     }
   ],
+  "education": [
+    {
+      "name": "세종사이버대학교",
+      "period": "2022.02~2024.02",
+      "summary": "소프트웨어공학 학사 · GPA 3.78/4.5"
+    },
+    {
+      "name": "팀 스파르타",
+      "period": "2025.12~2026.03 · 200시간",
+      "summary": "AI 서비스 엔지니어링 트랙 · Python/Streamlit · OCR/LLM/ChatGPT API · LangChain/RAG"
+    },
+    {
+      "name": "KH정보교육원",
+      "period": "2024.11~2025.05 · 888시간",
+      "summary": "자바 개발자 양성교육 · Java/Spring · Oracle SQL/DB 설계 · React/MyBatis · 팀 프로젝트"
+    },
+    {
+      "name": "SQLD",
+      "period": "2024.12",
+      "summary": "SQL 개발자 자격"
+    },
+    {
+      "name": "OPIc",
+      "period": "2026.03",
+      "summary": "IM1"
+    }
+  ],
   "nowBuilding": [
     {
       "name": "Act AD",
