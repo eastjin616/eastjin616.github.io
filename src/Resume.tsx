@@ -1,4 +1,5 @@
 import { resumeData, type ResumeEducation, type ResumeProject } from './resume-content'
+import { useEffect } from 'react'
 
 function Header({ title = '경력 기술서' }: { title?: string }) {
   return <header className="resume-header"><h2>{title}</h2><span aria-hidden="true" /></header>
@@ -85,6 +86,14 @@ function EducationItem({ item }: { item: ResumeEducation }) {
 }
 
 export default function Resume() {
+  useEffect(() => {
+    const previousTitle = document.title
+    document.title = `${resumeData.profile.name} | 경력 기술서`
+    return () => {
+      document.title = previousTitle
+    }
+  }, [])
+
   return <main className="resume-page">
     <nav className="resume-toolbar" aria-label="이력서 도구">
       <a href="/">Portfolio</a><button type="button" onClick={() => window.print()}>인쇄 / PDF 저장</button>
