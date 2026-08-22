@@ -11,7 +11,7 @@
   "skills": [
     {
       "title": "Backend & Data",
-      "items": ["Java", "Spring", "Spring Boot", "MyBatis", "Oracle SQL", "PostgreSQL"]
+      "items": ["Java", "Spring", "Spring Boot", "MyBatis", "Go · Cobra", "Oracle SQL", "PostgreSQL"]
     },
     {
       "title": "AI Platform",
@@ -19,7 +19,7 @@
     },
     {
       "title": "System & Delivery",
-      "items": ["Linux", "Tomcat", "Git", "Jenkins", "AWS EC2/RDS", "Go · Cobra"]
+      "items": ["Linux", "Tomcat", "Git", "Jenkins", "AWS EC2/RDS"]
     }
   ],
   "experience": [
