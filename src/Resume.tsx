@@ -36,7 +36,9 @@ function ProjectPage({ project }: { project: ResumeProject }) {
     <Header title="프로젝트" />
     <div className="resume-project-grid resume-reference-project-grid">
       <aside className="resume-project-aside resume-reference-project-aside">
-        <h1 id={`resume-project-${project.slug}`}>{project.title}</h1>
+        <h1 id={`resume-project-${project.slug}`}>
+          {project.title.split('\n').map((line) => <span key={line}>{line}</span>)}
+        </h1>
         <ul className="resume-meta resume-reference-project-meta"><li><span>-</span>{project.period}</li><li><span>-</span>{project.company}</li><li><span>-</span>역할: {project.role}</li></ul>
         <h2 className="resume-reference-stack-title">[사용 기술]</h2>
         <ul className="resume-stack resume-reference-stack">{project.stack.map((line) => <li key={line}>{line}</li>)}</ul>

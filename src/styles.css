@@ -1685,8 +1685,12 @@ nav a,
   color: var(--resume-blue);
   font-size: 1.9271cqw;
   font-weight: 500;
-  letter-spacing: -0.105em;
+  letter-spacing: 0;
   line-height: 1.18;
+}
+
+.resume-reference-project-aside h1 span {
+  display: block;
 }
 
 .resume-reference-project-meta {
