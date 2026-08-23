@@ -1648,9 +1648,11 @@ nav a,
 }
 
 .resume-reference-timeline-years time {
-  color: #9d9d9d;
+  color: #aaa;
   font-size: 1.3021cqw;
-  font-weight: 400;
+  font-weight: 300;
+  font-style: italic;
+  font-synthesis: style;
   line-height: 1.16;
 }
 
