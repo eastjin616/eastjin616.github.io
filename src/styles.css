@@ -1656,6 +1656,10 @@ nav a,
   line-height: 1.16;
 }
 
+.resume-reference-timeline-years time:last-child {
+  transform: translateX(0.5cqw);
+}
+
 .resume-reference-timeline-years span {
   display: block;
   width: 0.1cqw;
