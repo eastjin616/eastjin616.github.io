@@ -1440,3 +1440,653 @@ nav a,
     page-break-after: auto;
   }
 }
+
+/* Source-PDF coordinate system: 1920 × 1080 (AppleGothic). */
+.resume-page {
+  --resume-green: #008000;
+  --resume-blue: #005da5;
+  --resume-olive: #9aaa80;
+  --resume-ink: #111;
+  padding: 0;
+  background: #e7eaed;
+  font-family: AppleGothic, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
+.resume-toolbar {
+  display: none;
+}
+
+.resume-book {
+  gap: 24px;
+}
+
+.resume-sheet {
+  container-type: size;
+  width: min(1920px, 100vw);
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: none;
+}
+
+.resume-reference-header {
+  position: absolute;
+  top: 6.94cqh;
+  left: 5.625cqw;
+  right: 5.94cqw;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.3cqw;
+}
+
+.resume-reference-header h2 {
+  color: var(--resume-green);
+  font-size: 1.5625cqw;
+  font-weight: 500;
+  letter-spacing: -0.08em;
+  line-height: 1.22;
+}
+
+.resume-reference-header span {
+  height: 0.16cqw;
+  background: var(--resume-olive);
+}
+
+.resume-reference-cover-grid {
+  display: block;
+  height: 100%;
+  padding: 0;
+}
+
+.resume-reference-cover-intro {
+  position: absolute;
+  top: 18.49cqh;
+  left: 5.625cqw;
+  width: 26.3cqw;
+}
+
+.resume-reference-cover-intro h1 {
+  color: var(--resume-green);
+  font-size: 2.2396cqw;
+  font-weight: 500;
+  letter-spacing: -0.105em;
+  line-height: 1.22;
+}
+
+.resume-reference-cover-intro .resume-role {
+  margin-top: 1.48cqh !important;
+  color: var(--resume-green);
+  font-size: 1.4583cqw;
+  font-weight: 500;
+  letter-spacing: -0.08em;
+  line-height: 1.22;
+}
+
+.resume-reference-contact {
+  position: absolute;
+  top: 12.31cqh;
+  left: -0.56cqw;
+  display: grid;
+  gap: 1.48cqh;
+  width: 27cqw;
+  margin: 0 !important;
+}
+
+.resume-reference-contact div {
+  display: grid;
+  grid-template-columns: 2.15cqw 4.25cqw auto;
+  align-items: center;
+  gap: 0.32cqw;
+}
+
+.resume-reference-contact dt,
+.resume-reference-contact dd {
+  color: var(--resume-ink);
+  font-size: 1.1979cqw;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 1.22;
+}
+
+.resume-reference-contact dt[aria-hidden='true'] {
+  color: #191919;
+  font-family: 'Apple Symbols', AppleGothic, sans-serif;
+  font-size: 1.16cqw;
+  line-height: 1;
+  text-align: center;
+}
+
+.resume-reference-contact dd a {
+  color: inherit;
+  text-decoration-color: #555;
+  text-underline-offset: 0.1em;
+}
+
+.resume-reference-timeline {
+  position: absolute;
+  top: 16.83cqh;
+  right: 8.12cqw;
+  left: 38.44cqw;
+  display: grid;
+  gap: 6.93cqh;
+  list-style: none;
+}
+
+.resume-reference-timeline li {
+  display: grid;
+  grid-template-columns: 10.3cqw 8.3cqw 0.2cqw minmax(0, 1fr);
+  column-gap: 1.1cqw;
+  align-items: center;
+  min-height: 11.4cqh;
+}
+
+.resume-reference-timeline::before,
+.resume-reference-timeline li > div::before {
+  content: none;
+}
+
+.resume-reference-timeline li > div {
+  min-width: 0;
+  padding-left: 0;
+}
+
+.resume-reference-timeline-years {
+  display: grid;
+  justify-items: start;
+  align-content: center;
+  gap: 1.2cqh;
+}
+
+.resume-reference-timeline-years time {
+  color: #9d9d9d;
+  font-size: 1.3021cqw;
+  font-weight: 400;
+  line-height: 1.16;
+}
+
+.resume-reference-timeline-years span {
+  display: block;
+  width: 0.1cqw;
+  height: 2.68cqh;
+  margin-left: 1.75cqw;
+  background: #aaa;
+}
+
+.resume-reference-timeline-middle {
+  display: grid;
+  justify-items: end;
+  gap: 0.42cqh;
+  text-align: right;
+}
+
+.resume-reference-timeline-middle strong {
+  color: #111;
+  font-size: 1.0417cqw;
+  font-weight: 600;
+  letter-spacing: -0.07em;
+  line-height: 1.17;
+}
+
+.resume-reference-timeline-middle span,
+.resume-reference-timeline-middle small,
+.resume-reference-timeline-project time {
+  color: #111;
+  font-size: 0.8333cqw;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.18;
+}
+
+.resume-reference-timeline-rule {
+  width: 0.2cqw;
+  height: 10.7cqh;
+  background: var(--resume-olive);
+}
+
+.resume-reference-timeline-project {
+  display: grid;
+  align-content: center;
+  gap: 2.36cqh;
+}
+
+.resume-reference-timeline-project strong {
+  color: var(--resume-blue);
+  font-size: 1.25cqw;
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 1.2;
+}
+
+.resume-reference-timeline-project time {
+  color: #606060;
+}
+
+.resume-reference-project-grid {
+  position: absolute;
+  top: 22.96cqh;
+  right: 8.02cqw;
+  bottom: 0;
+  left: 9.167cqw;
+  display: block;
+  height: auto;
+  padding: 0;
+}
+
+.resume-reference-project-aside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 27.1cqw;
+}
+
+.resume-reference-project-aside h1 {
+  color: var(--resume-blue);
+  font-size: 1.9271cqw;
+  font-weight: 500;
+  letter-spacing: -0.105em;
+  line-height: 1.18;
+}
+
+.resume-reference-project-meta {
+  display: grid;
+  gap: 2.58cqh;
+  margin-top: 4.25cqh !important;
+  list-style: none;
+}
+
+.resume-reference-project-meta li,
+.resume-reference-stack-title {
+  color: #6c6c6c;
+  font-size: 1.25cqw;
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 1.22;
+}
+
+.resume-reference-project-meta li {
+  display: flex;
+  gap: 0.86cqw;
+}
+
+.resume-reference-stack-title {
+  margin-top: 4.07cqh !important;
+}
+
+.resume-reference-stack {
+  display: grid;
+  gap: 3.4cqh;
+  margin-top: 4.07cqh !important;
+  list-style: none;
+}
+
+.resume-reference-stack li {
+  padding: 0;
+  border: 0;
+  color: #6c6c6c;
+  font-size: 1.1458cqw;
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 1.22;
+}
+
+.resume-reference-project-body {
+  position: absolute;
+  top: 1.17cqh;
+  right: 0;
+  bottom: 0;
+  left: 30.73cqw;
+  padding: 0;
+}
+
+.resume-reference-section-heading,
+.resume-reference-detail-heading {
+  position: absolute;
+  left: -1.98cqw;
+  display: flex;
+  align-items: center;
+  gap: 1.15cqw;
+  margin: 0;
+}
+
+.resume-reference-section-heading {
+  top: 0;
+}
+
+.resume-reference-section-heading > span,
+.resume-reference-detail-heading > span {
+  width: 1.63cqw;
+  height: 1.63cqw;
+  border: 0.14cqw solid var(--resume-green);
+  border-radius: 50%;
+  color: transparent;
+  font-size: 0;
+}
+
+.resume-reference-section-heading h2,
+.resume-reference-detail-heading h2 {
+  color: var(--resume-green);
+  font-size: 1.6146cqw;
+  font-weight: 500;
+  letter-spacing: -0.09em;
+  line-height: 1.22;
+}
+
+.resume-reference-project-summary {
+  position: absolute;
+  top: 7.13cqh;
+  left: 0;
+  right: 0;
+  margin: 0 !important;
+  color: #171717;
+  font-size: 1.224cqw;
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 1.36;
+}
+
+.resume-reference-detail-heading {
+  top: 20.2cqh;
+}
+
+.resume-reference-detail-heading h2 {
+  font-size: 1.6146cqw;
+}
+
+.resume-reference-detail-grid {
+  position: absolute;
+  top: 31.0cqh;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 4.9cqw;
+  margin: 0;
+}
+
+.resume-reference-detail h3 {
+  color: #111;
+  font-size: 1.1979cqw;
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 1.22;
+  text-align: left;
+}
+
+.resume-reference-detail ul {
+  display: grid;
+  gap: 0.92cqh;
+  margin-top: 2.78cqh;
+  padding-left: 1.25cqw;
+  list-style: disc;
+}
+
+.resume-reference-detail li {
+  color: #181818;
+  font-size: 1.0677cqw;
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 1.28;
+}
+
+.resume-reference-detail li::marker {
+  color: #111;
+  font-size: 0.9em;
+}
+
+.resume-reference-education-grid {
+  position: absolute;
+  top: 17.4cqh;
+  right: 8.6cqw;
+  bottom: 0;
+  left: 6.65cqw;
+  display: grid;
+  grid-template-columns: 26.5cqw minmax(0, 1fr);
+  gap: 6.1cqw;
+  height: auto;
+  padding: 0;
+}
+
+.resume-reference-education-intro h1 {
+  color: var(--resume-blue);
+  font-size: 2.25cqw;
+  font-weight: 500;
+  letter-spacing: -0.105em;
+  line-height: 1.18;
+}
+
+.resume-reference-education-intro p {
+  max-width: 25cqw;
+  margin-top: 5.9cqh !important;
+  color: #666;
+  font-size: 1.28cqw;
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 1.55;
+}
+
+.resume-reference-education-intro h2 {
+  margin-top: 6.8cqh !important;
+  color: #111;
+  font-size: 1.42cqw;
+  font-weight: 500;
+  letter-spacing: -0.075em;
+}
+
+.resume-reference-education-intro ul {
+  display: grid;
+  gap: 2.5cqh;
+  margin-top: 4.1cqh;
+  padding-left: 1.45cqw;
+}
+
+.resume-reference-education-intro li {
+  color: #666;
+  font-size: 1.22cqw;
+  line-height: 1.3;
+}
+
+.resume-reference-education-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6.4cqh;
+  align-content: start;
+}
+
+.resume-reference-education-list > .resume-section-heading {
+  position: relative;
+  left: -1.98cqw;
+  grid-column: 1 / -1;
+  margin-bottom: 1.5cqh;
+}
+
+.resume-reference-education-list > .resume-section-heading h2 {
+  color: var(--resume-green);
+  font-size: 1.9cqw;
+}
+
+.resume-reference-education-item h3 {
+  color: #111;
+  font-size: 1.3cqw;
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 1.25;
+}
+
+.resume-reference-education-meta {
+  margin-top: 0.9cqh !important;
+  color: #6d6d6d;
+  font-size: 0.98cqw;
+  line-height: 1.3;
+}
+
+.resume-reference-education-accent {
+  margin-top: 2.8cqh !important;
+  color: var(--resume-blue);
+  font-size: 1.15cqw;
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 1.3;
+}
+
+.resume-reference-education-item ul {
+  display: grid;
+  gap: 1.15cqh;
+  margin-top: 1.75cqh;
+  padding-left: 1.2cqw;
+}
+
+.resume-reference-education-item li {
+  color: #171717;
+  font-size: 1.02cqw;
+  line-height: 1.32;
+}
+
+@media (max-width: 920px) {
+  .resume-page {
+    background: #fff;
+  }
+
+  .resume-book {
+    gap: 0;
+  }
+
+  .resume-sheet {
+    container-type: normal;
+    width: 100%;
+    aspect-ratio: auto;
+    min-height: 100svh;
+    padding: 28px 22px 48px;
+  }
+
+  .resume-reference-header,
+  .resume-reference-cover-intro,
+  .resume-reference-contact,
+  .resume-reference-timeline,
+  .resume-reference-project-grid,
+  .resume-reference-project-aside,
+  .resume-reference-project-body,
+  .resume-reference-section-heading,
+  .resume-reference-detail-heading,
+  .resume-reference-project-summary,
+  .resume-reference-detail-grid,
+  .resume-reference-education-grid,
+  .resume-reference-education-list > .resume-section-heading {
+    position: static;
+  }
+
+  .resume-reference-header {
+    gap: 16px;
+  }
+
+  .resume-reference-header h2 {
+    font-size: 1.45rem;
+  }
+
+  .resume-reference-header span {
+    height: 2px;
+  }
+
+  .resume-reference-cover-grid,
+  .resume-reference-project-grid,
+  .resume-reference-education-grid {
+    display: grid;
+    height: auto;
+    padding-top: 58px;
+  }
+
+  .resume-reference-cover-intro,
+  .resume-reference-project-aside,
+  .resume-reference-project-body {
+    width: auto;
+  }
+
+  .resume-reference-cover-intro h1,
+  .resume-reference-education-intro h1 {
+    font-size: 2.45rem;
+  }
+
+  .resume-reference-cover-intro .resume-role {
+    margin-top: 10px !important;
+    font-size: 1.15rem;
+  }
+
+  .resume-reference-contact {
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .resume-reference-contact div {
+    grid-template-columns: 26px 68px 1fr;
+    gap: 4px;
+  }
+
+  .resume-reference-contact dt,
+  .resume-reference-contact dd,
+  .resume-reference-contact dt[aria-hidden='true'] {
+    font-size: 0.9rem;
+  }
+
+  .resume-reference-timeline {
+    gap: 26px;
+    margin-top: 54px;
+  }
+
+  .resume-reference-timeline li {
+    grid-template-columns: 60px 1fr 2px minmax(0, 1.3fr);
+    column-gap: 12px;
+    min-height: 0;
+  }
+
+  .resume-reference-timeline-years time { font-size: 0.95rem; }
+  .resume-reference-timeline-middle strong { font-size: 0.86rem; }
+  .resume-reference-timeline-middle span,
+  .resume-reference-timeline-middle small,
+  .resume-reference-timeline-project time { font-size: 0.72rem; }
+  .resume-reference-timeline-project strong { font-size: 0.96rem; }
+  .resume-reference-timeline-rule { width: 2px; height: 72px; }
+
+  .resume-reference-project-grid {
+    padding-top: 56px;
+  }
+
+  .resume-reference-project-aside h1 { font-size: 2rem; }
+  .resume-reference-project-meta { gap: 15px; margin-top: 30px !important; }
+  .resume-reference-project-meta li,
+  .resume-reference-stack-title { font-size: 1rem; }
+  .resume-reference-stack { gap: 12px; margin-top: 22px !important; }
+  .resume-reference-stack li { font-size: 0.95rem; }
+  .resume-reference-project-body { margin-top: 52px; }
+  .resume-reference-section-heading,
+  .resume-reference-detail-heading { gap: 12px; }
+  .resume-reference-section-heading > span,
+  .resume-reference-detail-heading > span { width: 22px; height: 22px; border-width: 2px; }
+  .resume-reference-section-heading h2,
+  .resume-reference-detail-heading h2 { font-size: 1.45rem; }
+  .resume-reference-project-summary { margin-top: 24px !important; font-size: 1rem; line-height: 1.65; }
+  .resume-reference-detail-heading { margin-top: 42px; }
+  .resume-reference-detail-grid { grid-template-columns: 1fr; gap: 32px; margin-top: 34px; }
+  .resume-reference-detail h3 { font-size: 1rem; text-align: left; }
+  .resume-reference-detail ul { margin-top: 14px; padding-left: 20px; }
+  .resume-reference-detail li { font-size: 0.94rem; line-height: 1.58; }
+
+  .resume-reference-education-grid { grid-template-columns: 1fr; gap: 48px; padding-top: 56px; }
+  .resume-reference-education-intro p { max-width: none; margin-top: 28px !important; font-size: 1rem; }
+  .resume-reference-education-intro h2 { margin-top: 42px !important; font-size: 1.2rem; }
+  .resume-reference-education-intro ul { gap: 16px; margin-top: 20px; padding-left: 20px; }
+  .resume-reference-education-intro li { font-size: 0.95rem; }
+  .resume-reference-education-list { grid-template-columns: 1fr; gap: 32px; }
+  .resume-reference-education-list > .resume-section-heading { margin-bottom: 2px; }
+  .resume-reference-education-list > .resume-section-heading h2 { font-size: 1.45rem; }
+  .resume-reference-education-item h3 { font-size: 1.08rem; }
+  .resume-reference-education-meta { margin-top: 8px !important; font-size: 0.86rem; }
+  .resume-reference-education-accent { margin-top: 18px !important; font-size: 1rem; }
+  .resume-reference-education-item ul { margin-top: 14px; padding-left: 20px; }
+  .resume-reference-education-item li { font-size: 0.92rem; line-height: 1.52; }
+}
+
+@media print {
+  .resume-page { background: #fff; }
+  .resume-sheet { width: 16in; height: 9in; min-height: 0; padding: 0; }
+}
