@@ -1715,6 +1715,7 @@ nav a,
 
 .resume-reference-timeline-project time {
   color: #606060;
+  text-align: left;
 }
 
 .resume-reference-project-grid {

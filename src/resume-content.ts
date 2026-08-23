@@ -11,9 +11,11 @@ export const resumeData = {
     phone: '010-8803-2951',
     githubUrl: 'https://github.com/eastjin616',
     coreSkills: [
-      { label: 'AI 플랫폼', skills: 'React · Next.js · Python · FastAPI · PostgreSQL' },
-      { label: '업무 시스템', skills: 'Java · Spring · MyBatis · Oracle SQL' },
+      { label: '프론트엔드', skills: 'React · Next.js · TypeScript' },
+      { label: '백엔드', skills: 'Java · Spring · Python · FastAPI' },
+      { label: 'DB', skills: 'MyBatis · Oracle SQL · PostgreSQL' },
       { label: '시스템 운영', skills: 'Linux · Tomcat · 로그 분석 · DR 이중화' },
+      { label: 'AI 도구', skills: 'Codex · Claude · Alibaba · Gemini' },
     ],
   },
   timeline: [
