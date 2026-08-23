@@ -1303,7 +1303,7 @@ nav a,
   margin-top: clamp(13px, 1.7vw, 26px);
 }
 
-@media (max-width: 920px) {
+@media screen and (max-width: 920px) {
   .resume-page {
     padding: 12px 0 32px;
   }
@@ -2114,7 +2114,7 @@ nav a,
   line-height: 1.32;
 }
 
-@media (max-width: 920px) {
+@media screen and (max-width: 920px) {
   .resume-page {
     background: #fff;
   }
