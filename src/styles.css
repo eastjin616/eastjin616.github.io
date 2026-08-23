@@ -1546,16 +1546,79 @@ nav a,
   color: var(--resume-ink);
   font-size: 1.1979cqw;
   font-weight: 400;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
   line-height: 1.22;
 }
 
-.resume-reference-contact dt[aria-hidden='true'] {
-  color: #191919;
-  font-family: 'Apple Symbols', AppleGothic, sans-serif;
-  font-size: 1.16cqw;
-  line-height: 1;
-  text-align: center;
+.resume-contact-icon {
+  position: relative;
+  justify-self: center;
+  display: block;
+  width: 1.2cqw;
+  height: 1.2cqw;
+  border: 0.1cqw solid #171717;
+}
+
+.resume-contact-icon--calendar::before {
+  position: absolute;
+  top: 0.27cqw;
+  right: -0.1cqw;
+  left: -0.1cqw;
+  height: 0.1cqw;
+  content: '';
+  background: #171717;
+}
+
+.resume-contact-icon--mail {
+  height: 0.82cqw;
+}
+
+.resume-contact-icon--mail::before,
+.resume-contact-icon--mail::after {
+  position: absolute;
+  top: 0.15cqw;
+  width: 0.68cqw;
+  height: 0.1cqw;
+  content: '';
+  background: #171717;
+}
+
+.resume-contact-icon--mail::before {
+  left: -0.02cqw;
+  transform: rotate(34deg);
+  transform-origin: left center;
+}
+
+.resume-contact-icon--mail::after {
+  right: -0.02cqw;
+  transform: rotate(-34deg);
+  transform-origin: right center;
+}
+
+.resume-contact-icon--phone,
+.resume-contact-icon--github {
+  border-radius: 50%;
+}
+
+.resume-contact-icon--phone::after {
+  position: absolute;
+  top: 0.51cqw;
+  left: -0.11cqw;
+  width: 1.27cqw;
+  height: 0.1cqw;
+  content: '';
+  background: #171717;
+  transform: rotate(45deg);
+}
+
+.resume-contact-icon--github::after {
+  position: absolute;
+  top: 0.5cqw;
+  right: 0.16cqw;
+  left: 0.16cqw;
+  height: 0.1cqw;
+  content: '';
+  background: #171717;
 }
 
 .resume-reference-contact dd a {

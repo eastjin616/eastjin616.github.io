@@ -13,10 +13,10 @@ function Cover() {
         <h1 id="resume-cover-title">{resumeData.profile.name}</h1>
         <p className="resume-role">{resumeData.profile.role}</p>
         <dl className="resume-contact resume-reference-contact">
-          <div><dt aria-hidden="true">▣</dt><dt>Birth</dt><dd>{resumeData.profile.birth}</dd></div>
-          <div><dt aria-hidden="true">✉</dt><dt>Email</dt><dd><a href={`mailto:${resumeData.profile.email}`}>{resumeData.profile.email}</a></dd></div>
-          <div><dt aria-hidden="true">◯</dt><dt>Phone</dt><dd>{resumeData.profile.phone}</dd></div>
-          <div><dt aria-hidden="true">⊖</dt><dt>Github</dt><dd><a href={resumeData.profile.githubUrl}>Profile</a></dd></div>
+          <div><span className="resume-contact-icon resume-contact-icon--calendar" aria-hidden="true" /><dt>Birth</dt><dd>{resumeData.profile.birth}</dd></div>
+          <div><span className="resume-contact-icon resume-contact-icon--mail" aria-hidden="true" /><dt>Email</dt><dd><a href={`mailto:${resumeData.profile.email}`}>{resumeData.profile.email}</a></dd></div>
+          <div><span className="resume-contact-icon resume-contact-icon--phone" aria-hidden="true" /><dt>Phone</dt><dd>{resumeData.profile.phone}</dd></div>
+          <div><span className="resume-contact-icon resume-contact-icon--github" aria-hidden="true" /><dt>Github</dt><dd><a href={resumeData.profile.githubUrl}>Profile</a></dd></div>
         </dl>
       </div>
       <ol className="resume-timeline resume-reference-timeline">
