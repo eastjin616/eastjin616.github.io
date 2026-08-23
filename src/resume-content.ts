@@ -13,7 +13,7 @@ export const resumeData = {
     coreSkills: [
       { label: '프론트엔드', skills: 'React · Next.js · TypeScript' },
       { label: '백엔드', skills: 'Java · Spring · Python · FastAPI' },
-      { label: 'DB', skills: 'MyBatis · Oracle SQL · PostgreSQL' },
+      { label: 'DB', skills: 'MySQL · Oracle SQL · PostgreSQL' },
       { label: '시스템 운영', skills: 'Linux · Tomcat · 로그 분석 · DR 이중화' },
       { label: 'AI 도구', skills: 'Codex · Claude · Alibaba · Gemini' },
     ],
