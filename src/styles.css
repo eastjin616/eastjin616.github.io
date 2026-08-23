@@ -1564,6 +1564,54 @@ nav a,
   text-underline-offset: 0.1em;
 }
 
+.resume-core-skills {
+  position: absolute;
+  top: 33.5cqh;
+  left: 0;
+  width: 43cqw;
+}
+
+.resume-core-skills h2 {
+  margin: 0;
+  color: #111;
+  font-size: 1.5cqw;
+  font-weight: 600;
+  letter-spacing: -0.075em;
+  line-height: 1.2;
+}
+
+.resume-core-skills dl {
+  display: grid;
+  gap: 1.6cqh;
+  margin: 3.3cqh 0 0;
+}
+
+.resume-core-skills dl > div {
+  display: grid;
+  grid-template-columns: 8.55cqw 1fr;
+  align-items: baseline;
+}
+
+.resume-core-skills dt,
+.resume-core-skills dd {
+  margin: 0;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.resume-core-skills dt {
+  color: #005da5;
+  font-size: 1.18cqw;
+  font-weight: 600;
+}
+
+.resume-core-skills dd {
+  color: #666;
+  font-size: 1.08cqw;
+  font-weight: 400;
+}
+
 .resume-reference-timeline {
   position: absolute;
   top: 16.83cqh;
@@ -1733,6 +1781,11 @@ nav a,
   font-weight: 400;
   letter-spacing: -0.065em;
   line-height: 1.22;
+}
+
+.resume-reference-stack li {
+  display: flex;
+  gap: 0.85cqw;
 }
 
 .resume-reference-project-body {
@@ -1967,6 +2020,7 @@ nav a,
   .resume-reference-header,
   .resume-reference-cover-intro,
   .resume-reference-contact,
+  .resume-core-skills,
   .resume-reference-timeline,
   .resume-reference-project-grid,
   .resume-reference-project-aside,
@@ -2031,6 +2085,17 @@ nav a,
   .resume-reference-contact dt[aria-hidden='true'] {
     font-size: 0.9rem;
   }
+
+  .resume-core-skills {
+    width: auto;
+    margin-top: 52px;
+  }
+
+  .resume-core-skills h2 { font-size: 1.2rem; }
+  .resume-core-skills dl { gap: 13px; margin-top: 24px; }
+  .resume-core-skills dl > div { grid-template-columns: 100px 1fr; }
+  .resume-core-skills dt { font-size: 0.95rem; }
+  .resume-core-skills dd { font-size: 0.9rem; white-space: normal; }
 
   .resume-reference-timeline {
     gap: 26px;

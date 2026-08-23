@@ -3,7 +3,19 @@ export type ResumeProject = { slug: string; title: string; company: string; peri
 export type ResumeEducation = { title: string; organization: string; period: string; detail: string; accent: string; bullets: string[] }
 
 export const resumeData = {
-  profile: { name: '서동진', role: 'AI 플랫폼 · 시스템 운영 개발자', birth: '1998.06.16', email: 'djseo9812@naver.com', phone: '010-8803-2951', githubUrl: 'https://github.com/eastjin616' },
+  profile: {
+    name: '서동진',
+    role: 'AI 플랫폼 · 시스템 운영 개발자',
+    birth: '1998.06.16',
+    email: 'djseo9812@naver.com',
+    phone: '010-8803-2951',
+    githubUrl: 'https://github.com/eastjin616',
+    coreSkills: [
+      { label: 'AI 플랫폼', skills: 'React · Next.js · Python · FastAPI · PostgreSQL' },
+      { label: '업무 시스템', skills: 'Java · Spring · MyBatis · Oracle SQL' },
+      { label: '시스템 운영', skills: 'Linux · Tomcat · 로그 분석 · DR 이중화' },
+    ],
+  },
   timeline: [
     { startYear: '2026', endYear: '현재', role: '시스템 개발·운영', company: '효성ITX', period: '2026.05 - 현재', title: '삼성화재 IPCC 콜센터 인프라 운영 및 개발' },
     { startYear: '2026', endYear: '2026', role: 'CLI 설계·개발', company: '이트리즈시스템', period: '2026.01 - 2026.05', title: 'KT DS DEV.AI CODE CLI 개발' },
