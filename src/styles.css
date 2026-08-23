@@ -1443,9 +1443,9 @@ nav a,
 
 /* Source-PDF coordinate system: 1920 × 1080 (AppleGothic). */
 .resume-page {
-  --resume-green: #008000;
+  --resume-green: #005da5;
   --resume-blue: #005da5;
-  --resume-olive: #9aaa80;
+  --resume-olive: #8ba5bf;
   --resume-ink: #111;
   padding: 0;
   background: #e7eaed;
@@ -1824,6 +1824,7 @@ nav a,
   height: 1.63cqw;
   border: 0.14cqw solid var(--resume-green);
   border-radius: 50%;
+  background: transparent;
   color: transparent;
   font-size: 0;
 }
