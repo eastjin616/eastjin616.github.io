@@ -1,6 +1,7 @@
 export type ResumeDetailSection = { title: string; bullets: string[] }
 export type ResumeProject = { slug: string; title: string; company: string; period: string; role: string; stack: string[]; summary: string; sections: [ResumeDetailSection, ResumeDetailSection] }
 export type ResumeEducation = { title: string; organization: string; period: string; detail: string; accent: string; bullets: string[] }
+export type ResumePriorExperience = { company: string; period: string; title: string; bullets: [string, string] }
 
 export const resumeData = {
   profile: {
@@ -30,6 +31,10 @@ export const resumeData = {
     { slug: 'devai-platform', title: 'KT DS DEV.AI\n플랫폼 개발', company: '이트리즈시스템', period: '2025.08 - 2025.12', role: '웹·API 개발', stack: ['React / Next.js / TypeScript', 'Python / FastAPI / PostgreSQL'], summary: 'KT DS 개발자의 설계와 코드 분석 업무를 지원하는 AI 코드 어시스턴트 플랫폼 고도화 프로젝트입니다. 프론트엔드부터 AI API 연동, 결과 확인 흐름까지 사용자 관점에서 기능을 개발했습니다.', sections: [{ title: '[웹 UI와 AI API 기반 서비스 개발]', bullets: ['React · Next.js 기반 웹 UI 개발 및 기능별 컴포넌트 구조 개선', 'Python · FastAPI 기반 AI API 구현과 프론트엔드 연동', 'SW 설계 · 코드 분석 에이전트의 실행 및 결과 확인 흐름 개발'] }, { title: '[코드 분석 이력 화면과 검증 흐름 개선]', bullets: ['코드 분석 이력 화면에 무한 스크롤 적용', '초기 로딩 시 필요한 데이터만 우선 조회하도록 화면 흐름 조정', '초기 진입 속도 약 40% 개선 및 반복 확인이 필요한 API 테스트 자동화 구축'] }] },
     { slug: 'badukland', title: '한국기원 바둑랜드\n프로젝트', company: '우나무', period: '2024.05 - 2024.11', role: '웹 서비스 개발', stack: ['Java / Spring / MyBatis / Oracle', 'JSP / JavaScript / Jenkins / AWS'], summary: '한국기원 공식 바둑 콘텐츠 플랫폼 구축 프로젝트입니다. 바둑 입문자와 교육 수강자를 위한 콘텐츠 화면을 개발하고, 운영에 필요한 공지사항 관리자 기능을 구현했습니다.', sections: [{ title: '[콘텐츠 페이지 및 관리자 기능 개발]', bullets: ['바둑 입문 가이드와 교육 콘텐츠의 하위 메뉴 구조 및 화면 개발', '공지사항 등록 · 수정 · 삭제 · 조회가 가능한 관리자 CRUD 기능 구현', 'Java · Spring · MyBatis 기반 기능 개발 및 Oracle 데이터 처리 로직 작성'] }, { title: '[서비스 운영 흐름 경험]', bullets: ['Jenkins 기반 배포 흐름과 AWS EC2 · RDS 운영 환경 경험', '화면, 백엔드, 데이터베이스가 연결되는 웹 서비스 흐름을 직접 구현'] }] },
   ] satisfies ResumeProject[],
+  priorExperience: [
+    { company: 'SK hynix', period: '2022.11 - 2024.02', title: '반도체 Diffusion 공정 운영 및 데이터 모니터링', bullets: ['반도체 Diffusion 공정 운영 및 데이터 모니터링 수행', '이상 징후 발생 시 원인 파악 및 유관 부서 협업 대응'] },
+    { company: 'LG Display', period: '2021.07 - 2022.10', title: 'CDA 설비 운전 및 유지보수', bullets: ['CDA 설비 운전 및 유지보수 수행', '이상 발생 시 원인 파악과 신속 대응으로 제조라인 무정지 운영 지원'] },
+  ] satisfies ResumePriorExperience[],
   educationIntro: { summary: '백엔드와 AI 서비스 개발에 필요한 기술을 실습하며 익혔습니다.', learningFields: ['Python · FastAPI · LLM API', 'React · 웹 서비스 개발', 'Java · Spring · MyBatis', 'Oracle SQL · 데이터베이스 설계'] },
   education: [
     { title: 'AI 서비스 엔지니어링 트랙', organization: '팀스파르타', period: '2025.12 ~ 2026.03 · 200시간', detail: 'AI API와 문서 기반 서비스 구현 역량 강화', accent: '주요 교육 과정', bullets: ['Python·Streamlit 기반 데이터 처리와 대시보드 구현 실습', 'OCR·LLM·ChatGPT API를 활용한 AI 서비스 구성 경험', 'LangChain·RAG를 활용한 문서 기반 질의응답 흐름 학습'] },

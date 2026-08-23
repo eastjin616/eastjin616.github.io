@@ -1904,6 +1904,108 @@ nav a,
   font-size: 0.9em;
 }
 
+.resume-reference-prior-experience-grid {
+  position: absolute;
+  top: 19.1cqh;
+  right: 8.6cqw;
+  bottom: 11cqh;
+  left: 6.65cqw;
+  display: grid;
+  grid-template-columns: 26.5cqw minmax(0, 1fr);
+  gap: 6.1cqw;
+}
+
+.resume-reference-prior-experience-intro h1 {
+  color: var(--resume-blue);
+  font-size: 2.25cqw;
+  font-weight: 500;
+  letter-spacing: -0.105em;
+  line-height: 1.18;
+}
+
+.resume-reference-prior-experience-intro p {
+  max-width: 24cqw;
+  margin-top: 5.9cqh;
+  color: #666;
+  font-size: 1.28cqw;
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 1.55;
+}
+
+.resume-reference-prior-experience-list {
+  display: grid;
+  gap: 7.3cqh;
+  align-content: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-reference-prior-experience-list > li {
+  display: grid;
+  grid-template-columns: 12.7cqw 0.2cqw minmax(0, 1fr);
+  column-gap: 2.1cqw;
+  align-items: stretch;
+  min-height: 17.3cqh;
+}
+
+.resume-reference-prior-experience-list > li > time {
+  padding-top: 0.25cqh;
+  color: #727272;
+  font-size: 1.02cqw;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+}
+
+.resume-reference-prior-experience-rule {
+  width: 0.2cqw;
+  min-width: 2px;
+  background: var(--resume-olive);
+}
+
+.resume-reference-prior-experience-list article {
+  padding-bottom: 0.8cqh;
+}
+
+.resume-reference-prior-experience-list h2 {
+  color: var(--resume-blue);
+  font-size: 1.72cqw;
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 1.2;
+}
+
+.resume-reference-prior-experience-list h3 {
+  margin-top: 1.35cqh;
+  color: #171717;
+  font-size: 1.2cqw;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.35;
+}
+
+.resume-reference-prior-experience-list ul {
+  display: grid;
+  gap: 1.2cqh;
+  margin-top: 2.35cqh;
+  padding-left: 1.25cqw;
+  list-style: disc;
+}
+
+.resume-reference-prior-experience-list ul li {
+  color: #222;
+  font-size: 1.04cqw;
+  letter-spacing: -0.035em;
+  line-height: 1.45;
+}
+
+.resume-reference-prior-experience-list ul li::marker {
+  color: #111;
+  font-size: 0.9em;
+}
+
 .resume-reference-education-grid {
   position: absolute;
   top: 17.4cqh;
@@ -2041,6 +2143,7 @@ nav a,
   .resume-reference-detail-heading,
   .resume-reference-project-summary,
   .resume-reference-detail-grid,
+  .resume-reference-prior-experience-grid,
   .resume-reference-education-grid,
   .resume-reference-education-list > .resume-section-heading {
     position: static;
@@ -2060,6 +2163,7 @@ nav a,
 
   .resume-reference-cover-grid,
   .resume-reference-project-grid,
+  .resume-reference-prior-experience-grid,
   .resume-reference-education-grid {
     display: grid;
     height: auto;
@@ -2153,6 +2257,17 @@ nav a,
   .resume-reference-detail li { font-size: 0.94rem; line-height: 1.58; }
 
   .resume-reference-education-grid { grid-template-columns: 1fr; gap: 48px; padding-top: 56px; }
+  .resume-reference-prior-experience-grid { grid-template-columns: 1fr; gap: 48px; padding-top: 56px; }
+  .resume-reference-prior-experience-intro h1 { font-size: 2.45rem; }
+  .resume-reference-prior-experience-intro p { max-width: none; margin-top: 28px; font-size: 1rem; }
+  .resume-reference-prior-experience-list { gap: 34px; }
+  .resume-reference-prior-experience-list > li { grid-template-columns: 88px 2px minmax(0, 1fr); column-gap: 16px; min-height: 0; }
+  .resume-reference-prior-experience-list > li > time { padding-top: 1px; font-size: 0.82rem; }
+  .resume-reference-prior-experience-rule { width: 2px; min-width: 2px; }
+  .resume-reference-prior-experience-list h2 { font-size: 1.2rem; }
+  .resume-reference-prior-experience-list h3 { margin-top: 10px; font-size: 1rem; }
+  .resume-reference-prior-experience-list ul { gap: 10px; margin-top: 16px; padding-left: 20px; }
+  .resume-reference-prior-experience-list ul li { font-size: 0.92rem; line-height: 1.55; }
   .resume-reference-education-intro p { max-width: none; margin-top: 28px !important; font-size: 1rem; }
   .resume-reference-education-intro h2 { margin-top: 42px !important; font-size: 1.2rem; }
   .resume-reference-education-intro ul { gap: 16px; margin-top: 20px; padding-left: 20px; }

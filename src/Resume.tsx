@@ -1,4 +1,4 @@
-import { resumeData, type ResumeEducation, type ResumeProject } from './resume-content'
+import { resumeData, type ResumeEducation, type ResumePriorExperience, type ResumeProject } from './resume-content'
 import { useEffect } from 'react'
 
 function Header({ title = '경력 기술서' }: { title?: string }) {
@@ -88,6 +88,33 @@ function ProjectPage({ project }: { project: ResumeProject }) {
   </section>
 }
 
+function PriorExperiencePage() {
+  return <section id="resume-prior-experience" className="resume-sheet resume-prior-experience resume-reference-prior-experience" aria-labelledby="resume-prior-experience-title">
+    <Header title="이전 경력" />
+    <div className="resume-prior-experience-grid resume-reference-prior-experience-grid">
+      <aside className="resume-prior-experience-intro resume-reference-prior-experience-intro">
+        <h1 id="resume-prior-experience-title">이전 경력</h1>
+        <p>제조 현장의 공정·설비 운영과 데이터 모니터링 경험을 통해 안정적인 운영의 기준을 익혔습니다.</p>
+      </aside>
+      <ol className="resume-prior-experience-list resume-reference-prior-experience-list">
+        {resumeData.priorExperience.map((experience) => <PriorExperienceItem key={experience.company} item={experience} />)}
+      </ol>
+    </div>
+  </section>
+}
+
+function PriorExperienceItem({ item }: { item: ResumePriorExperience }) {
+  return <li>
+    <time>{item.period}</time>
+    <span className="resume-reference-prior-experience-rule" aria-hidden="true" />
+    <article>
+      <h2>{item.company}</h2>
+      <h3>{item.title}</h3>
+      <ul>{item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+    </article>
+  </li>
+}
+
 function EducationPage() {
   return <section id="resume-education" className="resume-sheet resume-education resume-reference-education" aria-labelledby="resume-education-title">
     <Header title="교육 이력" />
@@ -111,5 +138,5 @@ export default function Resume() {
     requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView({ block: 'start' }))
   }, [])
 
-  return <main className="resume-page"><nav className="resume-toolbar" aria-label="이력서 도구"><a href="/">Portfolio</a><button type="button" onClick={() => window.print()}>인쇄 / PDF 저장</button></nav><div className="resume-book"><Cover />{resumeData.projects.map((project) => <ProjectPage key={project.slug} project={project} />)}<EducationPage /></div></main>
+  return <main className="resume-page"><nav className="resume-toolbar" aria-label="이력서 도구"><a href="/">Portfolio</a><button type="button" onClick={() => window.print()}>인쇄 / PDF 저장</button></nav><div className="resume-book"><Cover /><PriorExperiencePage />{resumeData.projects.map((project) => <ProjectPage key={project.slug} project={project} />)}<EducationPage /></div></main>
 }
