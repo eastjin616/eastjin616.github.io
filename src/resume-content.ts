@@ -20,10 +20,10 @@ export const resumeData = {
     ],
   },
   timeline: [
-    { startYear: '2026', endYear: '현재', role: '시스템 개발·운영', company: '효성ITX', period: '2026.05 - 현재', title: '삼성화재 IPCC 콜센터 인프라 운영 및 개발' },
-    { startYear: '2026', endYear: '2026', role: 'CLI 설계·개발', company: '이트리즈시스템', period: '2026.01 - 2026.05', title: 'KT DS DEV.AI CODE CLI 개발' },
-    { startYear: '2025', endYear: '2025', role: '웹·API 개발', company: '이트리즈시스템', period: '2025.08 - 2025.12', title: 'KT DS DEV.AI 플랫폼 개발' },
-    { startYear: '2024', endYear: '2024', role: '웹 서비스 개발', company: '우나무', period: '2024.05 - 2024.11', title: '한국기원 바둑랜드 프로젝트' },
+    { role: '시스템 개발·운영', company: '효성ITX', period: '2026.05 - 현재', title: '삼성화재 IPCC 콜센터 인프라 운영 및 개발' },
+    { role: 'CLI 설계·개발', company: '이트리즈시스템', period: '2026.01 - 2026.05', title: 'KT DS DEV.AI CODE CLI 개발' },
+    { role: '웹·API 개발', company: '이트리즈시스템', period: '2025.08 - 2025.12', title: 'KT DS DEV.AI 플랫폼 개발' },
+    { role: '웹 서비스 개발', company: '우나무', period: '2024.05 - 2024.11', title: '한국기원 바둑랜드 프로젝트' },
   ],
   projects: [
     { slug: 'samsung-ipcc', title: '삼성화재 IPCC 콜센터\n인프라 운영 및 개발', company: '효성ITX', period: '2026.05 - 현재', role: '시스템 개발·운영', stack: ['Linux / Node.js / Java / Spring', 'Tomcat'], summary: '삼성화재 IPCC 콜센터의 IVR와 ADNS 시스템을 개발·운영하고 있습니다. 콜 라우팅과 음성 응답 흐름, DNS 기반 서비스 연계를 관리하며 장애 발생 시 로그와 처리 데이터를 바탕으로 원인을 분석하고 대응합니다.', sections: [{ title: '[IVR · ADNS 시스템 운영 및 유지보수]', bullets: ['IVR 콜 시스템과 ADNS 서버 개발 · 운영 · 유지보수', '콜 라우팅, 음성 응답 흐름, DNS 기반 서비스 연계 관리', 'Linux · Tomcat 환경의 프로그램 반영, 재기동, 오류 확인 절차 수행'] }, { title: '[DR 이중화 환경 및 장애 대응]', bullets: ['상암-춘천 DR 이중화 환경과 장애 시 절체 체계 운영', '로그 · 모니터링 데이터 기반 장애 원인 분석', '유관부서 협업을 통한 장애 조치 및 결과 확인'] }] },

@@ -56,7 +56,6 @@ function Cover() {
       </div>
       <ol className="resume-timeline resume-reference-timeline">
         {resumeData.timeline.map((item) => <li key={`${item.period}-${item.title}`}>
-          <div className="resume-reference-timeline-years" aria-label={`${item.startYear}부터 ${item.endYear}`}><time>{item.startYear}</time><span aria-hidden="true" /><time>{item.endYear}</time></div>
           <div className="resume-reference-timeline-middle"><strong>{item.role}</strong><span>{item.company}</span></div>
           <div className="resume-reference-timeline-rule" aria-hidden="true" />
           <div className="resume-reference-timeline-project"><strong>{item.title}</strong><time>{item.period}</time></div>

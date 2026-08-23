@@ -1616,7 +1616,7 @@ nav a,
   position: absolute;
   top: 16.83cqh;
   right: 8.12cqw;
-  left: 38.44cqw;
+  left: 48.35cqw;
   display: grid;
   gap: 6.93cqh;
   list-style: none;
@@ -1624,7 +1624,7 @@ nav a,
 
 .resume-reference-timeline li {
   display: grid;
-  grid-template-columns: 10.3cqw 8.3cqw 0.2cqw minmax(0, 1fr);
+  grid-template-columns: 10.3cqw 0.2cqw minmax(0, 1fr);
   column-gap: 1.1cqw;
   align-items: center;
   min-height: 11.4cqh;
@@ -1638,34 +1638,6 @@ nav a,
 .resume-reference-timeline li > div {
   min-width: 0;
   padding-left: 0;
-}
-
-.resume-reference-timeline-years {
-  display: grid;
-  justify-items: start;
-  align-content: center;
-  gap: 1.2cqh;
-}
-
-.resume-reference-timeline-years time {
-  color: #aaa;
-  font-size: 1.3021cqw;
-  font-weight: 300;
-  font-style: italic;
-  font-synthesis: style;
-  line-height: 1.16;
-}
-
-.resume-reference-timeline-years time:last-child {
-  transform: translateX(0.5cqw);
-}
-
-.resume-reference-timeline-years span {
-  display: block;
-  width: 0.1cqw;
-  height: 2.68cqh;
-  margin-left: 1.75cqw;
-  background: #aaa;
 }
 
 .resume-reference-timeline-middle {
@@ -2219,12 +2191,11 @@ nav a,
   }
 
   .resume-reference-timeline li {
-    grid-template-columns: 60px 1fr 2px minmax(0, 1.3fr);
+    grid-template-columns: minmax(0, 0.8fr) 2px minmax(0, 1.3fr);
     column-gap: 12px;
     min-height: 0;
   }
 
-  .resume-reference-timeline-years time { font-size: 0.95rem; }
   .resume-reference-timeline-middle strong { font-size: 0.86rem; }
   .resume-reference-timeline-middle span,
   .resume-reference-timeline-middle small,
