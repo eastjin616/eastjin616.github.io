@@ -24,6 +24,9 @@ export function validateContent(content) {
         errors.push(`Project ${index + 1} is missing ${field}.`)
       }
     })
+    if (!['work', 'project'].includes(project.category)) {
+      errors.push(`Project ${index + 1} must have a work or project category.`)
+    }
     if (!Array.isArray(project.stack) || project.stack.length === 0) {
       errors.push(`Project ${index + 1} is missing stack.`)
     }
@@ -36,6 +39,14 @@ export function validateContent(content) {
       )
     ) {
       errors.push(`Project ${index + 1} must contain one to three highlights.`)
+    }
+    if (
+      !project.visual ||
+      !['image', 'logo'].includes(project.visual.kind) ||
+      typeof project.visual.src !== 'string' ||
+      !project.visual.src.startsWith('/project-art/')
+    ) {
+      errors.push(`Project ${index + 1} must contain a local project visual.`)
     }
     if (!Array.isArray(project.blocks) || project.blocks.length === 0) {
       errors.push(`Project ${index + 1} is missing blocks.`)

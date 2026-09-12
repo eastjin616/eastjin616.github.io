@@ -1,8 +1,9 @@
 import content from './content.json'
-import { getProjectSlug } from './project-route'
+import Resume from './Resume'
+import { getProjectSlug, isResumeView } from './project-route'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 
-const { profile, links, featuredProjects, experience, training, nowBuilding } = content
+const { profile, links, featuredProjects, experience, training, education, nowBuilding } = content
 type Project = (typeof featuredProjects)[number]
 type NowItem = { name: string; status: string; tagline?: string }
 
@@ -14,8 +15,48 @@ export default function App() {
     window.location.search,
     featuredProjects.map((project) => project.slug),
   )
+  const resumeView = isResumeView(window.location.search)
   const project = featuredProjects.find((item) => item.slug === projectSlug)
   const orderedProjects = featuredProjects.slice().sort((a, b) => a.order - b.order)
+  const workProjects = orderedProjects.filter((item) => item.category === 'work')
+  const personalProjects = orderedProjects.filter((item) => item.category === 'project')
+
+  const renderProjectList = (projects: Project[]) => (
+    <ol className="work-list">
+      {projects.map((project) => (
+        <li key={project.slug}>
+          <article className="work-item">
+            {project.category === 'work' && (
+              <div
+                className={`project-visual project-visual--${project.visual.kind} project-visual--${project.slug}`}
+                aria-hidden="true"
+              >
+                <img src={project.visual.src} alt="" loading="lazy" decoding="async" />
+              </div>
+            )}
+            <h2>
+              <a href={`?project=${project.slug}`}>{project.title}</a>
+            </h2>
+            <time>{project.period}</time>
+            <p className="muted">{project.status}</p>
+            <p className="project-evidence">{project.highlights.join(' · ')}</p>
+            <p className="project__links">
+              <a href={`?project=${project.slug}`}>case</a>
+              {project.links.map((link) => (
+                <PortfolioLink key={link.href} href={link.href}>
+                  {link.label}
+                </PortfolioLink>
+              ))}
+            </p>
+          </article>
+        </li>
+      ))}
+    </ol>
+  )
+
+  if (resumeView) {
+    return <Resume />
+  }
 
   if (project) {
     return <ProjectDetail project={project} />
@@ -44,51 +85,34 @@ export default function App() {
         <p className="stack">{profile.aiTools.join(' / ')}</p>
         <p className="link-row">
           {links.github && <PortfolioLink href={links.github}>GitHub</PortfolioLink>}
-          {links.resume && <PortfolioLink href={links.resume}>Resume</PortfolioLink>}
+          <a href="?resume=1">Resume</a>
           {links.career && <PortfolioLink href={links.career}>Career</PortfolioLink>}
           {links.email && <PortfolioLink href={links.email}>Email</PortfolioLink>}
         </p>
       </aside>
 
       <main className="work">
-        <WorkSection title="Project">
-          <ol className="work-list">
-            {orderedProjects.map((project) => (
-              <li key={project.slug}>
-                <article className="work-item">
-                  <h2>
-                    <a href={`?project=${project.slug}`}>{project.title}</a>
-                  </h2>
-                  <time>{project.period}</time>
-                  <p className="muted">{project.status}</p>
-                  <p className="project-evidence">{project.highlights.join(' · ')}</p>
-                  <p className="project__links">
-                    <a href={`?project=${project.slug}`}>case</a>
-                    {project.links.map((link) => (
-                      <PortfolioLink key={link.href} href={link.href}>
-                        {link.label}
-                      </PortfolioLink>
-                    ))}
-                  </p>
-                </article>
-              </li>
-            ))}
-          </ol>
-        </WorkSection>
+        <WorkSection title="Work">{renderProjectList(workProjects)}</WorkSection>
 
-        <WorkSection title="Now Building">
-          <ol className="quiet-list">
-            {nowBuilding.map((item: NowItem) => (
-              <li key={item.name}>
-                <span className="nb-main">
-                  <strong>{item.name}</strong>
-                  {item.tagline && <span className="nb-tagline">{item.tagline}</span>}
-                </span>
-                <span className="nb-status">{item.status}</span>
-              </li>
-            ))}
-          </ol>
-        </WorkSection>
+        {personalProjects.length > 0 && (
+          <WorkSection title="Project">{renderProjectList(personalProjects)}</WorkSection>
+        )}
+
+        {nowBuilding.length > 0 && (
+          <WorkSection title="Now Building">
+            <ol className="quiet-list">
+              {nowBuilding.map((item: NowItem) => (
+                <li key={item.name}>
+                  <span className="nb-main">
+                    <strong>{item.name}</strong>
+                    {item.tagline && <span className="nb-tagline">{item.tagline}</span>}
+                  </span>
+                  <span className="nb-status">{item.status}</span>
+                </li>
+              ))}
+            </ol>
+          </WorkSection>
+        )}
 
         <WorkSection title="Experience">
           <ol className="timeline">
@@ -141,6 +165,20 @@ export default function App() {
                   </span>
                   <time>{item.period}</time>
                 </button>
+              </li>
+            ))}
+          </ol>
+        </WorkSection>
+
+        <WorkSection title="Education">
+          <ol className="timeline education-list">
+            {education.map((item) => (
+              <li key={`${item.name}-${item.period}`}>
+                <span className="nb-main">
+                  <strong>{item.name}</strong>
+                  <span className="nb-tagline">{item.summary}</span>
+                </span>
+                <time>{item.period}</time>
               </li>
             ))}
           </ol>
@@ -362,23 +400,6 @@ function PortfolioLink({ href, children }: { href: string; children: ReactNode }
 }
 
 function ProjectDiagram({ slug }: { slug: string }) {
-  if (slug === 'plainpaper') {
-    return (
-      <div className="case-diagram" aria-label="Plainpaper 문서 분석 흐름 개략">
-        <div className="flow-row">
-          <span className="flow-node">문서 업로드</span>
-          <span className="flow-arrow" aria-hidden="true">→</span>
-          <span className="flow-node">Chunk·Context 유지</span>
-          <span className="flow-arrow" aria-hidden="true">→</span>
-          <span className="flow-node">FastAPI·OpenAI</span>
-          <span className="flow-arrow" aria-hidden="true">→</span>
-          <span className="flow-node">요약·핵심·주의</span>
-        </div>
-        <p className="flow-note">실패 시 재시도·fallback 처리</p>
-      </div>
-    )
-  }
-
   if (slug === 'badukland') {
     return (
       <div className="case-diagram" aria-label="Badukland 요청 흐름 개략">
@@ -447,15 +468,12 @@ function ProjectDetail({ project }: { project: Project }) {
         </a>
         <nav aria-label="Project navigation">
           <a href="/">Projects</a>
-          {links.resume && <a href={links.resume}>Resume</a>}
+          <a href="?resume=1">Resume</a>
         </nav>
       </header>
 
       <main>
         <article className="case">
-          <p className="case-index" aria-hidden="true">
-            {project.index}
-          </p>
           <h1>{project.title}</h1>
           <p className="case-meta">
             <span>{project.role}</span>
