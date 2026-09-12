@@ -5,8 +5,21 @@
     "description": "Java/Spring 웹 서비스부터 Go CLI, AI 개발 도구, 운영 시스템까지 직접 만들고 운영합니다.",
     "location": "South Korea",
     "avatar": "https://github.com/eastjin616.png",
-    "skills": ["Java", "Spring", "Go", "React", "TypeScript", "Python", "CLI", "Operations"],
-    "aiTools": ["Claude", "Codex", "Gemini"]
+    "skills": [
+      "Java",
+      "Spring",
+      "Go",
+      "React",
+      "TypeScript",
+      "Python",
+      "CLI",
+      "Operations"
+    ],
+    "aiTools": [
+      "Claude",
+      "Codex",
+      "Gemini"
+    ]
   },
   "links": {
     "email": "mailto:djseo98@naver.com",
@@ -23,10 +36,27 @@
       "period": "2024",
       "status": "Live service",
       "role": "Java/Spring 웹 서비스 개발",
-      "stack": ["Java", "Spring", "MyBatis", "JavaScript"],
-      "highlights": ["교육 콘텐츠 화면", "공지 관리자 CRUD", "MyBatis 연동"],
-      "visual": { "kind": "image", "src": "/project-art/badukland.png" },
-      "links": [{ "label": "site", "href": "https://badukland.co.kr/" }],
+      "stack": [
+        "Java",
+        "Spring",
+        "MyBatis",
+        "JavaScript"
+      ],
+      "highlights": [
+        "교육 콘텐츠 화면",
+        "공지 관리자 CRUD",
+        "MyBatis 연동"
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "/project-art/badukland.png"
+      },
+      "links": [
+        {
+          "label": "site",
+          "href": "https://badukland.co.kr/"
+        }
+      ],
       "lede": "한국기원에서 운영하는 바둑 교육 플랫폼입니다. 입문자 가이드와 교육 콘텐츠를 찾는 흐름이 자연스럽게 이어지도록 화면과 운영 기능을 다듬었습니다.",
       "blocks": [
         {
@@ -59,10 +89,29 @@
       "period": "2025",
       "status": "Private product",
       "role": "DEV.AI 플랫폼 / CLI 개발",
-      "stack": ["React", "Next.js", "FastAPI", "Go", "Cobra", "Windows"],
-      "highlights": ["Go CLI 단독 설계", "중복 API 호출 개선", "크로스 플랫폼 업데이트"],
-      "visual": { "kind": "logo", "src": "/project-art/ktds.svg" },
-      "links": [{ "label": "KT note", "href": "https://app.notion.com/p/KT-2dc457fc0c6080e8910dd6e79f48c801" }],
+      "stack": [
+        "React",
+        "Next.js",
+        "FastAPI",
+        "Go",
+        "Cobra",
+        "Windows"
+      ],
+      "highlights": [
+        "Go CLI 설계·구현 담당",
+        "중복 API 호출 개선",
+        "크로스 플랫폼 업데이트"
+      ],
+      "visual": {
+        "kind": "logo",
+        "src": "/project-art/ktds.svg"
+      },
+      "links": [
+        {
+          "label": "KT note",
+          "href": "https://app.notion.com/p/KT-2dc457fc0c6080e8910dd6e79f48c801"
+        }
+      ],
       "lede": "KT DS DEV.AI 코드 어시스턴트 프로젝트입니다. AI 개발환경 설치·관리 CLI와 웹 기반 AI 코드 어시스턴트 플랫폼을 개발했습니다.",
       "blocks": [
         {
@@ -73,7 +122,7 @@
         {
           "kind": "decision",
           "title": "CLI 개발",
-          "body": "Go와 Cobra 기반으로 `devai` CLI 아키텍처와 단일 바이너리 구조를 설계했습니다. `init`, `config`, `auth`, `update`, `mcp` 서브커맨드 체계를 구현하고, 서버·로컬 버전 비교 기반 자동 업데이트와 바이너리 교체 로직을 개발했습니다. Unix re-exec와 Windows rename 방식의 플랫폼별 차이도 처리했습니다."
+          "body": "Go와 Cobra 기반으로 `devai` CLI 아키텍처 설계에 공동 참여하고 단일 바이너리 구조 구현을 담당했습니다. `init`, `config`, `auth`, `update`, `mcp` 서브커맨드 체계 구현과 서버·로컬 버전 비교 기반 자동 업데이트, 바이너리 교체 로직 개발을 담당했습니다(배포 제외). Unix re-exec와 Windows rename 방식의 플랫폼별 차이도 처리했습니다."
         },
         {
           "kind": "failure",
@@ -94,17 +143,30 @@
       "title": "삼성화재 IPCC",
       "period": "2026",
       "status": "Operations / Development",
-      "role": "콜 인프라 운영 / 개발",
-      "stack": ["Java", "Spring", "Operations", "Log tracing", "DR"],
-      "highlights": ["IVR·ADNS 운영", "상암–춘천 DR 이중화", "로그 기반 장애 분석"],
-      "visual": { "kind": "logo", "src": "/project-art/samsung-fire.svg" },
+      "role": "IVR 시나리오 개발·운영 (3인 분담)",
+      "stack": [
+        "Java",
+        "Spring",
+        "Operations",
+        "Log tracing",
+        "DR"
+      ],
+      "highlights": [
+        "IVR·ADNS 운영",
+        "상암–춘천 DR 이중화",
+        "로그 기반 장애 분석"
+      ],
+      "visual": {
+        "kind": "logo",
+        "src": "/project-art/samsung-fire.svg"
+      },
       "links": [],
-      "lede": "삼성화재 IPCC 콜센터 인프라 운영 및 개발을 수행했습니다.",
+      "lede": "삼성화재 IPCC 3인 분담 구조에서 IVR 시나리오 신규·변경 개발 및 운영을 담당했습니다.",
       "blocks": [
         {
           "kind": "constraint",
           "title": "담당 업무",
-          "body": "IVR 콜 시스템 및 ADNS 서버 개발·운영·유지보수를 담당했습니다. 콜 라우팅, 음성 응답 흐름, DNS 기반 서비스 연계가 안정적으로 동작하도록 관리했습니다."
+          "body": "3인 분담 구조에서 IVR 콜 시스템 및 ADNS 서버 개발·운영을 담당했습니다. 콜 라우팅 분기, 멘트·입력값 처리, DNS 기반 서비스 연계 정합성을 확인하고 담당 구간의 시나리오 수정과 단위테스트를 수행했습니다(설계·배포는 공동 수행)."
         },
         {
           "kind": "approach",
@@ -115,50 +177,6 @@
           "kind": "retro",
           "title": "장애 대응",
           "body": "시스템 이상 발생 시 로그와 모니터링 데이터를 기반으로 원인을 파악하고, 유관 부서와 협업하여 장애 대응 및 조치를 수행했습니다."
-        }
-      ]
-    },
-    {
-      "order": 3,
-      "category": "project",
-      "slug": "plainpaper",
-      "title": "Plainpaper",
-      "period": "2025.11~2025.12",
-      "status": "Prototype / Source available",
-      "role": "AI 문서 요약 서비스 단독 개발",
-      "stack": ["Python", "FastAPI", "OpenAI API", "React", "Next.js", "TypeScript", "Docker", "PostgreSQL"],
-      "highlights": ["Chunk·Context 유지 전략", "Retry·Fallback 파이프라인", "전체 개발 사이클 단독 수행"],
-      "visual": { "kind": "image", "src": "/project-art/plainpaper.png" },
-      "links": [
-        { "label": "Demo", "href": "https://plainpaper1.vercel.app/" },
-        { "label": "GitHub", "href": "https://github.com/eastjin616/Plainpaper" }
-      ],
-      "lede": "보험 약관·계약서·금융 문서를 업로드하면 AI가 요약·핵심 문장·주의 문장을 나누어 보여주는 문서 분석 서비스입니다.",
-      "blocks": [
-        {
-          "kind": "constraint",
-          "title": "문제 인식",
-          "body": "긴 문서를 그대로 LLM에 전달할 때 발생하는 토큰 제한과 응답 지연을 줄이면서 문맥을 유지해야 했습니다."
-        },
-        {
-          "kind": "decision",
-          "title": "해결 과정",
-          "body": "문서를 Chunk 단위로 분리하고 앞뒤 문맥을 유지하는 전략을 적용했습니다. 분석 실패에 대비해 재시도와 fallback 처리를 포함한 파이프라인을 구성했습니다."
-        },
-        {
-          "kind": "approach",
-          "title": "담당 범위",
-          "body": "요구사항 정의, FastAPI 기반 /analyze API, 프롬프트 템플릿, React·Next.js 결과 화면, 배포와 운영 테스트까지 전체 개발 사이클을 단독으로 수행했습니다."
-        },
-        {
-          "kind": "failure",
-          "title": "트러블슈팅",
-          "body": "배포 환경에서 발생한 CORS, API 경로 충돌, JWT 인증 문제를 프론트엔드와 백엔드 정책 정비 및 에러 UI 표준화로 해결했습니다."
-        },
-        {
-          "kind": "result",
-          "title": "결과",
-          "body": "분석 결과를 요약, 핵심 문장, 주의 문장으로 분리해 긴 문서의 내용을 빠르게 확인할 수 있는 흐름을 완성했습니다."
         }
       ]
     }
@@ -173,37 +191,84 @@
     {
       "year": "2026.05~",
       "name": "Hyosung ITX",
-      "summary": "삼성화재 IPCC 콜센터 인프라 운영 및 개발을 수행했습니다.",
-      "details": ["IVR 콜 시스템 및 ADNS 서버 개발·운영·유지보수", "콜 라우팅·음성 응답 흐름·DNS 기반 서비스 연계 관리", "상암–춘천 DR 이중화와 장애 시 자동 절체 체계 운영", "로그·모니터링 데이터 기반 원인 분석과 유관 부서 협업"],
-      "stack": ["Linux", "Node.js", "Java", "Spring", "DR"]
+      "summary": "3인 분담 구조에서 삼성화재 IPCC IVR 시나리오 신규·변경 개발 및 운영을 담당했습니다.",
+      "details": [
+        "담당 구간 IVR 시나리오 개발·단위테스트 및 ADNS 연계 정합성 확인",
+        "콜 라우팅 분기·멘트·입력값 처리 흐름 개선",
+        "상암–춘천 DR 이중화와 장애 시 자동 절체 체계 운영 지원",
+        "로그·모니터링 데이터 기반 원인 분석과 유관 부서 협업"
+      ],
+      "stack": [
+        "Linux",
+        "Node.js",
+        "Java",
+        "Spring",
+        "DR"
+      ]
     },
     {
       "year": "2025.08~2026.05",
       "name": "Etrees System",
       "summary": "대기업 SI 프로젝트에 파견되어 시스템 운영과 업무 지원을 수행했습니다.",
-      "details": ["Go·Cobra 기반 `devai` CLI 단독 설계 및 단일 바이너리 구조 구현", "init·config·auth·update·mcp 서브커맨드와 크로스 플랫폼 빌드", "React·Next.js 웹 UI, FastAPI AI API, SW 설계·코드 분석 에이전트 개발", "Claude Code·Cursor·MCP 기반 개발 워크플로우 자동화"],
-      "stack": ["Go", "Cobra", "React", "Next.js", "FastAPI", "Windows"]
+      "details": [
+        "Go·Cobra 기반 `devai` CLI 설계 공동 참여 및 단일 바이너리 구조 구현 담당",
+        "init·config·auth·update·mcp 서브커맨드와 크로스 플랫폼 빌드",
+        "React·Next.js 웹 UI, FastAPI AI API, SW 설계·코드 분석 에이전트 개발",
+        "Claude Code·Cursor·MCP 기반 개발 워크플로우 자동화"
+      ],
+      "stack": [
+        "Go",
+        "Cobra",
+        "React",
+        "Next.js",
+        "FastAPI",
+        "Windows"
+      ]
     },
     {
       "year": "2024.05~2024.11",
       "name": "Woonamu",
       "summary": "바둑랜드 웹 사이트 개발을 수행했습니다. 바둑 입문용 콘텐츠와 교육 메뉴를 제공하는 한국기원 교육 플랫폼의 화면과 관리 기능을 개발했습니다.",
-      "details": ["바둑 입문자 가이드·교육 콘텐츠 하위 메뉴 페이지", "공지사항 관리자 페이지 CRUD 기본 기능"],
-      "stack": ["Java", "Spring", "MyBatis", "JavaScript"]
+      "details": [
+        "바둑 입문자 가이드·교육 콘텐츠 하위 메뉴 페이지",
+        "공지사항 관리자 페이지 CRUD 기본 기능"
+      ],
+      "stack": [
+        "Java",
+        "Spring",
+        "MyBatis",
+        "JavaScript"
+      ]
     },
     {
       "year": "2022.11~2024.03",
       "name": "SK hynix",
       "summary": "반도체 공정 중 디퓨전(Diffusion) 영역에서 웨이퍼 표면에 얇은 막을 증착하는 업무를 수행했습니다.",
-      "details": ["반도체 공정 Data/FDC/MES 시스템 운영 지원", "장비 연계 데이터 모니터링", "시스템 이상 발생 시 원인 파악 및 유관부서 협업을 통한 조치"],
-      "stack": ["Diffusion", "Data/FDC", "MES"]
+      "details": [
+        "반도체 공정 Data/FDC/MES 시스템 운영 지원",
+        "장비 연계 데이터 모니터링",
+        "시스템 이상 발생 시 원인 파악 및 유관부서 협업을 통한 조치"
+      ],
+      "stack": [
+        "Diffusion",
+        "Data/FDC",
+        "MES"
+      ]
     },
     {
       "year": "2021.07~2022.10",
       "name": "LG Display",
       "summary": "반도체·디스플레이 제조라인용 CDA 유틸리티 설비를 운전하고 유지보수했습니다.",
-      "details": ["압축기·냉각기·흡착식 건조기 운전 및 유지보수", "압력·온도 등 실시간 운전 데이터를 MES 및 설비 모니터링 시스템으로 관리", "이상 징후 발생 시 원인 파악 및 대응"],
-      "stack": ["CDA", "MES", "설비 모니터링"]
+      "details": [
+        "압축기·냉각기·흡착식 건조기 운전 및 유지보수",
+        "압력·온도 등 실시간 운전 데이터를 MES 및 설비 모니터링 시스템으로 관리",
+        "이상 징후 발생 시 원인 파악 및 대응"
+      ],
+      "stack": [
+        "CDA",
+        "MES",
+        "설비 모니터링"
+      ]
     }
   ],
   "training": [
@@ -211,24 +276,66 @@
       "name": "KH 정보교육원",
       "period": "2024.11~2025.05",
       "summary": "Java·Spring과 Oracle 기반 웹/백엔드 개발자 양성과정",
-      "stack": ["Java", "Spring", "Oracle", "Servlet/JSP", "MyBatis", "React"],
-      "details": ["Java와 Spring Framework 기반 서버 애플리케이션 개발", "Oracle SQL 데이터베이스 설계와 MyBatis 연동", "Servlet/JSP·JavaScript·React 기반 웹 UI 구현", "공공데이터 API를 활용한 팀 프로젝트 설계·개발·배포"],
+      "stack": [
+        "Java",
+        "Spring",
+        "Oracle",
+        "Servlet/JSP",
+        "MyBatis",
+        "React"
+      ],
+      "details": [
+        "Java와 Spring Framework 기반 서버 애플리케이션 개발",
+        "Oracle SQL 데이터베이스 설계와 MyBatis 연동",
+        "Servlet/JSP·JavaScript·React 기반 웹 UI 구현",
+        "공공데이터 API를 활용한 팀 프로젝트 설계·개발·배포"
+      ],
       "projects": [
         {
           "title": "ThreeStars",
           "period": "2025.04~2025.05",
           "summary": "KH Academy 구성원 간 실시간 소통을 위한 WebSocket 기반 사내 웹 채팅 서비스입니다.",
-          "stack": ["Java", "Spring Boot", "WebSocket", "JWT", "Oracle"],
-          "highlights": ["WebSocket JWT 인증 구조", "이미지·파일 전송", "프론트·백엔드 흐름 조율"],
-          "links": [{ "label": "GitHub", "href": "https://github.com/kyh0576/threeStar" }]
+          "stack": [
+            "Java",
+            "Spring Boot",
+            "WebSocket",
+            "JWT",
+            "Oracle"
+          ],
+          "highlights": [
+            "WebSocket JWT 인증 구조",
+            "이미지·파일 전송",
+            "프론트·백엔드 흐름 조율"
+          ],
+          "links": [
+            {
+              "label": "GitHub",
+              "href": "https://github.com/kyh0576/threeStar"
+            }
+          ]
         },
         {
           "title": "this.서고",
           "period": "2025.02~2025.04",
           "summary": "사용자 취향 기반 도서 추천과 상세 정보를 제공하는 웹 서비스로, 팀 조장을 맡았습니다.",
-          "stack": ["Java", "JSP/Servlet", "Oracle", "Ehcache", "JavaScript"],
-          "highlights": ["Ehcache API 응답 캐싱", "ISBN 데이터 전달 규칙", "팀 일정·개발 흐름 총괄"],
-          "links": [{ "label": "GitHub", "href": "https://github.com/eastjin616/this.library" }]
+          "stack": [
+            "Java",
+            "JSP/Servlet",
+            "Oracle",
+            "Ehcache",
+            "JavaScript"
+          ],
+          "highlights": [
+            "Ehcache API 응답 캐싱",
+            "ISBN 데이터 전달 규칙",
+            "팀 일정·개발 흐름 총괄"
+          ],
+          "links": [
+            {
+              "label": "GitHub",
+              "href": "https://github.com/eastjin616/this.library"
+            }
+          ]
         }
       ]
     },
@@ -236,8 +343,20 @@
       "name": "팀 스파르타",
       "period": "2024.12~2025.03",
       "summary": "Python·OCR·LLM·RAG 기반 AI 서비스 엔지니어링 트랙",
-      "stack": ["Python", "OCR", "OpenAI API", "LangChain", "RAG", "Prompt Engineering"],
-      "details": ["Python 기반 데이터 처리와 AI 서비스 개발", "OCR·LLM·OpenAI API를 활용한 자동화 실습", "프롬프트 설계와 LangChain 기반 RAG 파이프라인 구현", "AI 서비스 기획부터 설계·구현·배포까지 전체 흐름 경험"],
+      "stack": [
+        "Python",
+        "OCR",
+        "OpenAI API",
+        "LangChain",
+        "RAG",
+        "Prompt Engineering"
+      ],
+      "details": [
+        "Python 기반 데이터 처리와 AI 서비스 개발",
+        "OCR·LLM·OpenAI API를 활용한 자동화 실습",
+        "프롬프트 설계와 LangChain 기반 RAG 파이프라인 구현",
+        "AI 서비스 기획부터 설계·구현·배포까지 전체 흐름 경험"
+      ],
       "projects": []
     }
   ],
@@ -268,14 +387,5 @@
       "summary": "IM1"
     }
   ],
-  "nowBuilding": [
-    {
-      "name": "Act AD",
-      "status": "개발중"
-    },
-    {
-      "name": "Zoomagochi CLI",
-      "status": "개발중"
-    }
-  ]
+  "nowBuilding": []
 }

@@ -94,21 +94,25 @@ export default function App() {
       <main className="work">
         <WorkSection title="Work">{renderProjectList(workProjects)}</WorkSection>
 
-        <WorkSection title="Project">{renderProjectList(personalProjects)}</WorkSection>
+        {personalProjects.length > 0 && (
+          <WorkSection title="Project">{renderProjectList(personalProjects)}</WorkSection>
+        )}
 
-        <WorkSection title="Now Building">
-          <ol className="quiet-list">
-            {nowBuilding.map((item: NowItem) => (
-              <li key={item.name}>
-                <span className="nb-main">
-                  <strong>{item.name}</strong>
-                  {item.tagline && <span className="nb-tagline">{item.tagline}</span>}
-                </span>
-                <span className="nb-status">{item.status}</span>
-              </li>
-            ))}
-          </ol>
-        </WorkSection>
+        {nowBuilding.length > 0 && (
+          <WorkSection title="Now Building">
+            <ol className="quiet-list">
+              {nowBuilding.map((item: NowItem) => (
+                <li key={item.name}>
+                  <span className="nb-main">
+                    <strong>{item.name}</strong>
+                    {item.tagline && <span className="nb-tagline">{item.tagline}</span>}
+                  </span>
+                  <span className="nb-status">{item.status}</span>
+                </li>
+              ))}
+            </ol>
+          </WorkSection>
+        )}
 
         <WorkSection title="Experience">
           <ol className="timeline">
@@ -396,23 +400,6 @@ function PortfolioLink({ href, children }: { href: string; children: ReactNode }
 }
 
 function ProjectDiagram({ slug }: { slug: string }) {
-  if (slug === 'plainpaper') {
-    return (
-      <div className="case-diagram" aria-label="Plainpaper 문서 분석 흐름 개략">
-        <div className="flow-row">
-          <span className="flow-node">문서 업로드</span>
-          <span className="flow-arrow" aria-hidden="true">→</span>
-          <span className="flow-node">Chunk·Context 유지</span>
-          <span className="flow-arrow" aria-hidden="true">→</span>
-          <span className="flow-node">FastAPI·OpenAI</span>
-          <span className="flow-arrow" aria-hidden="true">→</span>
-          <span className="flow-node">요약·핵심·주의</span>
-        </div>
-        <p className="flow-note">실패 시 재시도·fallback 처리</p>
-      </div>
-    )
-  }
-
   if (slug === 'badukland') {
     return (
       <div className="case-diagram" aria-label="Badukland 요청 흐름 개략">
