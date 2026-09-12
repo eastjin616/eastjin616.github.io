@@ -3,7 +3,7 @@ import Resume from './Resume'
 import { getProjectSlug, isResumeView } from './project-route'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 
-const { profile, links, featuredProjects, experience, training, education, nowBuilding } = content
+const { profile, links, featuredProjects, experience, training, nowBuilding } = content
 type Project = (typeof featuredProjects)[number]
 type NowItem = { name: string; status: string; tagline?: string }
 
@@ -170,17 +170,38 @@ export default function App() {
           </ol>
         </WorkSection>
 
-        <WorkSection title="Education">
-          <ol className="timeline education-list">
-            {education.map((item) => (
-              <li key={`${item.name}-${item.period}`}>
-                <span className="nb-main">
-                  <strong>{item.name}</strong>
-                  <span className="nb-tagline">{item.summary}</span>
-                </span>
-                <time>{item.period}</time>
-              </li>
-            ))}
+        <WorkSection title="Skills">
+          <ol className="quiet-list">
+            <li>
+              <span className="nb-main">
+                <strong>Backend</strong>
+                <span className="nb-tagline">Python · FastAPI · Java · Spring · MyBatis · Go · Cobra</span>
+              </span>
+            </li>
+            <li>
+              <span className="nb-main">
+                <strong>Frontend</strong>
+                <span className="nb-tagline">React · Next.js · TypeScript · HTML · CSS</span>
+              </span>
+            </li>
+            <li>
+              <span className="nb-main">
+                <strong>DB</strong>
+                <span className="nb-tagline">PostgreSQL · Oracle · SQL</span>
+              </span>
+            </li>
+            <li>
+              <span className="nb-main">
+                <strong>Infra · Operations</strong>
+                <span className="nb-tagline">Linux · Tomcat · AWS · Jenkins · Log tracing · DR</span>
+              </span>
+            </li>
+            <li>
+              <span className="nb-main">
+                <strong>AI Workflow</strong>
+                <span className="nb-tagline">LLM API · MCP · Claude Code · Cursor</span>
+              </span>
+            </li>
           </ol>
         </WorkSection>
       </main>
